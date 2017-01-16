@@ -1,0 +1,174 @@
+@import 'variables';
+@import 'utility';
+
+:host /deep/ {
+  .Profile__Header {
+    .Icon__User {
+      width: 8rem;
+      height: 8rem;
+
+      fill: $color-blue-secondary-light;
+
+      @include bp-xsmall {
+        width: 5rem;
+        height: 5rem;
+      }
+    }
+
+    .Icon__Close {
+      position: relative;
+      z-index: $zindex-navbar;
+    }
+  }
+}
+
+.Profile {
+  background: $color-white;
+  font-family: $font-primary-300;
+  font-weight: 300;
+  padding-bottom: 8rem;
+
+  &__Wrap {
+    width: 100%;
+    max-width: 100rem;
+
+    margin: 0 auto;
+  }
+
+  &__Header {
+    position: relative;
+
+    color: $gray;
+    font-size: 0;
+    line-height: 1;
+    padding-top: 5rem;
+
+    @include transition($transition: padding);
+
+    @include bp-small {
+      padding-top: 3.4rem;
+    }
+
+    &__Icon {
+      width: 8rem;
+      height: 8rem;
+
+      vertical-align: top;
+
+      @include bp-xsmall {
+        width: 5rem;
+        height: 5rem;
+      }
+    }
+
+    &__CloseBtn {
+      position: absolute;
+      top: 5rem;
+      right: 1.2rem;
+
+      cursor: pointer;
+
+      @include transition($transition: right);
+
+      &::before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 1;
+
+        width: 5rem;
+        height: 5rem;
+
+        background-color: $gray-lightest;
+        border-radius: 50%;
+        content: '';
+        margin-top: -2.5rem;
+        margin-left: -2.5rem;
+      }
+
+      .Icon {
+        position: relative;
+        z-index: 2;
+      }
+    }
+
+    &__Name {
+      display: inline-block;
+      font-family: $font-primary-300;
+      font-weight: 300;
+      padding-top: 2.2rem;
+      padding-left: 2rem;
+      white-space: pre;
+
+      @include font-size (42px);
+
+      @include bp-xsmall {
+        padding-top: 1.4rem;
+        padding-left: 1.2rem;
+
+        @include font-size (26px);
+      }
+    }
+  }
+
+  &__Topic {
+    border-top: 1px solid $gray-lighter;
+    cursor: pointer;
+    font-family: $font-primary-700;
+    font-weight: 700;
+    padding: 2.6rem 0;
+
+    @include font-size (20px);
+
+    @include bp-xsmall {
+      @include font-size (18px);
+    }
+
+    .Profile__Toggle {
+      display: block;
+      float: right;
+
+      &.Icon__Minus {
+        display: none;
+      }
+
+      &.Icon__Plus {
+        display: block;
+      }
+    }
+
+    &.Active {
+      .Profile__Toggle {
+        &.Icon__Minus {
+          display: block;
+        }
+
+        &.Icon__Plus {
+          display: none;
+        }
+      }
+
+      + .Profile__Detail {
+        display: block;
+      }
+    }
+  }
+
+  &__Detail {
+    display: none;
+    margin: 0;
+    padding-bottom: 3rem;
+
+    &.Edit {
+      .Profile__Label {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .Profile__Input {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}

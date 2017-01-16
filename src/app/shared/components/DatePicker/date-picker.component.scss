@@ -1,0 +1,30 @@
+@import 'variables';
+@import 'utility';
+
+.Datepicker {
+    &__Title {
+        margin-top: 0;
+        text-align: left;
+    }
+
+    &__InputText {
+        width: 15rem;
+
+        background-color: transparent;
+        color: $brand-primary;
+        float: right;
+        padding: 0;
+        text-align: center;
+
+        @include font-size(22px);
+    }
+
+    &__Datepicker {
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        z-index: 2;
+
+        margin-top: 1.6rem;
+    }
+}

@@ -1,0 +1,75 @@
+<div class="EmployerSidebar">
+    <div class="EmployerSidebar__Container">
+        <div class="EmployerSidebar__Section"
+            [ngClass]="{EmployerSidebar__Collapsed: sideBarState.get('isGroupsCategoryCollapsed')}">
+            <div class="EmployerSidebar__Title"
+                 (click)="toggleExpandedState('GROUPS');">
+
+                {{"GROUPS" | translate}}
+                <i class="Icon UserInfo__Toggle {sideBarState.get('isGroupsCategoryCollapsed') ? Icon__Plus : Icon__Minus}">
+                    <svg-icon svgClass="sideBarState.get('isGroupsCategoryCollapsed') ? Icon__Plus : Icon__Minus"
+                              [svgPath]="sideBarState.get('isGroupsCategoryCollapsed') ? icons.plus : icons.minus">
+                    </svg-icon>
+                </i>
+            </div>
+            <div class="EmployerSidebar__SectionInfo">
+                <ul class="EmployerSidebar__List">
+                    <li *ngFor="let elem of companies; trackBy:trackByIndex">
+                        <a class="EmployerSidebar__Link"
+                           *ngIf="!elem.get('selected')"
+                           title="{{elem.get('name') | translate}}"
+                           (click)="updateCurrentCompany(elem.get('name'));">
+
+                           {{elem.get('name') | translate}}
+                        </a>
+                        <span class="EmployerSidebar__Link EmployerSidebar__ActiveLink"
+                            *ngIf="elem.get('selected')">
+
+                            {{elem.get('name') | translate}}
+                        </span>
+                    </li>
+                </ul>
+                <a (click)="addNewLink('ADD_NEW_BILLING_GROUP')" class="EmployerSidebar__AddGroupLink">
+                    + {{"ADD_NEW_BILLING_GROUP" | translate}}
+                </a>
+            </div>
+        </div>
+
+        <div class="EmployerSidebar__Section"
+            [ngClass]="{EmployerSidebar__Collapsed: sideBarState.get('isPlansCategoryCollapsed')}">
+            <div class="EmployerSidebar__Title"
+                 (click)="toggleExpandedState('PLANS');">
+
+                {{"PLANS" | translate}}
+                <i class="Icon UserInfo__Toggle {sideBarState.get('isPlansCategoryCollapsed') ? Icon__Plus : Icon__Minus}">
+                    <svg-icon svgClass="sideBarState.get('isPlansCategoryCollapsed') ? Icon__Plus : Icon__Minus"
+                              [svgPath]="sideBarState.get('isPlansCategoryCollapsed') ? icons.plus : icons.minus">
+                    </svg-icon>
+                </i>
+            </div>
+            <div class="EmployerSidebar__SectionInfo">
+                <ul class="EmployerSidebar__List">
+                    <li *ngFor="let elem of plans; trackBy:trackByIndex">
+                        <a class="EmployerSidebar__Link"
+                           *ngIf="!elem.get('selected')"
+                           title="{{elem.get('type') | translate}}"
+                           (click)="updateCurrentPlan(elem.get('type'));">
+
+                           {{elem.get('type') | translate}}
+                        </a>
+                        <span class="EmployerSidebar__Link EmployerSidebar__ActiveLink"
+                           *ngIf="elem.get('selected')">
+
+                            {{elem.get('type') | translate}}
+                        </span>
+                    </li>
+                </ul>
+                <a (click)="addNewLink('ADD_NEW_PLAN')" class="EmployerSidebar__AddGroupLink">
+                    + {{"ADD_NEW_PLAN" | translate}}
+                </a>
+            </div>
+        </div>
+
+        <a (click)="employeesLinkState()" class="EmployerSidebar__EmployeesLink">{{ 'EMPLOYEES' | translate }}</a>
+    </div>
+</div>

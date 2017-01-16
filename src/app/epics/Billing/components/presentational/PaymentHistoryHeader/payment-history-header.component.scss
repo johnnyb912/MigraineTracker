@@ -1,0 +1,242 @@
+@import 'variables';
+@import 'utility';
+
+:host /deep/ {
+    .Icon {
+        &__Statement {
+            width: 3.2rem;
+            height: 4rem;
+        }
+
+        &__Search {
+            width: 3rem;
+            height: 3rem;
+
+            fill: $color-white;
+        }
+
+        &__Filter {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        &__Close {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+}
+
+.PaymentHistoryHeader {
+    background-image: linear-gradient(to right, $color-blue-violet 0%, $color-blue-gray-dark 20%, $color-purple 100%);
+
+    &__Wrapper {
+        max-width: 90rem;
+
+        margin: 0 auto;
+        padding: .9rem 0;
+
+        @include transition();
+
+        @include bp-medium {
+            padding: 1.5rem 0;
+        }
+
+        .Active & {
+            padding: 5rem 0;
+
+            @include bp-medium {
+                padding: 1.5rem 0;
+            }
+        }
+
+        .Icon--inline {
+            vertical-align: middle;
+        }
+    }
+
+    &__Title {
+        color: $color-white;
+        display: inline-block;
+        font-family: $font-primary-300;
+        font-weight: 300;
+        margin: 0 0 0 1rem;
+        vertical-align: middle;
+
+        @include font-size(20px);
+    }
+
+    &__Search {
+        font-size: 0;
+        text-align: right;
+
+        @include bp-xsmall {
+            margin-top: 1rem;
+            text-align: left;
+        }
+
+        .Active & {
+            text-align: left;
+        }
+
+        &__Field {
+            position: absolute;
+            top: 0;
+            right: 1.5rem;
+
+            width: 7rem;
+            height: 4rem;
+
+            background: rgba($color-white, .1);
+            border-radius: $border-radius-small;
+            color: $color-white;
+            display: inline-block;
+            font-family: $font-primary-100;
+            font-weight: 100;
+
+            @include font-size(18px);
+            @include transition();
+
+            &:hover {
+                background: rgba($color-white, .2);
+                cursor: pointer;
+            }
+
+            @include bp-medium {
+                position: relative;
+                right: auto;
+
+                width: calc(100% - 4.2rem);
+
+                border-radius: $border-radius-small 0 0 $border-radius-small;
+                float: left;
+                padding-right: .5rem;
+            }
+
+            .Active & {
+                right: 4.2rem;
+                width: calc(100% - 4.2rem);
+
+                border-radius: $border-radius-small 0 0 $border-radius-small;
+
+                @include bp-medium {
+                    position: relative;
+                    right: auto;
+                }
+            }
+        }
+
+        &__Input {
+            position: absolute;
+            top: 0;
+            right: 0;
+
+            width: .1rem;
+            height: 4rem;
+
+            background: none;
+            border: 0;
+            opacity: 0;
+            padding-left: 1.5rem;
+            vertical-align: bottom;
+            visibility: hidden;
+
+            @include transition();
+
+            @include bp-medium {
+                position: relative;
+
+                width: 90%;
+
+                float: left;
+                opacity: 1;
+                text-align: left;
+                visibility: visible;
+            }
+
+            &:focus {
+                outline: none;
+            }
+
+            .Active & {
+                width: 100%;
+
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+
+        &__Filter {
+            position: absolute;
+            top: 0;
+            right: 0;
+
+            background: rgba($color-white, .1);
+            border-color: transparent;
+            border-radius: 0 $border-radius-small $border-radius-small 0;
+            margin: 0;
+            opacity: 0;
+            padding: .9rem;
+            visibility: hidden;
+
+            &:hover {
+                background: rgba($color-white, .2);
+            }
+
+            @include bp-medium {
+                right: 1.5rem;
+
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .Active & {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+
+    &__Close {
+        position: absolute;
+        top: 1.5rem;
+        right: 0;
+
+        opacity: 0;
+        visibility: hidden;
+
+        @include transition();
+
+        @include bp-medium {
+            display: none;
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        .Active & {
+            right: -2.5rem;
+
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    &__Icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        width: 7rem;
+        height: 4rem;
+
+        display: block;
+        padding-top: .5rem;
+        text-align: center;
+
+        @include bp-medium {
+            width: 5rem;
+        }
+    }
+}

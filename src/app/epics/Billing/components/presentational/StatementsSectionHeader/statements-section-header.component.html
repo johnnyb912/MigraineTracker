@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <div class="row SectionHeader">
+        <div class="col-md-12">
+            <div class="SectionHeader__Wrap">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <i class="Icon--inline">
+                            <svg-icon svgClass="Icon__Statement"
+                                      [svgPath]="icons.statement"></svg-icon>
+                        </i>
+
+                        <h1 class="SectionHeader__Title">{{title | translate }}</h1>
+                    </div>
+
+                    <div class="col-sm-8">
+                        <div class="SectionHeader__Extra" *ngIf="totalAmount">
+                            <div class="SectionHeader__Extra__Description">
+                                {{ 'TOTAL_DUE' | translate }}<br>{{ 'TO_DATE' | translate }}
+                            </div>
+
+                            <div class="SectionHeader__Extra__Amount">
+                                ${{totalAmount | currencyFormat : '0,0.00'}}
+                            </div>
+
+                            <button class="Button__Secondary SectionHeader__Extra__Button" (click)="doPayAll()">{{ 'PAY_ALL' | translate }}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

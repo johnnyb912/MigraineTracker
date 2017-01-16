@@ -1,0 +1,100 @@
+@import 'variables';
+@import 'utility';
+
+.EmployerChanges {
+    max-width: 136rem;
+
+    padding: 2rem 1.5rem 4rem;
+}
+
+.EmployerCompany {
+    background: $color-white;
+    border: .1rem solid $gray-light;
+    border-radius: $border-radius-base;
+    color: $gray-darker;
+    margin-left: 23.9rem;
+    padding: 6.2rem 4rem;
+
+    @include bp-xsmall {
+        padding: 3.2rem 3rem;
+    }
+
+    @include bp-large {
+        padding: 4.2rem 3rem;
+    }
+
+    &__Wrap {
+        overflow: hidden;
+
+        &::after {
+            border-bottom: 1px solid $gray-lighter;
+            display: block;
+            margin: 0 1.5rem .3rem;
+            padding: 2.4rem 0 .4rem;
+        }
+    }
+
+    @include bp-small {
+        width: 100%;
+
+        display: inline-block;
+        margin-left: 0;
+    }
+
+    &__City,
+    &__Name {
+        color: $color-blue-violet;
+        font-family: $font-primary-300;
+        margin: 0;
+    }
+
+    &__City {
+        margin-bottom: .9rem;
+
+        @include font-size(45px);
+
+        @include bp-xsmall {
+            @include font-size(30px);
+        }
+    }
+
+    &__Name {
+        margin-bottom: 4.9rem;
+
+        @include font-size(16px);
+    }
+
+    &__Caption {
+        margin-bottom: 2.2rem;
+        padding-left: .8rem;
+    }
+
+    &__ThreeWraps {
+        padding: .7rem;
+
+        @include bp-medium {
+            padding: 0;
+        }
+
+        .Button {
+            @include font-size(10px);
+            border-color: $gray-light;
+            color: $gray;
+            margin: 1.8rem .8rem 0;
+            padding: .9rem 1.7rem;
+            text-transform: uppercase;
+
+            @include bp-xsmall {
+                margin: 0 .8rem 3rem;
+            }
+
+            &:hover {
+                color: $color-white;
+            }
+        }
+    }
+
+    &__NoPad {
+        padding: 0;
+    }
+}

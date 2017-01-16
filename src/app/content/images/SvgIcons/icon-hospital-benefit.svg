@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64.66 53.44">
+    <defs>
+        <linearGradient id="a" x1="596.65" y1="1779.82" x2="596.65" y2="1838.35" gradientUnits="userSpaceOnUse">
+            <stop offset="0.01" stop-color="#92aabf"/>
+            <stop offset="1" stop-color="#5a83a5"/>
+        </linearGradient>
+    </defs>
+    <title>icon-hospital-benefit</title>
+    <path style="fill:url(#a)"
+          d="M585.51,1833.8h21.74v3H585.51v-3Zm-14.21-19.54h3v7.48h-3v-7.48Zm7.16,0h3v7.48h-3v-7.48Zm36.42,7.48h-3v-7.48h3v7.48Zm7.16,0h-3v-7.48h3v7.48Zm-23.88-24.85h3.57v3h-3.57v3.57h-3v-3.57h-3.57v-3h3.57v-3.57h3v3.57Zm12.54-3.33-14.33-10.2-13.76,10.22v11H564.32v25.71H629v-25.71H610.69v-11Zm-7.3,33.74H589.9V1812.8H603.4v14.51ZM626,1807.59v19.71H606.4V1809.8H586.9v17.51H567.32v-19.71h18.28v-12.5l10.79-8,11.29,8v12.48H626Z"
+          transform="translate(-564.32 -1783.36)"/>
+</svg>

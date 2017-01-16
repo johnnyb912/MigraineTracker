@@ -1,0 +1,94 @@
+<statements-section-header
+        [title]="'STATEMENTS'"
+        [totalAmount]="statementsState.getIn(['stateTotals', 'totalDue'])"
+        (payAll)="onPayAll($event)">
+</statements-section-header>
+
+<section class="container-fluid">
+    <div class="row Statements" [ngClass]="{Multiples: statementsState.getIn(['stateTotals', 'numSelected']) > 1}">
+        <div class="col-md-12">
+            <statements-sidebar-navigation
+                    [statementSummary]="statementsState.get('statements')"
+                    [statementSidebarView]="statementsBodyExpand"
+                    (statementSelected)="onStatementSelected($event)">
+            </statements-sidebar-navigation>
+
+            <div class="Statements__Main" [ngClass]="{Active: statementsBodyExpand}">
+                <div class="Statements__None"
+                     *ngIf="statementsState.getIn(['stateTotals','numSelected']) === 0">
+                    {{ 'SELECT_STATEMENT' | translate }}
+                </div>
+
+                <statement-header
+                        *ngIf="statementsState.getIn(['stateTotals','numSelected']) > 0"
+                        [selectedTotal]="statementsState.get('selectedTotal')"
+                        [dueDate]="statementsState.getIn(['stateTotals','dueDate'])"
+                        (statementBodyExpand)="onDoStatementBodyExpand($event)">
+                </statement-header>
+
+                <div *ngFor="let summary of statementsState.get('statements'); trackBy:trackByIndex; let summaryIndex = index">
+                    <div *ngFor="let bill of summary.get('statements'); trackBy:trackByIndex; let statementIndex = index">
+                        <div *ngIf="bill.get('selected')">
+                            <div class="Statements__Month {{bill.get('status')}}" [ngClass]="{Active: bill.get('expanded')}" (click)="billExpanded(bill, summaryIndex, statementIndex)">
+                                {{bill.get('month')}}
+                                <i class="Icon Icon__Minus Statements__Toggle">
+                                    <svg-icon svgClass="Icon__Minus" [svgPath]="icons.minus"></svg-icon>
+                                </i>
+                                <i class="Icon Icon__Plus Statements__Toggle">
+                                    <svg-icon svgClass="Icon__Plus" [svgPath]="icons.plus"></svg-icon>
+                                </i>
+                            </div>
+
+                            <div class="Statements__Block">
+                                <div class="Statements__Title">
+                                    <div class="h5">
+                                        {{ 'SELF_ACCOUNTING' | translate }}
+                                        <app-tooltip
+                                                [ttIcon]="icons.message"
+                                                ttIconClass="Icon__Message"
+                                                ttText="Self accounting customers elect to calculate coverage amount due based on covered employees, up-to-date earnings and applicable rate."
+                                                ttSecondary="">
+                                        </app-tooltip>
+                                    </div>
+                                    <div class="Statements__SubTitle">{{ 'BILLING_PERIOD' | translate }} <span>{{bill.get('billingPeriod')}}</span></div>
+                                </div>
+
+                                <statement-card *ngFor="let card of bill.get('selfAccounting'); trackBy:trackByIndex; let i = index"
+                                            [isEditable]="bill.get('status') === 'Late' || bill.get('status') === 'Due'"
+                                            [cardData]="card"
+                                            (saveStatementCard)="onSaveStatementCard($event, statementIndex, i)">
+                                </statement-card>
+
+                                <div class="Statements__Title">
+                                    <div class="h5">
+                                        {{ 'EMPLOYEE_LIST_BILL' | translate }}
+                                        <app-tooltip
+                                                [ttIcon]="icons.message"
+                                                ttIconClass="Icon__Message"
+                                                ttText="List bill customers elect to have Unum provide current employee-level data to update with any changes to coverage."
+                                                ttSecondary="">
+                                        </app-tooltip>
+                                    </div>
+                                    <div class="Statements__SubTitle">{{ 'BILLING_PERIOD' | translate }} <span>{{bill.get('billingPeriod')}}</span></div>
+                                </div>
+
+                                <statement-card *ngFor="let card of employeeListBill; trackBy:trackByIndex;"
+                                            [isEditable]="false"
+                                            [cardData]="card">
+                                </statement-card>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Statements__Total" *ngIf="statementsState.getIn(['stateTotals','numSelected']) > 0">
+                    <div class="Statements__Total__Title">{{ 'TOTAL_DUE' | translate }}</div>
+
+                    <div class="Statements__Total__Amount">$<span>{{ statementsState.getIn(['stateTotals','selectedTotal']) | currencyFormat : '0,0.00' }}</span></div>
+
+                    <a class="Button__Secondary" *ngIf="statementsState.getIn(['stateTotals', 'displayPaymentButton'])" (click)="paySelected()">{{ 'PAY' | translate }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

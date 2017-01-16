@@ -1,0 +1,116 @@
+@import 'variables';
+@import 'utility';
+
+/* stylelint-disable selector-class-pattern */
+:host /deep/ {
+    .carousel-inner {
+        .item {
+            @include bp-small {
+                width: 100%;
+                display: table;
+            }
+
+            .Slider__Content {
+                @include bp-small {
+                    display: table-cell;
+                    padding: 0 3rem;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+}
+/* stylelint-enable */
+
+.Slider {
+    background: $color-blue-gray-dark;
+    color: $color-white;
+
+    &__Content {
+        height: 44rem;
+        background-position: center;
+        background-size: cover;
+        padding: 9rem 3rem;
+        text-align: center;
+    }
+
+    &__Title {
+        font-family: $font-primary-100;
+        margin-bottom: 10px;
+
+        @include font-size (56px);
+
+        @include bp-large {
+            @include font-size (40px);
+        }
+
+        @include bp-xsmall {
+            @include font-size (28px);
+        }
+    }
+
+    &__Description {
+        max-width: 32rem;
+
+        margin: 1.6rem auto 3.5rem;
+
+        @include font-size (14px);
+    }
+
+    &__Action {
+        position: relative;
+        top: -5.5rem;
+        z-index: 5;
+
+        max-width: $container-width;
+
+        margin: 0 auto;
+
+        &__Collapse,
+        &__Expand {
+            position: absolute;
+            top: 0;
+            right: 2rem;
+
+            width: 3.5rem;
+            height: 3.5rem;
+
+            background: rgba($color-white, .1);
+            border: .1rem solid transparent;
+            border-radius: 50%;
+
+            @include transition();
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        &__Collapse {
+            &:hover {
+                background: rgba($color-white, .3);
+            }
+
+            .Expanded & {
+                display: none;
+            }
+        }
+
+        &__Expand {
+            border-color: $gray-lighter;
+            display: none;
+
+            &:hover {
+                background: $gray-lighter;
+            }
+
+            .Expanded & {
+                display: block;
+            }
+        }
+
+        &.Expanded {
+            top: 1rem;
+        }
+    }
+}

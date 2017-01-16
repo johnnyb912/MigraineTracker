@@ -1,0 +1,91 @@
+<div>
+    <div class="Card Card__Claims" *ngIf="cardType === cardTypes.CLAIM">
+        <i class="Icon">
+            <svg-icon svgClass="Icon__Accident" [svgPath]="icons.accident"></svg-icon>
+        </i>
+
+        <div class="Card__Claims__Row">
+            <div class="Card__Claims__Content">
+                <div class="h6 Card__Header">{{cardData.get('claimsFiled')}}</div>
+
+                <p class="h1 Card__Header--small">{{ 'FIELD' | translate }}</p>
+            </div>
+
+            <div class="Card__Claims__Content">
+                <div class="h6 Card__Header">{{cardData.get('claimsEvaluating')}}</div>
+
+                <p class="h1 Card__Header--small">{{ 'EVALUATING' | translate }}</p>
+            </div>
+
+            <div class="Card__Claims__Content">
+                <div class="h6 Card__Header">{{cardData.get('claimsProcessing')}}</div>
+
+                <p class="h1 Card__Header--small">{{ 'PROCESSING' | translate }}</p>
+            </div>
+        </div>
+
+        <div class="Card__Buttons">
+            <button class="Button">{{ 'NEW' | translate }}</button>
+            <button class="Button">{{ 'MANAGE' | translate }}</button>
+        </div>
+    </div>
+
+    <div class="Card" *ngIf="cardType === cardTypes.PLAN">
+        <i class="Icon PlanCard__Icon">
+            <svg-icon svgClass="Icon__Life" *ngIf="cardData.get('planType') === 'Life'" [svgPath]="icons.life"></svg-icon>
+            <svg-icon svgClass="Icon__Fall" *ngIf="cardData.get('planType') === 'AD&D'" [svgPath]="icons.fall"></svg-icon>
+            <svg-icon svgClass="Icon__CriticalIllness" *ngIf="cardData.get('planType') === 'Critical Illness'" [svgPath]="icons.criticalIllness"></svg-icon>
+        </i>
+
+        <h4 class="Card__PlanType">{{cardData.get('planType')}}</h4>
+
+        <div class="h6 Card__PlanAmt">{{cardData.get('amountMonth')}} / {{ 'MO' | translate }}</div>
+
+        <div class="clearfix">
+            <div class="Card__PlanButton">
+                <i class="Icon">
+                    <svg-icon svgClass="Icon__Person" [svgPath]="icons.employee"></svg-icon>
+                </i>
+                <div>{{cardData.get('numCoverage')}}</div>
+            </div>
+            <div class="Card__PlanButton">
+                <i class="Icon">
+                    <svg-icon svgClass="Icon__Contract" [svgPath]="icons.contractGradient"></svg-icon>
+                </i>
+                <div>{{ 'CONTRACT' | translate }}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="Card" *ngIf="cardType === cardTypes.BILLING">
+        <i class="Icon">
+            <svg-icon svgClass="Icon__Statement" [svgPath]="icons.statement"></svg-icon>
+        </i>
+
+        <p class="h1 Card__Header--small">{{ 'DUE' | translate }} {{cardData.get('dueDate')}}</p>
+
+        <div class="h6 Card__Header">${{cardData.get('dueAmount')}}</div>
+
+        <div class="Card__Buttons">
+            <button class="Button">{{ 'PAY' | translate }}</button>
+            <button class="Button">{{ 'STATEMENTS' | translate }}</button>
+        </div>
+
+        <p class="Card__Footer" *ngIf="cardData.lastPayment">{{ 'LAST_PAYMENT_OF' | translate }} <span class="Card__Footer__Bold">${{ cardData.getIn(['lastPayment', 'paymentAmount']) }}</span> {{ 'RECEIVED_ON' | translate }} <span class="Card__Footer__Bold">{{ cardData.getIn(['lastPayment', 'paymentDate']) }}</span></p>
+    </div>
+
+    <div class="Card" *ngIf="cardType === cardTypes.EMPLOYEE">
+        <i class="Icon">
+            <svg-icon svgClass="Icon__Statement" [svgPath]="icons.employee"></svg-icon>
+        </i>
+
+        <p class="h1 Card__Header--small">{{ 'UPDATED' | translate }} {{cardData.get('dayOfWeekUpdate')}}</p>
+
+        <div class="h6 Card__Header">{{cardData.get('numEmployees')}}</div>
+
+        <div class="Card__Buttons">
+            <button class="Button">{{ 'ADD' | translate }}</button>
+            <a class="Button" [routerLink]="['/Admin']">{{ 'MANAGE' | translate }}</a>
+        </div>
+    </div>
+</div>

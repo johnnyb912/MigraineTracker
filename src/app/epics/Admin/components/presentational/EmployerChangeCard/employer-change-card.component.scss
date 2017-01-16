@@ -1,0 +1,92 @@
+@import 'utility';
+@import 'variables';
+
+:host /deep/ {
+    .Card__PlanIcons {
+        opacity: .6;
+        fill: $gray-light;
+    }
+
+    .Card__Arrow {
+        position: absolute;
+        top: 1.3rem;
+
+        margin-left: - 1.1rem;
+    }
+
+    .Icon__Group {
+        margin: .6rem 0 3.2rem;
+    }
+
+    .Icon__Plan {
+        margin-bottom: 2.2rem;
+    }
+}
+
+.ChangeRequest {
+    display: inline-block;
+    padding: 0 .7rem;
+    vertical-align: top;
+
+    @include bp-xsmall {
+        width: 100%;
+    }
+}
+
+.Card {
+    background-color: $color-white;
+    border: 1px solid $gray-lighter;
+    border-radius: $border-radius-base 0;
+    font-family: $font-primary-700;
+    margin-bottom: 2rem;
+    text-align: center;
+
+    &__Header {
+        min-height: 19.2rem;
+
+        border-radius: $border-radius-base 0 0;
+        color: $color-white;
+        padding: 4.3rem 0 3.5rem;
+
+        @include font-size(20px);
+        @include linear-gradient(to bottom, $color-purple, $color-blue-gray-dark);
+    }
+
+    &__Body {
+        background: $color-white;
+        border-radius: 0 0 $border-radius-base;
+        padding: 1.8rem 1.3rem 1.7rem;
+    }
+
+    &__Subsidiary {
+        position: relative;
+
+        display: inline-block;
+        margin: .4rem auto 2.3rem;
+        text-align: center;
+
+        .Icon {
+            display: inline-block;
+        }
+    }
+
+    &__NoPad {
+        padding: 0;
+    }
+
+    &__CustomAlign {
+        @include bp-medium {
+            text-align: center;
+        }
+    }
+
+    .Button {
+        margin: 0 .5rem;
+
+        @include bp-medium {
+            width: 80%;
+
+            margin: 0 0 1rem;
+        }
+    }
+}

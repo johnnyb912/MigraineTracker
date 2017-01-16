@@ -1,0 +1,614 @@
+@import 'utility';
+@import 'variables';
+
+:host /deep/ {
+    .Card__Expand {
+        &:hover {
+            .Icon__Resize {
+                fill: $color-white;
+            }
+        }
+    }
+
+    .ChangeViewList {
+        .Card__Expand {
+            &:hover {
+                .Icon__Resize {
+                    fill: $color-purple-dark;
+                }
+            }
+        }
+    }
+
+    .Icon {
+        &__Checkmark {
+            position: relative;
+            top: .1rem;
+            left: .1rem;
+        }
+
+        &__Gear {
+            width: 2rem;
+            height: 2rem;
+            fill: $color-white;
+        }
+    }
+}
+
+.Card {
+    position: relative;
+
+    width: 24.3rem;
+    height: 32.8rem;
+
+    background: $color-purple-dark;
+    border-radius: $border-radius-base 0;
+    color: $color-white;
+    float: left;
+    margin: 1rem;
+
+    @include bp-small {
+        width: 19.9rem;
+    }
+
+    &__Header {
+        padding: 2rem 2rem 0;
+    }
+
+    &__Setting {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+
+        cursor: pointer;
+    }
+
+    &__Expand {
+        transform: rotate(90deg);
+
+        @include transition($time: .2s);
+
+        &:hover {
+            transform: rotate(90deg) scale(1.3, 1.3);
+        }
+
+        &__Wrapper {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+
+            display: inline-block;
+        }
+    }
+
+    &__Avatar {
+        width: 6.9rem;
+        height: 6.9rem;
+
+        border: 4px solid rgba($color-white, .1);
+        border-radius: 50px;
+        font-family: $font-primary-700;
+        font-weight: 700;
+        margin: 0 auto;
+        padding-top: 1.4rem;
+        text-align: center;
+        text-transform: uppercase;
+
+        @include font-size(24px);
+    }
+
+    &__Content {
+        position: relative;
+
+        margin: 1.4rem 1.4rem 2.5rem;
+        padding: 0 2rem;
+        text-align: center;
+
+        .Card__Description {
+            @include bp-small {
+                min-height: 6.7rem;
+            }
+        }
+    }
+
+    &__Title {
+        font-family: $font-primary-300;
+
+        @include font-size(18px);
+
+        &__LastName {
+            font-family: $font-primary-700;
+
+            @include bp-small {
+                margin-left: .3rem;
+            }
+        }
+    }
+
+    &__Code {
+        color: $gray-lightest;
+        font-family: $font-primary-500;
+        font-weight: 500;
+
+        @include font-size(12px);
+    }
+
+    &__Type {
+        color: $gray-light;
+        font-family: $font-primary-700;
+        font-weight: 700;
+
+        @include font-size(15px);
+
+        .Active {
+            color: $color-white;
+        }
+    }
+
+    &__Checkbox {
+        position: absolute;
+        right: calc(50% - 1.35rem);
+        bottom: -3.8rem;
+        width: 2.7rem;
+        height: 2.7rem;
+
+        background-color: $color-white;
+        border: 1px solid $gray;
+        border-radius: 50px;
+        cursor: pointer;
+    }
+
+    &__Delimiter {
+        width: 10rem;
+        height: .1rem;
+
+        background: $gray;
+        display: inline-block;
+        margin: .6rem;
+    }
+
+    &__Date {
+        width: 100%;
+
+        background-color: $color-white;
+        border-right: 1px solid $gray-light;
+        border-left: 1px solid $gray-light;
+        color: $gray-dark;
+        float: left;
+        padding: 2rem 0;
+
+        &__Hired {
+            position: relative;
+
+            &::before {
+                position: absolute;
+                top: 0;
+                right: 0;
+
+                height: 2rem;
+
+                border-right: 1px solid $gray-light;
+                content: '';
+            }
+        }
+    }
+
+    &__Column {
+        width: 50%;
+
+        float: left;
+        font-family: $font-primary-300;
+        font-weight: 300;
+        text-align: center;
+
+        @include font-size(14px);
+
+        &__Subtitle {
+            color: $gray-light;
+            font-family: $font-primary-700;
+            text-transform: uppercase;
+
+            @include font-size(8.8px);
+        }
+    }
+
+    &__Button {
+        width: 100%;
+
+        border: 0;
+        border-radius: 0 0 $border-radius-base;
+        color: $color-white;
+        margin: 0;
+        padding: 1.5rem 2.8rem;
+        text-transform: uppercase;
+
+        @include linear-gradient(90deg, $color-green-dark, $color-green-light);
+    }
+
+    &.Terminated {
+        > .Card__Button {
+            @include linear-gradient(90deg, $gray-dark, $gray);
+        }
+    }
+
+    &__SettingWrapper {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+
+        width: 100%;
+
+        perspective: 1000px;
+
+        &.Setting {
+            z-index: 1;
+
+            .Card__FlipBlock {
+                opacity: 1;
+
+                transform: rotateY(180deg);
+            }
+        }
+
+        .Card__Button {
+            height: 20%;
+
+            background: $color-green-a;
+            border-radius: 0;
+            line-height: 3;
+
+            @include bp-small {
+                @include font-size(9px);
+            }
+
+            &:hover {
+                background: darken($color-green-a, 5%);
+            }
+
+            &:nth-child(2n) {
+                background: $color-green-b;
+
+                &:hover {
+                    background: darken($color-green-b, 5%);
+                }
+            }
+
+            &:nth-child(3n) {
+                background: $color-green-c;
+
+                &:hover {
+                    background: darken($color-green-c, 5%);
+                }
+            }
+
+            &:nth-child(4n) {
+                background: $color-green-d;
+
+                &:hover {
+                    background: darken($color-green-d, 5%);
+                }
+            }
+
+            &:last-child {
+                background: $color-green-e;
+
+                &:hover {
+                    background: darken($color-green-e, 5%);
+                }
+            }
+        }
+    }
+
+    &__FlipBlock {
+        opacity: 0;
+
+        transform-style: preserve-3d;
+
+        @include transition();
+    }
+
+    &__ListItem {
+        height: 32.8rem;
+
+        backface-visibility: hidden;
+        border-radius: $border-radius-base 0;
+        overflow: hidden;
+
+        transform: rotateY(180deg);
+
+        @include bp-small {
+            height: 35.4rem;
+        }
+    }
+
+    &.ChangeViewList {
+        width: 97%;
+        height: auto;
+
+        overflow: hidden;
+
+        > * {
+            vertical-align: middle;
+        }
+
+        .Card {
+            &__Setting {
+                top: 3.3rem;
+                left: 36rem;
+
+                z-index: 1;
+
+                @include transition();
+
+                @include bp-large() {
+                    left: 26rem;
+                }
+
+                @include bp-small() {
+                    left: 17.5rem;
+                }
+            }
+
+            &__Expand__Wrapper {
+                top: 2.5rem;
+                right: 15rem;
+                z-index: 1;
+
+                background: rgba($gray, .1);
+                border-radius: $border-radius-small;
+                display: inline-block;
+                padding: .8rem;
+
+                @include transition();
+
+                @include bp-small {
+                    right: 18.5rem;
+
+                    padding: .5rem;
+                }
+            }
+
+            &__Avatar {
+                width: 4.5rem;
+                height: 4.5rem;
+
+                border-color: rgba($color-white, .3);
+                padding-top: .6rem;
+
+                @include font-size(20px);
+                @include transition();
+
+                @include bp-small {
+                    width: 3rem;
+                    height: 3rem;
+
+                    font-size: 1.3rem;
+                    padding-top: .3rem;
+                }
+            }
+
+            &__Header {
+                display: inline-block;
+                padding: 0 1.5rem 0 2rem;
+
+                @include transition();
+
+                @include bp-small {
+                    padding: 0 .5rem 0 2rem;
+                }
+            }
+
+            &__Content {
+                display: inline-block;
+                margin: 1.4rem 1.4rem 1.4rem 0;
+                padding: 0;
+
+                @include transition();
+            }
+
+            &__Description {
+                min-width: 30rem;
+                min-height: inherit;
+
+                display: inline-block;
+                text-align: left;
+                vertical-align: middle;
+
+                @include transition();
+
+                @include bp-large() {
+                    min-width: 20rem;
+                }
+
+                @include bp-small() {
+                    min-width: 14rem;
+                    max-width: 14rem;
+                }
+            }
+
+            &__Delimiter {
+                width: .1rem;
+                height: 4.5rem;
+
+                vertical-align: middle;
+            }
+
+            &__Type {
+                display: inline-block;
+                vertical-align: middle;
+
+                @include bp-small() {
+                    @include font-size(11px);
+                }
+            }
+
+            &__Column {
+                width: 10rem;
+
+                margin-left: 2rem;
+                text-align: left;
+
+                @include bp-small() {
+                    width: 9rem;
+
+                    margin-left: 1rem;
+
+                    @include font-size(11px);
+                }
+
+                &__Subtitle {
+                    letter-spacing: .2rem;
+
+                    @include font-size(11px);
+                }
+            }
+
+            &__Date {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 52.5rem;
+
+                width: auto;
+
+                border: .1rem solid;
+                border-color: $gray-light $gray-light $gray-light transparent;
+                display: inline-block;
+                float: right;
+                padding: 2.7rem 0;
+
+                @include bp-large() {
+                    left: 42.5rem;
+                }
+
+                @include bp-small() {
+                    left: 34rem;
+                }
+            }
+
+            &__Date__Hired {
+                margin-left: 3rem;
+
+                @include bp-small() {
+                    margin-left: 2rem;
+                }
+
+                &::before {
+                    border-color: transparent;
+                }
+            }
+
+            &__Button {
+                width: 12rem;
+
+                border-radius: 0 0 0 $border-radius-base;
+                padding: .8rem 2rem;
+
+                @include transition($time: 0s);
+
+                @include bp-small {
+                    width: 10.5rem;
+
+                    @include font-size(9px);
+                }
+
+                &::before {
+                    position: absolute;
+                    top: 0;
+                    left: -.5rem;
+
+                    border-width: 0 .5rem 2.2rem 0;
+                    border-style: solid;
+                    border-color: transparent $color-green-dark transparent transparent;
+                    content: '';
+                }
+            }
+
+            &__ListItem {
+                height: auto;
+
+                @include transition();
+            }
+
+            &__Checkbox {
+                right: -3.5rem;
+                bottom: 1.5rem;
+                z-index: 1;
+
+                @include transition();
+
+                @include bp-small {
+                    right: -6.1rem;
+                }
+            }
+
+            &__Title {
+                @include bp-small {
+                    @include font-size(12px);
+                }
+            }
+
+            &__Code {
+                @include bp-small {
+                    @include font-size(10px);
+                }
+            }
+        }
+
+        > .Card {
+            &__Button {
+                position: absolute;
+                top: 30%;
+                right: 0;
+            }
+        }
+
+        .Card__SettingWrapper {
+            background: $color-white;
+            border: .1rem solid $gray-light;
+            border-radius: $border-radius-base 0;
+
+            .Card__Button {
+                width: 19.6%;
+                height: 8.7rem;
+
+                border-radius: 0;
+                float: left;
+                line-height: 1.2rem;
+                margin-right: .5%;
+                padding: 2.5rem 2rem;
+                white-space: inherit;
+
+                @include bp-medium {
+                    @include font-size(9px);
+                }
+            }
+
+            .Card__Link {
+                padding-top: 3.8rem;
+            }
+
+            .Card__Button--last {
+                margin-right: 0;
+            }
+        }
+
+        &.Terminated {
+            .Card__Button {
+                &::before {
+                    border-color: transparent $gray-dark transparent transparent;
+                }
+            }
+        }
+    }
+
+    &__Link {
+        @include bp-small {
+            padding-top: 2.3rem;
+        }
+    }
+}

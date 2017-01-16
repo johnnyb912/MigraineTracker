@@ -1,0 +1,578 @@
+@import 'variables';
+@import 'utility';
+
+:host /deep/ {
+    .Icon__StatementHeader {
+        width: 4.2rem;
+
+        margin-top: 2.5rem;
+        margin-bottom: .4rem;
+    }
+
+    .AppTooltip {
+        top: .1rem;
+
+        margin-left: .5rem;
+        text-align: left;
+    }
+
+    .Card__Icon {
+        .Icon__More {
+            position: relative;
+            top: 0.6rem;
+        }
+    }
+}
+
+/* stylelint-disable selector-class-pattern */
+.Card {
+    position: relative;
+
+    border: .1rem solid $gray-light;
+    border-radius: $border-radius-base 0;
+    font-size: 0;
+    margin: 0 0 1.5rem;
+    overflow: hidden;
+
+    @include transition($transition: max-height, $time: 1s);
+    @include linear-gradient(top top, $gray-lightest, $color-white);
+
+    &.Animate {
+        animation: fade-in-card 300ms forwards;
+    }
+
+    &--col-1,
+    &--col-2,
+    &--col-3 {
+        position: relative;
+
+        width: 30%;
+
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    &--col-2 {
+        width: 40%;
+
+        &.Card--borderRight::after {
+            top: 30%;
+            right: 5rem;
+            height: 40%;
+        }
+    }
+
+    &--col-3 {
+        width: 70%;
+    }
+
+    &--borderRight::after {
+        position: absolute;
+        top: 15%;
+        right: 0;
+        z-index: 1;
+
+        width: 1px;
+        height: 70%;
+
+        background: $gray-lighter;
+        content: '';
+    }
+
+    &__Block {
+        position: relative;
+
+        font-family: $font-primary-300;
+        font-weight: 300;
+        padding: 1.6rem 2rem;
+
+        @include font-size(16px);
+
+        @include bp-large {
+            padding: 1.6rem 1rem;
+        }
+
+        &--top {
+            padding: 2.5rem 2rem 1.5rem;
+
+            @include bp-large {
+                padding: 2.5rem 1rem 1.5rem;
+            }
+
+            &::before {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+
+                width: calc(100% - 2rem);
+                height: 1px;
+
+                background: $gray-lighter;
+                content: '';
+
+                .Card--col-2 & {
+                    right: auto;
+                    left: 0;
+
+                    width: calc(100% - 5rem);
+                }
+            }
+        }
+
+        &--borderRight::after {
+            position: absolute;
+            top: 20%;
+            right: 0;
+
+            width: 1px;
+            height: 60%;
+
+            background: $gray-lighter;
+            content: '';
+        }
+
+        &__Employees,
+        &__Rate {
+            font-family: $font-primary-300;
+            font-weight: 300;
+            line-height: 1.8;
+
+            @include font-size(20px);
+        }
+
+        &__Employees {
+            width: 90%;
+
+            border-top: 1px solid rgba($color-white, .2);
+            margin: 0 auto;
+            padding-top: 3rem;
+        }
+
+        .Expand & {
+            border-radius: 0;
+            color: $color-white;
+            padding-top: 1.2rem;
+
+            @include linear-gradient(to right, $color-purple, $color-blue-gray-dark);
+        }
+    }
+
+    &__Title {
+        border-radius: $border-radius-base 0;
+        color: $color-white;
+        font-family: $font-primary-300;
+        font-weight: 300;
+        line-height: 1.8;
+        margin: 0;
+        padding-top: 2.2rem;
+        padding-bottom: 1.6rem;
+
+        @include font-size(22px);
+        @include linear-gradient(to right, $color-purple, $color-blue-gray-dark);
+
+        @include bp-large {
+            text-align: center;
+        }
+    }
+
+    &__Caption {
+        color: $gray-dark;
+        font-family: $font-primary-700;
+        letter-spacing: .3rem;
+        margin-bottom: .4rem;
+        text-transform: uppercase;
+
+        @include font-size(10.1px);
+    }
+
+    &__Label,
+    &__Static {
+        color: $gray-darker;
+        font-family: $font-primary-300;
+        font-weight: 300;
+        opacity: 1;
+        visibility: visible;
+
+        transition: opacity .4s linear .4s;
+
+        @include font-size(16px);
+    }
+
+    &__Static {
+        font-family: $font-primary-700;
+        font-weight: 700;
+    }
+
+    &__Input {
+        position: absolute;
+        top: 3.2rem;
+        left: 2rem;
+
+        width: calc(50% - 4rem);
+
+        opacity: 0;
+        visibility: hidden;
+
+        @include font-size(16px);
+        @include transition($transition: opacity, $animation: linear);
+
+        .Card__Block--top & {
+            top: 4.2rem;
+        }
+
+        .form-control {
+            height: auto;
+
+            background: transparent;
+            border-color: $color-blue-primary;
+            letter-spacing: .2rem;
+            padding: 0;
+        }
+    }
+
+    &__Rate {
+        position: absolute;
+        top: 2.5rem;
+        right: 2rem;
+
+        &::before {
+            position: absolute;
+            top: 50%;
+            left: -5rem;
+
+            content: 'X';
+            margin-top: -1rem;
+
+            @include bp-large {
+                left: -3rem;
+            }
+        }
+    }
+
+    &__Actions {
+        position: absolute;
+        top: 1.2rem;
+        right: 3rem;
+        z-index: 4;
+
+        opacity: 0;
+        visibility: hidden;
+
+        &.Active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        &--save.Active {
+            top: 3rem;
+
+            @media screen and (max-width: 1200px) {
+                position: relative;
+                top: auto;
+                right: auto;
+
+                text-align: center;
+            }
+        }
+    }
+
+    &__Icon {
+        width: 4rem;
+        height: 4rem;
+
+        border: 1px solid $gray-lighter;
+        border-radius: 50%;
+        cursor: pointer;
+        margin: 1.8rem 0;
+        padding-top: .9rem;
+        text-align: center;
+
+        @include linear-gradient(to top, $gray-lightest, $color-white);
+
+        &:first-child {
+            @include linear-gradient(to top, lighten($gray-lightest, 60%), $color-white);
+        }
+    }
+
+    &__Button {
+        width: 98px;
+
+        display: block;
+        margin: 0 .8rem .8rem 0;
+
+        @media screen and (max-width: 1200px) {
+            width: 50%;
+
+            border-radius: 0;
+            display: inline-block;
+            margin: 0;
+        }
+    }
+
+    &__Close {
+        position: absolute;
+        top: 1.4rem;
+        right: 1.4rem;
+
+        cursor: pointer;
+        padding: 1.2rem;
+    }
+
+    &.Edit {
+        animation: fade-in-card 700ms forwards;
+
+        .Card--col-1 {
+            @include bp-large {
+                width: 40%;
+
+                &:first-child {
+                    width: 30%;
+                }
+
+            }
+        }
+
+        .Card--col-2 {
+            @include bp-large {
+                width: 30%;
+            }
+
+            &.Card--borderRight::after {
+                right: 46%;
+
+                @include bp-large {
+                    display: none;
+                }
+            }
+
+            .Card__Block--top::before {
+                width: 54%;
+
+                @include bp-large {
+                    width: calc(100% - 2rem);
+                }
+            }
+        }
+
+        .Card__Label {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .Card__Input,
+        .Card__Static {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    &.Expand {
+        height: 42rem;
+
+        text-align: center;
+
+        @include bp-large {
+            height: 31rem;
+
+            .Card {
+                &--col-1 {
+                    height: 100%;
+                }
+
+                &__Block {
+                    padding-top: 2.2rem;
+
+                    &:last-child { /* stylelint-disable-line max-nesting-depth */
+                        height: 85%;
+
+                        padding-top: 1.2rem;
+                    }
+                }
+            }
+        }
+
+        @include bp-medium {
+            height: 43rem;
+        }
+    }
+}
+
+.Wizard {
+    margin-top: 10rem;
+
+    @include font-size(16px);
+
+    @include bp-large {
+        margin-top: 6rem;
+    }
+
+    &__Title {
+        font-family: $font-primary-300;
+        font-weight: 300;
+        margin-bottom: 4.6rem;
+
+        @include font-size(20px);
+
+        @include bp-large {
+            margin-bottom: 0;
+        }
+    }
+
+    &__Input {
+        max-width: 12.4rem;
+
+        margin: 0 auto 8.2rem;
+
+        @include bp-large {
+            margin: 3rem auto 5rem;
+        }
+
+        .form-control {
+            background: transparent;
+            border-color: $gray-dark;
+            padding: 0;
+            text-align: center;
+        }
+    }
+
+    &__Progress {
+        position: relative;
+
+        padding: 0 5rem;
+        text-align: left;
+    }
+
+    &__Line {
+        width: 100%;
+        height: 1px;
+
+        background: $gray-dark;
+        margin: 0 auto;
+    }
+
+    &__Save {
+        position: absolute;
+        top: -1.4rem;
+        right: 3rem;
+
+        background: $color-white;
+        border-color: $gray;
+        border-radius: $border-radius-small;
+        color: $gray;
+        margin: 0;
+        padding: .6rem 1.4rem;
+    }
+
+    &__List {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        @include bp-large {
+            margin: 0 -3rem;
+        }
+
+        @include bp-medium {
+            margin: 0;
+        }
+    }
+
+    &__Step {
+        position: relative;
+        left: -5rem;
+
+        width: 10rem;
+
+        cursor: pointer;
+        display: inline-block;
+        margin-right: 2.4rem;
+        text-align: center;
+
+        @include bp-large {
+            left: -3rem;
+
+            margin-right: 0;
+        }
+
+        @include bp-medium {
+            left: -5rem;
+
+            width: 30%;
+
+            margin: 0 1rem 2.5rem 2.5rem;
+        }
+    }
+
+    &__Dot {
+        position: relative;
+
+        width: 2.4rem;
+        height: 2.4rem;
+
+        background: $gray-lightest;
+        border: 1px solid $gray;
+        border-radius: 50%;
+        margin: -1.2rem auto 1.4rem;
+
+        &::before {
+            position: absolute;
+            top: .2rem;
+            left: .2rem;
+
+            width: 1.8rem;
+            height: 1.8rem;
+
+            background: $color-blue-bright;
+            border-radius: 50%;
+            content: '';
+            display: none;
+
+            .Active & {
+                display: block;
+            }
+
+            .Complete & {
+                width: 1.4rem;
+                height: 1.4rem;
+
+                background: inline('images/icon-checkmark.svg') no-repeat center;
+                display: block;
+                margin-top: .2rem;
+                margin-left: .2rem;
+            }
+        }
+    }
+
+    &__Label {
+        font-family: $font-primary-700;
+        font-weight: 700;
+        letter-spacing: .2rem;
+        margin-bottom: .6rem;
+        text-transform: uppercase;
+
+        @include font-size(11px);
+    }
+
+    &__Amount {
+        color: $gray-light;
+        font-family: $font-primary-300;
+        font-weight: 300;
+
+        .Complete & {
+            color: $gray-dark;
+        }
+    }
+}
+/* stylelint-enable */
+
+@keyframes fade-in-card {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}

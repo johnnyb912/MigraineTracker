@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <div class="row Slider"
+         *ngIf="!bannerCollapsed">
+        <carousel [interval]="carouselInterval" [noWrap]="noWrapSlides">
+            <slide *ngFor="let slide of slides; trackBy:trackByIndex; let i = index" [active]="slide.get('active')">
+                <div class="Slider__Content" [ngStyle]="{'background-image': 'url(' + carouselImages[i] + ')'}">
+                    <div class="Slider__Title">{{slide.get('title')}}</div>
+                    <div class="Slider__Description">{{slide.get('summary')}}</div>
+                    <button class="Button Button--reversed">{{slide.get('linkDesc')}}</button>
+                </div>
+            </slide>
+        </carousel>
+    </div>
+
+    <div class="row Slider__Action"
+         [ngClass]="{'Expanded': bannerCollapsed}">
+        <i class="Icon Slider__Action__Collapse"
+           (click)="collapseBanner(true)">
+            <svg-icon svgClass="Icon__Collapse" [svgPath]="icons.collapse"></svg-icon>
+        </i>
+
+        <i class="Icon Slider__Action__Expand"
+           (click)="collapseBanner(false)">
+            <svg-icon svgClass="Icon__Expand" [svgPath]="icons.expand"></svg-icon>
+        </i>
+    </div>
+</div>

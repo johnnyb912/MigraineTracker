@@ -1,0 +1,12 @@
+<div class="Success">
+    <i class="Icon">
+        <svg-icon svgClass="Icon__ThumbsUp" [svgPath]="icons.thumbs_up"></svg-icon>
+    </i>
+    <h2>{{ 'SUCCESS' | translate }}!</h2>
+    <div class="Success__Text">
+        {{ 'YOUR_PAYMENT_PROCESSING' | translate }}
+    </div>
+    <div class="Success__Buttons">
+        <a class="Button Button__Secondary" [routerLink]="['/Billing']">{{ 'OK' | translate }}</a>
+    </div>
+</div>

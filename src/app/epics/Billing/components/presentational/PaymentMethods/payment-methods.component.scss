@@ -1,0 +1,12 @@
+@import 'variables';
+@import 'utility';
+
+.Method {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    padding: 0 1.5rem;
+
+    @include bp-xsmall {
+        margin-top: 0;
+    }
+}

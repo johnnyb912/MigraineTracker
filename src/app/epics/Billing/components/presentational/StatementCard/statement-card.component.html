@@ -1,0 +1,195 @@
+<form [formGroup]="statementCardForm" name="statementCardForm" novalidate>
+    <div class="Card" [ngClass]="{Edit: isEditingCard, Expand: isCardExpanded}">
+        <div class="Card--col-1">
+            <div class="h4 Card__Block Card__Title">
+                <i class="Icon" *ngIf="isCardExpanded">
+                    <svg-icon svgClass="Icon__Fall Icon__StatementHeader" [svgPath]="icons.fall" *ngIf="cardData.get('type') === 'AD&D'"></svg-icon>
+                    <svg-icon svgClass="Icon__Life Icon__StatementHeader" [svgPath]="icons.life" *ngIf="cardData.get('type') === 'Life'"></svg-icon>
+                </i>
+                {{cardData.get('type')}}
+            </div>
+
+            <div class="Card__Block Card__Block--borderRight" *ngIf="!isCardExpanded">
+                <div class="Card__Caption">
+                    {{ 'EMPLOYEES' | translate }}
+                </div>
+                <label for="card1-employees" class="Card__Label">
+                    {{cardData.get('employees')}}
+                </label>
+                <div class="Card__Input">
+                    <input type="text"
+                           id="card1-employees"
+                           class="form-control"
+                           autocomplete="off"
+                           [ngModel]="cardData.get('employees')"
+                           [formControl]="employees">
+                </div>
+            </div>
+
+            <div class="Card__Block" *ngIf="isCardExpanded">
+                <div class="Card__Block__Employees">
+                    <label>{{ 'EMPLOYEES' | translate }}</label>
+                    <p>{{cardData.get('employees')}}</p>
+                </div>
+                <div class="Card__Block__Rate">
+                    <label>{{ 'RATE' | translate }}</label>
+                    <p>{{cardData.get('rate')}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="Card--col-1 Card--borderRight" *ngIf="!isCardExpanded">
+            <div class="Card__Block Card__Block--top">
+                <div class="Card__Caption">
+                    {{ 'COVERAGE' | translate }}
+                </div>
+                <label for="card1-coverage" class="Card__Label">
+                    ${{ cardData.get('coverage') | currencyFormat : '0,0.00'}}
+                </label>
+                <div class="Card__Input">
+                    <input type="text"
+                           id="card1-coverage"
+                           class="form-control"
+                           autocomplete="off"
+                           [ngModel]="cardData.get('coverage')"
+                           [formControl]="coverage">
+                </div>
+
+                <div class="Card__Rate" *ngIf="isEditingCard">
+                    <div class="Card__Caption">
+                        {{ 'RATE' | translate }}
+                    </div>
+                    <label>
+                        {{cardData.get('rate')}}
+                    </label>
+                </div>
+            </div>
+
+            <div class="Card__Block">
+                <div class="Card__Caption">
+                    {{ 'ADJUSTMENTS' | translate }}
+                </div>
+                <label for="card1-adjustments" class="Card__Label">
+                    {{cardData.get('adjustments')}}
+                </label>
+                <div class="Card__Input">
+                    <input type="text"
+                           id="card1-adjustments"
+                           class="form-control"
+                           autocomplete="off"
+                           [ngModel]="cardData.get('adjustments')"
+                           [formControl]="adjustments">
+                </div>
+            </div>
+        </div>
+
+        <div class="Card--col-2"
+             *ngIf="!isCardExpanded"
+             [ngClass]="{'Card--borderRight' : isEditable}">
+            <div class="Card__Block Card__Block--top">
+                <div class="Card__Caption">
+                    {{ 'PREMIUM' | translate }}
+                </div>
+                <label for="card1-premium" class="Card__Label">
+                    {{ cardData.get('premium') | currencyFormat : '0,0.00'}}
+                </label>
+                <div class="Card__Input">
+                    <input type="text"
+                           id="card1-premium"
+                           class="form-control"
+                           autocomplete="off"
+                           [ngModel]="cardData.get('premium')"
+                           [formControl]="premium">
+                </div>
+            </div>
+
+            <div class="Card__Block Card__Block--bottom">
+                <div class="Card__Caption">
+                    {{ 'TOTAL' | translate }}
+                </div>
+                <label class="Card__Static">
+                    {{ cardData.get('total') | currencyFormat : '0,0.00'}}
+                </label>
+            </div>
+        </div>
+
+        <div class="Card--col-3" *ngIf="isCardExpanded">
+            <i class="Icon Card__Close" (click)="isCardExpanded = false">
+                <svg-icon svgClass="Icon__Close" [svgPath]="icons.close"></svg-icon>
+            </i>
+
+            <div class="Wizard">
+                <div class="Wizard__Title">
+                    {{ 'WHAT_COVERAGE_AMOUNT' | translate }}?
+                    <app-tooltip
+                            [ttIcon]="icons.message"
+                            ttIconClass="Icon__Message"
+                            ttText="Coverage amount information text."
+                            ttSecondary="">
+                    </app-tooltip>
+                </div>
+
+                <div class="Wizard__Input">
+                    <input type="text"
+                           id="wizard-input"
+                           class="form-control"
+                           placeholder="$12,908">
+                </div>
+
+                <div class="Wizard__Progress">
+                    <div class="Wizard__Line"></div>
+
+                    <button class="Button Wizard__Save" (click)="doSaveStatementCard()">{{ 'SAVE' | translate }}</button>
+
+                    <ul class="Wizard__List">
+                        <li class="Wizard__Step Complete">
+                            <div class="Wizard__Dot"></div>
+
+                            <div class="Wizard__Label">{{ 'HIRED' | translate }}</div>
+
+                            <div class="Wizard__Amount">29</div>
+                        </li>
+
+                        <li class="Wizard__Step Complete">
+                            <div class="Wizard__Dot"></div>
+
+                            <div class="Wizard__Label">{{ 'TERMINATED' | translate }}</div>
+
+                            <div class="Wizard__Amount">13</div>
+                        </li>
+
+                        <li class="Wizard__Step Active">
+                            <div class="Wizard__Dot"></div>
+
+                            <div class="Wizard__Label">{{ 'COVERAGE' | translate }}</div>
+
+                            <div class="Wizard__Amount">$12,908</div>
+                        </li>
+
+                        <li class="Wizard__Step">
+                            <div class="Wizard__Dot"></div>
+
+                            <div class="Wizard__Label">{{ 'ADJUSTMENTS' | translate }}</div>
+
+                            <div class="Wizard__Amount">0</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="Card__Actions" [ngClass]="{Active: !isEditingCard}" *ngIf="!isCardExpanded && isEditable">
+            <i class="Icon Card__Icon" (click)="isEditingCard = true">
+                <svg-icon svgClass="Icon__Edit" [svgPath]="icons.edit"></svg-icon>
+            </i>
+            <i class="Icon Card__Icon" (click)="isCardExpanded = true">
+                <svg-icon svgClass="Icon__More" [svgPath]="icons.more"></svg-icon>
+            </i>
+        </div>
+
+        <div class="Card__Actions Card__Actions--save" [ngClass]="{Active: isEditingCard}" *ngIf="!isCardExpanded">
+            <a class="Button Card__Button" (click)="isEditingCard = false">{{ 'CANCEL' | translate }}</a>
+            <a class="Button__Secondary Card__Button" (click)="doSaveStatementCard()">{{ 'SAVE' | translate }}</a>
+        </div>
+    </div>
+</form>

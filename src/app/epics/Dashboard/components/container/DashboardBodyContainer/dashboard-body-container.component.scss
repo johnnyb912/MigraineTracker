@@ -1,0 +1,42 @@
+@import 'variables';
+@import 'utility';
+
+.PlanCard {
+    width: 32%;
+
+    display: inline-block;
+    margin-left: 2%;
+    vertical-align: top;
+
+    &:first-of-type {
+        margin-left: 0;
+    }
+
+    @include bp-small {
+        width: 100%;
+
+        margin-left: 0;
+    }
+}
+
+.Pay {
+    padding-top: 9rem;
+    padding-bottom: 9rem;
+
+    &__Header {
+        font-family: $font-primary-300;
+        font-weight: 300;
+        line-height: 1.2;
+
+        @include font-size(68px);
+    }
+
+    &__SubHeader {
+        font-family: $font-primary-100;
+        font-weight: 100;
+        line-height: 1.4;
+        margin-bottom: 1.4rem;
+
+        @include font-size(45px);
+    }
+}

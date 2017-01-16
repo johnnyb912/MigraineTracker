@@ -1,0 +1,39 @@
+<div class="PlanCard col-sm-4">
+    <div class="Card">
+        <div class="Card__Header">
+            <i class="Icon PlanCard__Icon">
+                <svg-icon svgClass="Icon__Life Card__Icon"
+                          *ngIf="cardData.get('type') === 'LIFE'"
+                          [svgPath]="icons.life"></svg-icon>
+
+                <svg-icon svgClass="Icon__Fall Card__Icon"
+                          *ngIf="cardData.get('type') === 'AD_&_D'"
+                          [svgPath]="icons.fall"></svg-icon>
+
+                <svg-icon svgClass="Icon__CriticalIllness Card__Icon"
+                          *ngIf="cardData.get('type') === 'CRITICAL_ILLNESS'"
+                          [svgPath]="icons.criticalIllness"></svg-icon>
+            </i>
+
+            <h4 class="Card__PlanType">{{cardData.get('type') | translate}}</h4>
+        </div>
+
+        <div class="Card__Body">
+            <div class="h6 Card__PlanAmt">{{cardData.get('amount')}} / {{ 'MO' | translate }}</div>
+            <div class="clearfix">
+                <div class="Card__PlanButton">
+                    <i class="Icon">
+                        <svg-icon svgClass="Icon__Employee" [svgPath]="icons.employee"></svg-icon>
+                    </i>
+                    <div>{{cardData.get('employees')}}</div>
+                </div>
+                <div class="Card__PlanButton">
+                    <i class="Icon">
+                        <svg-icon svgClass="Icon__ContractGradient" [svgPath]="icons.contractGradient"></svg-icon>
+                    </i>
+                    <div>{{ 'CONTRACT' | translate }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+@import 'variables';
+@import 'utility';
+
+.Method {
+    width: 80%;
+
+    font-size: 0;
+    margin: 0 auto 4rem;
+
+    &__Card {
+        position: relative;
+        width: 49%;
+        min-height: 20rem;
+
+        border: .1rem solid $gray-light;
+        border-radius: $border-radius-base;
+        cursor: pointer;
+        display: inline-block;
+
+        @include linear-gradient(to bottom, $color-white, $gray-lightest);
+        @include transition();
+
+        &:first-child {
+            margin-right: 2%;
+        }
+
+        &:hover {
+            @include linear-gradient(to bottom, $gray-lightest, $gray-lightest);
+        }
+    }
+
+    &__Item {
+        padding-top: 4.5rem;
+
+        @include font-size(20px);
+
+        &__Title {
+            font-family: $font-primary-700;
+            font-weight: 700;
+            margin-top: 3rem;
+
+            @include font-size(17px);
+        }
+    }
+
+    &__Bank {
+        height: 4.9rem;
+    }
+
+    &__Check {
+        height: 4.9rem;
+
+        padding-top: .8rem;
+    }
+}

@@ -1,0 +1,25 @@
+/// Mixin for applying transition action
+///
+/// @param {String} $transition [all] - property to transition, defaults to all
+/// @param {Number} $time [.4s] - Amount of time for the transition to complete, defaults to .4s
+/// @param {String} $animation [ease] - easing type for transition to use, defaults to ease
+///
+/// @example scss - Usage
+///     .Default {
+///         @include transition();
+///     }
+///
+///     .Element {
+///         @include transition(height, 1s, ease-in-out);
+///     }
+///
+/// @example css - CSS output
+///     .Default {
+///         transition: all .4s, ease;
+///     }
+///     .Element {
+///         transition: height 1s ease-in-out;
+///     }
+@mixin transition($transition: all, $time: .4s, $animation: ease) {
+    transition: $transition $time $animation;
+}

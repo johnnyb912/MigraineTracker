@@ -1,0 +1,52 @@
+<section class="PaymentHistoryCard">
+    <div class="PaymentHistoryCard__Year">2015</div>
+
+    <div *ngFor="let card of paymentHistoryCard; trackBy:trackByIndex" class="row HistoryCardItem" [ngClass]="{Edit: isEdit}">
+        <div class="col-xs-12 col-sm-2 HistoryCardItem__Title">
+            <div class="HistoryCardItem__Label">{{card.title}}</div>
+
+            <div class="HistoryCardItem__Year">2015</div>
+        </div>
+
+        <div class="col-xs-12 col-sm-10 HistoryCardItem__Content">
+            <div class="row">
+                <div class="col-xs-6 col-sm-3">
+                    <div class="HistoryCardItem__Subtitle">{{ 'AUTHORIZED_BY' | translate }}</div>
+                    <div class="HistoryCardItem__Text">
+                        {{card.userName}}
+                    </div>
+                    <div class="HistoryCardItem__PostTitle">
+                        {{card.userRole}}
+                    </div>
+                </div>
+
+                <div class="col-xs-6 col-sm-2">
+                    <div class="HistoryCardItem__Subtitle">{{ 'INITIATED' | translate }}</div>
+                    <div class="HistoryCardItem__Text">
+                        {{card.date}}
+                    </div>
+                    <div class="HistoryCardItem__PostTitle">
+                        {{card.year}}
+                    </div>
+                </div>
+
+                <div class="col-xs-6 col-sm-4 col-lg-3">
+                    <div class="HistoryCardItem__Subtitle">{{ 'PAYMENT_METHOD' | translate }}</div>
+                    <div class="HistoryCardItem__Text">
+                        {{card.bank}}
+                    </div>
+                    <div class="HistoryCardItem__PostTitle">
+                        {{card.routing}}
+                    </div>
+                </div>
+
+                <div class="col-xs-6 col-sm-3 col-lg-push-1 Status">
+                    <div *ngIf="card.pending" class="Status__Pending">{{ 'PENDING' | translate }}</div>
+                    <div *ngIf="card.paid" class="Status__Paid">{{ 'PAID' | translate }}</div>
+
+                    <div class="HistoryCardItem__Amount">${{card.amount | currencyFormat : '0,0'}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

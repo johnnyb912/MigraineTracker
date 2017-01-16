@@ -1,0 +1,29 @@
+<div class="container-fluid">
+    <div class="row PaymentMethodHeader" [ngClass]="{Edit: isEdit}">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="row PaymentMethodHeader__Wrap">
+                <div class="col-sm-5 PaymentMethodHeader__TitleBlock">
+                    <i class="Icon--inline">
+                        <svg-icon svgClass="Icon__Statement"
+                                  [svgPath]="icons.statement"></svg-icon>
+                    </i>
+
+                    <h1 class="PaymentMethodHeader__Title">{{ 'PAYMENT_METHOD' | translate }}</h1>
+                </div>
+
+                <div class="col-sm-7 PaymentMethodHeader__Extra">
+                    <i class="Icon--inline PaymentMethodHeader__Extra__Icon" (click)="editCard(true)">
+                        <svg-icon svgClass="Icon__Edit"
+                                  [svgPath]="icons.edit"></svg-icon>
+                    </i>
+
+                    <div class="PaymentMethodHeader__ButtonWrapper">
+                        <button class="Button__Cancel">{{ 'DELETE_SELECTED' | translate }}</button>
+                        <button class="Button">{{ 'ADD_NEW' | translate }}</button>
+                        <button class="Button__Secondary" (click)="editCard(false)">{{ 'SAVE' | translate }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

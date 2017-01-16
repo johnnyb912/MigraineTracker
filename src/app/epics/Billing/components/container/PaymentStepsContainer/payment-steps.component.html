@@ -1,0 +1,62 @@
+<statements-section-header
+        [title]="'PAYMENT'">
+</statements-section-header>
+
+<section class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="Payment" [ngClass]="{'Payment--success': showSuccessPage}">
+                <div *ngIf="!showSuccessPage">
+                    <payment-steps-header
+                        [paymentStepsState]="paymentsState.get('paymentStepsState')"
+                        (paymentStepSelect)="onPaymentStepSelect($event)">
+                    </payment-steps-header>
+
+                    <div class="row">
+                        <payment-steps-method
+                                *ngIf="paymentsState.getIn(['paymentStepsState', 0, 'active'])"
+                                (paymentMethodSelected)="onPaymentMethodSelected($event)"
+                                [paymentMethods]="paymentsState.paymentMethodsState">
+                        </payment-steps-method>
+
+                        <payment-account
+                                *ngIf="paymentsState.getIn(['paymentStepsState', 1, 'active'])"
+                                (paymentSelectionsUpdated)="onPaymentSelectionsUpdated($event)"
+                                (accountsCompleted)="onAccountsCompleted($event)"
+                                (accountExpanded)="onAccountExpanded($event)"
+                                [paymentMappings]="paymentsState.get('paymentMappingsState')">
+                        </payment-account>
+
+                        <payment-steps-amount
+                                *ngIf="paymentsState.getIn(['paymentStepsState', 2, 'active'])"
+                                [paymentMappings]="paymentsState.get('paymentMappingsState')"
+                                (editingStatement)="onEditingStatement($event)"
+                                (paymentAmountsUpdated)="onPaymentAmountsUpdated($event)"
+                                (amountsCompleted)="onAmountsCompleted($event)">
+                        </payment-steps-amount>
+
+                        <payment-steps-review
+                                *ngIf="paymentsState.getIn(['paymentStepsState', 3, 'active'])"
+                                [selectedPaymentDate]="paymentsState.get('selectedPaymentDate')"
+                                [selectedPaymentTotal]="statementsState.getIn(['stateTotals', 'totalDue'])"
+                                [paymentMappings]="paymentsState.get('paymentMappingsState')"
+                                (paymentDateSelected)="onPaymentDateSelected($event)"
+                                (paymentMethodEdit)="onPaymentMethodEdit($event)"
+                                (submitPayment)="onSubmitPayment($event)">
+                        </payment-steps-review>
+                    </div>
+
+                    <payment-steps-footer
+                            [showCancelPrompt]="paymentsState.get('displayCancelPayment')"
+                            [paymentSteps]="paymentsState.get('paymentStepsState')"
+                            (showCancelPayment)="onShowCancelPayment($event)"
+                            (cancelPaymentAction)="onCancelPaymentAction($event)"
+                            (paymentStepPrevious)="onPaymentStepPrevious($event)">
+                    </payment-steps-footer>
+                </div>
+
+                <payment-success *ngIf="showSuccessPage"></payment-success>
+            </div>
+        </div>
+    </div>
+</section>

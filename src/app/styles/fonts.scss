@@ -1,0 +1,84 @@
+/*
+ * Web Fonts from fontspring.com
+ *
+ * All OpenType features and all extended glyphs have been removed.
+ * Fully installable fonts can be purchased at http://www.fontspring.com
+ *
+ * The fonts included in this stylesheet are subject to the End User License you purchased
+ * from Fontspring. The fonts are protected under domestic and international trademark and
+ * copyright law. You are prohibited from modifying, reverse engineering, duplicating, or
+ * distributing this font software.
+ *
+ * (c) 2010-2016 Fontspring
+ *
+ *
+ *
+ *
+ * The fonts included are copyrighted by the vendor listed below.
+ *
+ * Vendor:      exljbris Font Foundry
+ * License URL: http://www.fontspring.com/licenses/exljbris/webfont
+ *
+ *
+ */
+
+// Font family declarations to use in variables in all other scss files
+// scss-lint:disable VariableForProperty
+
+@font-face {
+    font-family: 'museo_sans100'; // $font-primary-100 - Museo Sans 100
+    src: url('content/fonts/MuseoSans_100-webfont.eot');
+    src: url('content/fonts/MuseoSans_100-webfont.eot?#iefix') format('embedded-opentype'), url('content/fonts/MuseoSans_100-webfont.woff2') format('woff2'), url('content/fonts/MuseoSans_100-webfont.woff') format('woff'), url('content/fonts/MuseoSans_100-webfont.ttf') format('truetype'), url('content/fonts/MuseoSans_100-webfont.svg#museo_sans100') format('svg');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'museo_sans300'; // $font-primary-300 - Museo Sans 300
+    src: url('content/fonts/MuseoSans_300-webfont.eot');
+    src: url('content/fonts/MuseoSans_300-webfont.eot?#iefix') format('embedded-opentype'), url('content/fonts/MuseoSans_300-webfont.woff2') format('woff2'), url('content/fonts/MuseoSans_300-webfont.woff') format('woff'), url('content/fonts/MuseoSans_300-webfont.ttf') format('truetype'), url('content/fonts/MuseoSans_300-webfont.svg#museo_sans300') format('svg');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'museo_sans500'; // $font-primary-500 - Museo Sans 500
+    src: url('content/fonts/MuseoSans_500-webfont.eot');
+    src: url('content/fonts/MuseoSans_500-webfont.eot?#iefix') format('embedded-opentype'), url('content/fonts/MuseoSans_500-webfont.woff2') format('woff2'), url('content/fonts/MuseoSans_500-webfont.woff') format('woff'), url('content/fonts/MuseoSans_500-webfont.ttf') format('truetype'), url('content/fonts/MuseoSans_500-webfont.svg#museo_sans500') format('svg');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'museo_sans700'; // $font-primary-700 - Museo Sans 700
+    src: url('content/fonts/MuseoSans_700-webfont.eot');
+    src: url('content/fonts/MuseoSans_700-webfont.eot?#iefix') format('embedded-opentype'), url('content/fonts/MuseoSans_700-webfont.woff2') format('woff2'), url('content/fonts/MuseoSans_700-webfont.woff') format('woff'), url('content/fonts/MuseoSans_700-webfont.ttf') format('truetype'), url('content/fonts/MuseoSans_700-webfont.svg#museo_sans700') format('svg');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'museo_sans900'; // $font-primary-900 - Museo Sans 900
+    src: url('content/fonts/MuseoSans_900-webfont.eot');
+    src: url('content/fonts/MuseoSans_900-webfont.eot?#iefix') format('embedded-opentype'), url('content/fonts/MuseoSans_900-webfont.woff2') format('woff2'), url('content/fonts/MuseoSans_900-webfont.woff') format('woff'), url('content/fonts/MuseoSans_900-webfont.ttf') format('truetype'), url('content/fonts/MuseoSans_900-webfont.svg#museo_sans900') format('svg');
+    font-style: normal;
+    font-weight: normal;
+}
+
+//@font-face {
+//    font-family: 'montserrat_regular'; // $font-secondary - Montserrat Regular
+//    src: url('content/fonts/montserrat-regular.eot');
+//    src: url('content/fonts/montserrat-regular.eot?#iefix') format('embedded-opentype'), url('content/fonts/montserrat-regular.woff') format('woff'), url('content/fonts/montserrat-regular.ttf') format('truetype'), url('content/fonts/montserrat-regular.svg#montserratregular') format('svg');
+//    font-style: normal;
+//    font-weight: normal;
+//}
+
+//@font-face {
+//    font-family: 'montserrat_light'; // $font-secondary-light - Montserrat Light
+//    src: url('content/fonts/montserrat-light.eot');
+//    src: url('content/fonts/montserrat-light.eot?#iefix') format('embedded-opentype'), url('content/fonts/montserrat-light.ttf') format('truetype'), url('content/fonts/montserrat-light.woff') format('woff'), url('content/fonts/montserrat-light.svg#open_sanslight') format('svg');
+//    font-style: normal;
+//    font-weight: normal;
+//}
+
+// scss-lint:enable VariableForProperty

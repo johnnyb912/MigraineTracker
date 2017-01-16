@@ -1,0 +1,12 @@
+<div class="AppTooltip">
+    <i class="Icon--inline AppTooltip__Icon">
+        <!--<svg-icon [svgClass]="ttIconClass"-->
+                  <!--[svgPath]="ttIcon"></svg-icon>-->
+    </i>
+    <div class="row AppTooltip__Body">
+        <span class="AppTooltip__Text" [ngClass]="{'col-md-9': ttSecondary.length}">{{ttText}}</span>
+        <span class="col-md-3 AppTooltip__Secondary" *ngIf="ttSecondary.length">
+            <span class="AppTooltip__Secondary__Text">{{ttSecondary}}</span>
+        </span>
+    </div>
+</div>

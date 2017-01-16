@@ -1,0 +1,195 @@
+%button-common {
+    background-color: transparent;
+    border-radius: $border-radius-small;
+    font-family: $font-primary-700;
+    font-size: $btn-font-size;
+    letter-spacing: .2rem;
+    margin-right: 6px;
+    padding: 1.2rem 2rem;
+    text-transform: uppercase;
+
+    @include transition();
+
+    &:active {
+        @include transition($time: 0s);
+    }
+
+    &[disabled],
+    &[disabled]:hover,
+    &[disabled]:focus,
+    &.Disabled,
+    &.Disabled:hover,
+    &.Disabled:focus {
+        border-color: transparent;
+        color: $gray;
+        cursor: default;
+
+        @include linear-gradient(90deg, $gray-lighter, $gray-lighter);
+    }
+}
+
+/// Primary Buttons
+.Button {
+    @extend .btn;
+    @extend %button-common;
+
+    border-color: $color-blue-primary;
+    color: $color-blue-primary;
+
+    &:hover,
+    &:focus,
+    &:active {
+        background: $color-blue-primary;
+        color: $color-white;
+
+        @include linear-gradient(to right, $color-blue-primary, $color-blue-primary-light);
+    }
+
+    &[disabled],
+    &[disabled]:hover,
+    &[disabled]:focus,
+    &.Disabled,
+    &.Disabled:hover,
+    &.Disabled:focus {
+        background: transparent;
+        border-color: $gray-lighter;
+    }
+
+    &--reversed {
+        border-color: $color-white;
+        color: $color-white;
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: $gray-light;
+        }
+    }
+
+    /// Secondary Buttons
+    &__Secondary {
+        @extend .btn;
+        @extend %button-common;
+
+        border-color: transparent;
+        color: $color-white;
+
+        @include linear-gradient(90deg, $color-blue-primary, $color-blue-primary-light);
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: $color-white;
+
+            @include linear-gradient(90deg, $color-blue-primary, $color-blue-primary);
+        }
+
+        &--reversed {
+            color: $color-blue-primary;
+
+            @include linear-gradient(90deg, $gray-light, $color-white);
+
+            &:hover,
+            &:focus,
+            &:active {
+                color: $color-blue-primary;
+
+                @include linear-gradient(90deg, $color-white, $color-white);
+            }
+        }
+    }
+
+    &__Cancel {
+        @extend .btn;
+        @extend %button-common;
+
+        border-color: $color-red-dark;
+        color: $color-red-dark;
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: $color-white;
+
+            @include linear-gradient(to right, $color-red-dark, $color-red-light);
+        }
+    }
+
+    &__Circle {
+        @extend .btn;
+        @extend %button-common;
+
+        position: relative;
+
+        width: 3.7rem;
+        height: 3.7rem;
+
+        background-color: $color-white;
+        border-color: $gray-light;
+        border-radius: 50%;
+        margin: 0;
+        padding: 8px 10px;
+        text-align: center;
+
+        @include linear-gradient(90deg, $color-white, $color-white);
+
+        &:hover {
+            @include linear-gradient(90deg, $color-white, $color-white);
+        }
+
+        .Active {
+            position: absolute;
+            top: 4px;
+            left: 4px;
+
+            width: 2.7rem;
+            height: 2.7rem;
+
+            background: $brand-success;
+            border-radius: 40px;
+            display: block;
+        }
+
+        &.Complete {
+            &:hover {
+                @include linear-gradient(to right, $color-blue-primary, $color-blue-primary-light);
+
+                .Icon__Checkmark {
+                    fill: $color-white;
+                }
+            }
+        }
+    }
+
+    &__Pill {
+        @extend .btn;
+
+        border-color: $gray-lighter;
+        border-radius: $border-radius-large;
+        color: $gray;
+        font-weight: normal;
+        padding: .5rem 2rem;
+        text-transform: capitalize;
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: $gray-dark;
+        }
+    }
+
+    /// Text Buttons
+    &__Text {
+        @extend .btn;
+        @extend %button-common;
+
+        border-color: transparent;
+        color: $gray-light;
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: $gray;
+        }
+    }
+}

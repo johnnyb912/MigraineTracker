@@ -1,0 +1,271 @@
+@import '../../../../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins';
+@import 'variables';
+@import 'utility';
+
+$sidebar-width: 30rem;
+$sidebar-width-md: 21rem;
+
+:host /deep/ {
+    .Icon__Checkmark {
+        position: relative;
+        z-index: 9;
+
+        width: 1.6rem;
+        height: 1.6rem;
+
+        margin-top: .7rem;
+    }
+}
+
+.History {
+    position: relative;
+
+    width: $sidebar-width;
+    height: 86rem;
+
+    float: left;
+    opacity: 1;
+    overflow: hidden;
+
+    @include transition($time: .3s);
+
+    &.Active {
+        width: .01rem;
+
+        opacity: 0;
+    }
+
+    @include bp-large {
+        width: $sidebar-width-md;
+    }
+
+    &__Container {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: $sidebar-width;
+
+        background: $color-white;
+        border: .1rem solid $gray-light;
+        border-radius: $border-radius-base;
+        color: $gray-darker;
+
+        transform: translateX(-#{$sidebar-width});
+
+        @include linear-gradient(to top, $gray-lightest, $color-white);
+        @include transition();
+
+        &.Next,
+        &.Active.Right {
+            transform: translateX($sidebar-width);
+        }
+
+        &.Prev,
+        &.Active.Left {
+            transform: translateX(-#{$sidebar-width});
+        }
+
+        &.Active,
+        &.Next.Left,
+        &.Prev.Right {
+            transform: translateX(0);
+        }
+
+        @include bp-large {
+            width: $sidebar-width-md;
+        }
+    }
+
+    &__Title {
+        position: relative;
+
+        font-family: $font-primary-700;
+        font-weight: 700;
+        padding: 1.5rem 0;
+        text-align: center;
+
+        @include font-size(20px);
+
+        &::before {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+
+            width: 100%;
+            height: .1rem;
+
+            background: $gray-lighter;
+            content: '';
+        }
+
+        &__Year {
+            vertical-align: middle;
+        }
+    }
+
+    &__ChevronLeft {
+        @include arrow($size: .9rem, $dir: left, $weight: .2rem, $color: $gray-light);
+
+        left: 1.2rem;
+    }
+
+    &__ChevronRight {
+        @include arrow($size: .9rem, $dir: right, $weight: .2rem, $color: $gray-light);
+
+        right: 1.2rem;
+    }
+
+    &__ChevronLeft,
+    &__ChevronRight {
+        position: absolute;
+        top: 2.2rem;
+
+        cursor: pointer;
+        vertical-align: middle;
+
+        @include transition();
+    }
+
+    &__Item {
+        position: relative;
+
+        cursor: pointer;
+        font-family: $font-primary-700;
+        font-weight: 700;
+        text-transform: uppercase;
+
+        @include font-size(20px);
+        @include transition();
+        @include clearfix();
+
+        &::before {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+
+            width: 100%;
+            height: .1rem;
+
+            background: $gray-lighter;
+            content: '';
+        }
+
+        &:last-child {
+            border-radius: 0 0 $border-radius-base $border-radius-base;
+
+            &::before {
+                display: none;
+            }
+        }
+
+        &.Active,
+        &:hover {
+            color: $color-white;
+
+            @include radial-gradient($color-blue-violet, $color-blue-gray-dark);
+        }
+    }
+
+    &__Month {
+        position: relative;
+
+        width: 10rem;
+
+        float: left;
+        padding-top: 2rem;
+        padding-left: 2rem;
+    }
+
+    &__Content {
+        padding-top: .6rem;
+        padding-right: 2rem;
+        padding-bottom: .8rem;
+        text-align: right;
+        vertical-align: middle;
+
+        &__Status {
+            background: $gray;
+            border-radius: $border-radius-large;
+            color: $color-white;
+            display: inline-block;
+            font-family: $font-primary-700;
+            font-weight: 700;
+            letter-spacing: .2rem;
+            line-height: 1rem;
+            margin-bottom: .8rem;
+            padding: .5rem .8rem .4rem 1rem;
+            text-transform: uppercase;
+
+            @include font-size(10px);
+
+            &.Due {
+                @include linear-gradient(to right, $color-green-dark, $color-green-light);
+            }
+
+            &.Late {
+                @include linear-gradient(to right, $color-red-dark, $color-red-light);
+            }
+
+            &.Pending {
+                @include linear-gradient(to right, $color-orange-dark, $color-orange);
+            }
+        }
+
+        &__Sum {
+            font-weight: 500;
+
+            @include font-size(13px);
+        }
+    }
+
+    &__Icon {
+        position: absolute;
+        top: 1.7rem;
+        left: 7rem;
+
+        width: 3rem;
+        height: 3rem;
+
+        text-align: center;
+
+        &__Bkg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+
+            width: 3rem;
+            height: 3rem;
+
+            border: 1px solid $gray-light;
+            border-radius: 50%;
+
+            @include linear-gradient(to top, $gray-lightest, $color-white);
+
+            &::before,
+            &::after {
+                position: absolute;
+                left: 1.5rem;
+                z-index: -1;
+
+                width: .1rem;
+
+                background-color: $gray-light;
+                content: '';
+            }
+
+            &::before {
+                bottom: -1.9rem;
+
+                height: 1.8rem;
+            }
+
+            &::after {
+                top: -1.6rem;
+
+                height: 1.5rem;
+            }
+        }
+    }
+}

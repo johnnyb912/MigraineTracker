@@ -1,0 +1,69 @@
+<div class="container-fluid">
+    <div class="row Login">
+        <div class="col-md-12">
+            <div class="Login__Container">
+                <h1 class="Icon Icon__Logo">
+                    <span class="HiddenElement">Unum</span>
+                </h1>
+
+                <form class="LoginForm" [formGroup]="loginForm" novalidate name="loginForm" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2">
+                            <h2 class="LoginForm__Title">
+                                {{ 'SIGN_IN' | translate }}
+                            </h2>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2">
+                            <div class="form-group">
+                                <div class="FormInput">
+                                    <input type="email"
+                                           id="email"
+                                           class="form-control FormInput__Field"
+                                           placeholder="email"
+                                           autocomplete="off"
+                                           [(ngModel)]="loginCreds.username"
+                                           [formControl]="email">
+                                    <label for="email" class="FormInput__Label">
+                                        <span class="FormInput__Label__Text">{{ 'EMAIL' | translate }}</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="FormInput">
+                                    <input type="password"
+                                           id="password"
+                                           class="form-control FormInput__Field"
+                                           placeholder="password"
+                                           autocomplete="off"
+                                           [(ngModel)]="loginCreds.password"
+                                           [formControl]="password">
+                                    <label for="password" class="FormInput__Label">
+                                        <span class="FormInput__Label__Text">{{ 'PASSWORD' | translate }}</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row LoginForm__Buttons">
+                        <div class="col-md-12 text-center">
+                            <button type="submit" [disabled]="!loginForm.valid" class="Button">{{ 'SIGN_IN' | translate }}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="Login__Forgot">
+                <a class="Login__Forgot__Link" [routerLink]="['/Login/ResetPassword']">
+                    {{ 'FORGOT_EMAIL_PASSWORD' | translate }}?
+                    <i class="Icon Icon--inline Login__ChevronRight">
+                        <svg-icon svgClass="Icon__Collapse" [svgPath]="icons.arrow"></svg-icon>
+                    </i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

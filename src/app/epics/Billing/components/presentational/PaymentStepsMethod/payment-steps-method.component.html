@@ -1,0 +1,13 @@
+<h2 class="Step__Title">{{ 'HOW_LIKE_PAY' | translate }}?</h2>
+
+<div class="Method">
+    <div class="Method__Card" *ngFor="let method of paymentMethods; trackBy:trackByIndex" (click)="selectPaymentMethod(method)">
+        <div class="Method__Item">
+            <i class="Icon Method__Bank">
+                <svg-icon *ngIf="method.get('type') === paymentMethodTypes.BANK_DRAFT" svgClass="Icon__Bank" [svgPath]="icons.bank"></svg-icon>
+                <svg-icon *ngIf="method.get('type') === paymentMethodTypes.CHECK" svgClass="Icon__Check" [svgPath]="icons.check"></svg-icon>
+            </i>
+            <p class="Method__Item__Title">{{ method.get('label') }}</p>
+        </div>
+    </div>
+</div>

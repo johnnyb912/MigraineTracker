@@ -1,0 +1,81 @@
+/// UTILITY HELPERS
+
+/// Function to convert px size to rem
+///
+/// @param {Number} $size - Size in pixels to convert to rem
+@function calculate-rem($size) {
+    $rem-size: $size / 10px;
+
+    @return #{$rem-size}rem;
+}
+
+/// Mixin to output rem font-size with px fallback
+///
+/// @param {Number} $size - Element’s `font-size` in pixels
+///
+/// @example scss - Usage
+///     h1 {
+///         @include font-size(32px);
+///     }
+///
+/// @example css - CSS output
+///     h1 {
+///         font-size: 32px;
+///         font-size: 2rem;
+///     }
+// scss-lint:disable VariableForProperty, DuplicateProperty
+@mixin font-size($size) {
+    font-size: $size;
+    font-size: calculate-rem($size); /* stylelint-disable-line declaration-block-no-duplicate-properties */
+}
+// scss-lint:enable VariableForProperty, DuplicateProperty
+
+/// Mixin to truncate text in an element with ellipsis
+///
+/// @example scss - Usage
+///     .Element {
+///         width: 250px;
+///
+///         @include truncate-text;
+///     }
+///
+/// @example css - CSS Output
+///     .Element {
+///         width: 250px;
+///
+///         overflow: hidden;
+///         text-overflow: ellipsis;
+///         white-space: nowrap;
+///     }
+@mixin truncate-text() {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/// Mixin for preventing selection by cursor
+///
+/// @param {String} $cursor [default] - property to cursor, defaults to default
+///
+/// @example scss - Usage
+///     .Default {
+///         @include prevent-select();
+///     }
+///
+///     .Element {
+///         @include prevent-select($cursor: pointer);
+///     }
+///
+/// @example css - CSS output
+///     .Default {
+///         cursor: default;
+///         user-select: none;
+///     }
+///     .Element {
+///         cursor: pointer;
+///         user-select: none;
+///     }
+@mixin prevent-select($cursor: default) {
+    cursor: $cursor;
+    user-select: none;
+}

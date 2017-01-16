@@ -1,0 +1,10 @@
+/// UTILITY HELPERS
+/// Mixins are located in the mixins directory, separated by type of property they are used on
+@import 'mixins/arrow-mixins';
+@import 'mixins/breakpoint-mixins';
+@import 'mixins/font-mixins';
+@import 'mixins/gradient-mixins';
+@import 'mixins/transition-mixins';
+
+// sass-mediaqueries library
+@import '~sass-mediaqueries/media-queries';

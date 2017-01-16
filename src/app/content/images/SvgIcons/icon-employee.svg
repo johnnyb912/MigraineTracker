@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50.78 60.51">
+    <defs>
+        <linearGradient id="a" x1="979.41" y1="676.1" x2="979.41" y2="620.83" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#0167ac"/>
+            <stop offset="1" stop-color="#5cc8df"/>
+        </linearGradient>
+        <linearGradient id="b" x1="979.41" y1="671.92" x2="979.41" y2="618.43" xlink:href="#a"/>
+    </defs>
+    <title>icon-employee</title>
+    <path style="fill:url(#a);"
+          d="M962,675.14h-2.64a5.35,5.35,0,0,1-5.35-5.35v-5A20.83,20.83,0,0,1,974.84,644H984a20.83,20.83,0,0,1,20.83,20.83v5a5.35,5.35,0,0,1-5.35,5.35H998"
+          transform="translate(-954.02 -614.62)"/>
+    <path style="fill:url(#b);" d="M979.41,641.52a13.45,13.45,0,1,1,13.05-13.45A13.27,13.27,0,0,1,979.41,641.52Z"
+          transform="translate(-954.02 -614.62)"/>
+</svg>

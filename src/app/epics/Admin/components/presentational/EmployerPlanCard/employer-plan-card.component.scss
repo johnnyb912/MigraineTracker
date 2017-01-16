@@ -1,0 +1,96 @@
+@import 'utility';
+@import 'variables';
+
+:host /deep/ {
+    .Card__Icon {
+        width: 6.4rem;
+        height: 5.3rem;
+    }
+
+    .Icon__Employee {
+        width: 1.6rem;
+        height: 2.2rem;
+    }
+
+    .Icon__ContractGradient {
+        width: 2.3rem;
+        height: 2.2rem;
+    }
+}
+
+.PlanCard {
+    display: inline-block;
+    padding: 0 .7rem;
+    vertical-align: top;
+
+    @include bp-xsmall {
+        width: 100%;
+
+        padding: 0;
+    }
+
+    &__Icon {
+        margin-bottom: 3rem;
+    }
+}
+
+.Card {
+    background-color: $color-white;
+    border: 1px solid $gray-lighter;
+    border-radius: $border-radius-base 0;
+    font-family: $font-primary-700;
+    margin-bottom: 2rem;
+    text-align: center;
+
+    &__Header {
+        border-radius: $border-radius-base 0 0;
+        padding: 5.3rem 0 3.5rem;
+
+        @include linear-gradient(to bottom, $color-purple, $color-blue-gray-dark);
+    }
+
+    &__Body {
+        border-radius: 0 0 $border-radius-base;
+        padding: .2rem 2rem 2.6rem;
+
+        @include linear-gradient(to bottom, $color-white, $gray-lightest);
+    }
+
+    &__PlanAmt {
+        border-bottom: 1px solid $gray-lighter;
+        line-height: 3.5;
+        margin-bottom: 0;
+        padding-bottom: 1.2rem;
+    }
+
+    &__PlanType {
+        color: $color-white;
+        font-family: $font-primary-700;
+        margin: 0;
+
+        @include font-size(20px);
+    }
+
+    &__PlanAmt,
+    &__PlanButton {
+        font-family: $font-primary-500;
+
+        @include font-size(13px);
+    }
+
+    &__PlanButton {
+        width: 50%;
+
+        float: left;
+        padding-bottom: 1rem;
+
+        &:first-child {
+            border-right: 1px solid $gray-lighter;
+        }
+
+        .Icon {
+            margin-top: 1.8rem;
+            margin-bottom: .6rem;
+        }
+    }
+}

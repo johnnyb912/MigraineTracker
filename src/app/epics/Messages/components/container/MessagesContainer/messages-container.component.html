@@ -1,0 +1,112 @@
+<div class="MessagesBody">
+    <i class="Icon MessagesBody__Resize">
+        <svg-icon svgClass="Icon__Resize" [svgPath]="icons.resize"></svg-icon>
+    </i>
+
+    <div class="MessagesBody__Header">
+        <div class="MessagesBody__Header__Title">{{ 'SALARY_UPDATES' | translate }}</div>
+
+        <div class="MessagesBody__Header__Subtitle">
+            {{ 'ARTICLE_A' | translate }} <em>{{ 'HOW_TO' | translate }}</em> {{ 'GUIDE' | translate }}
+        </div>
+
+        <div class="MessagesBody__Header__Description">
+            {{ 'MESSAGES_DESCRIPTION' | translate }}
+        </div>
+    </div>
+
+    <div class="MessagesBody__Question">
+        <div class="MessagesBody__Question__Title">{{ 'MESSAGES_QUESTION_TITLE_1' | translate }}</div>
+
+        <div class="MessagesBody__Question__Text">
+            {{ 'MESSAGES_QUESTION_TEXT_1' | translate }}
+        </div>
+
+        <div class="MessagesBody__Question__Title">{{ 'MESSAGES_QUESTION_TITLE_2' | translate }}</div>
+
+        <div class="MessagesBody__Question__Text">
+            {{ 'MESSAGES_QUESTION_TEXT_2' | translate }}
+        </div>
+    </div>
+
+    <div class="MessagesBody__Table">
+        <div class="MessagesBody__Table__Header">
+            <div class="MessagesBody__Table__Title">{{ 'MESSAGES_TABLE_TITLE' | translate }}</div>
+        </div>
+
+        <div class="row MessagesBody__Table__Content">
+            <div class="col-md-12 MessagesBody__Table__Line">
+                <div class="col-md-4 MessagesBody__Table__Column">
+                    <div class="MessagesBody__Table__Label">
+                        {{ 'SALARIED_EMPLOYEES' | translate }}
+                        <div class="MessagesBody__Table__Note">{{ 'BI_WEEKLY' | translate }}</div>
+                    </div>
+                </div>
+
+                <div class="col-md-5 MessagesBody__Table__Column">
+                    <div class="MessagesBody__Table__Text">{{ salariedEmployeesText }}</div>
+                </div>
+
+                <div class="col-md-3 MessagesBody__Table__Column">
+                    <div class="MessagesBody__Table__Sum">{{ salariedEmployeesSum }}</div>
+                </div>
+            </div>
+
+            <div class="col-md-12 MessagesBody__Table__Line">
+                <div class="col-md-4 MessagesBody__Table__Column">
+                    <div class="MessagesBody__Table__Label">{{ 'ADDITIONAL_EARNINGS' | translate }}</div>
+                </div>
+
+                <div class="col-md-5 MessagesBody__Table__Column">
+                    <div class="MessagesBody__Table__Text">
+                        {{ 'BONUS' | translate }} <br> {{ 'COMMISSION' | translate }}
+                    </div>
+
+                    <div class="MessagesBody__Table__Text">
+                        {{ 'OVERTIME' | translate }} <br> {{ 'SHIFT_DIFFERENTIAL' | translate }}
+                    </div>
+                </div>
+
+                <div class="col-md-3 MessagesBody__Table__Column">
+                    <div class="MessagesBody__Table__Sum">{{ additionalEarnings }}</div>
+                </div>
+            </div>
+
+            <div class="col-md-12 MessagesBody__Table__Line">
+                <div class="col-md-4 MessagesBody__Table__Column">
+                    <div class="MessagesBody__Table__Label">
+                        {{ 'ANNUAL_EARNINGS' | translate }}
+                        <div class="MessagesBody__Table__Note">{{ 'FOR_PREMIUM_AND_BENEFITS' | translate }}</div>
+                    </div>
+                </div>
+
+                <div class="col-md-5 MessagesBody__Table__Column">
+                    <div class="MessagesBody__Table__Text">
+                        {{ 'WEEKLY' | translate }}<br> {{ 'MONTHLY' | translate }}<br> {{ 'ANNUALLY' | translate }}
+                    </div>
+                </div>
+
+                <div class="col-md-3 MessagesBody__Table__Column">
+                    <div class="MessagesBody__Table__Sum">
+                        {{ annualEarnings.weekly }}<br> {{ annualEarnings.monthly }}<br> {{ annualEarnings.annually }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="MessagesBody__ExampleBlock">
+        <i class="Icon MessagesBody__Eye">
+            <svg-icon svgClass="Icon__Eye" [svgPath]="icons.eye"></svg-icon>
+        </i>
+        {{ 'EXAMPLE_PAY_STUB_EXCERPT' | translate }}
+        <i class="Icon MessagesBody__Plus">
+            <svg-icon svgClass="Icon__Plus" [svgPath]="icons.plus"></svg-icon>
+        </i>
+    </div>
+
+    <div class="MessagesBody__Buttons">
+        <button class="Button__Secondary">{{ 'UPDATE_SALARIES' | translate }}</button>
+    </div>
+
+</div>

@@ -1,0 +1,11 @@
+<div class="Steps">
+    <div class="Steps__Item" *ngFor="let step of paymentStepsState; trackBy:trackByIndex">
+        <p class="Steps__Item__Title">{{ paymentStepTypes[step.get('type')] }}</p>
+        <a type="button" class="Button__Circle" [ngClass]="{'Complete' : step.get('complete')}" (click)="changePaymentStep(step)">
+            <div class="Active" *ngIf="step.get('active')"></div>
+            <i class="Icon__Checkmark">
+                <svg-icon svgClass="Icon__Checkmark" [svgPath]="icons.checkmark"></svg-icon>
+            </i>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,87 @@
+<div class="container-fluid">
+    <header class="row Header">
+        <div class="col-md-12">
+            <div class="Header__Wrap">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="pull-right visible-xs visible-sm" (click)="showMobileNav = !showMobileNav">
+                            <i class="Icon--inline">
+                                <svg-icon svgClass="Icon__Hamburger" [svgPath]="icons.hamburger"></svg-icon>
+                            </i>
+                        </div>
+
+                        <a class="Header__Logotype" title="Unum" [routerLink]="['/Dashboard']">
+                            <i class="Icon Icon__Logo"></i>
+                        </a>
+                    </div>
+
+                    <div class="col-md-8 hidden-xs hidden-sm">
+                        <nav>
+                            <ul class="Navigation">
+                                <li class="Navigation__Item" *ngFor="let navItem of appNavigation; trackBy:trackByIndex">
+                                    <a class="Navigation__Link" [ngClass]="{ Active: activeNavState === navItem.baseNavOption }" title="{{navItem.title}}" (click)="doNavigation(navItem)">{{ navItem.title }}</a>
+                                    <span *ngIf="messages && navItem.title === 'Messages'" class="NavPins">{{ messages.size }}</span>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <div class="col-md-2 text-right hidden-xs hidden-sm" *ngIf="userInfo">
+                        <div class="Header__UserBlock" (click)="doNavigation(profileNavOption)">
+                            <i class="Icon--inline">
+                                <svg-icon svgClass="Icon__User Icon__User--nav" [svgPath]="icons.user"></svg-icon>
+                            </i> {{ userInfo.get('name') }}
+                            <br>
+                            {{ subNavOptions }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="SubNav__Wrap" [ngClass]="{Active: showSubMenu}">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="SubNav" [ngClass]="{Active: showSubMenu}">
+                            <li class="SubNav__Item" *ngFor="let subItem of selectedSubNav; trackBy:trackByIndex">
+                                <a class="SubNav__Link"
+                                   [ngClass]="{ Button: subItem.title === 'Pay Now' }"
+                                   (click)="doSubNavigation(subItem.route)">{{ subItem.title }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="CloseSubNav" (click)="showSubMenu = false"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="MobileNav MobileNav__List" [ngClass]="{ Expand: showMobileNav }">
+                        <li class="MobileNav__Item" *ngFor="let mobileItem of appNavigation; trackBy:trackByIndex">
+                            <a class="MobileNav__Link"
+                               [ngClass]="{ Active: activeNavState === mobileItem.baseNavOption }"
+                               title="{{mobileItem.title}}"
+                               (click)="doNavigation(mobileItem)"
+                               *ngIf="!mobileItem.subNav.length">{{ mobileItem.title }}
+                            </a>
+                            <span *ngIf="messages && mobileItem.title === 'Messages'" class="NavPins">{{ messages.length }}</span>
+
+                            <ul class="MobileNav__List" *ngIf="mobileItem.subNav.length">
+                                <li class="MobileNav__Item" *ngFor="let mobileSub of mobileItem.subNav; trackBy:trackByIndex">
+                                    <a class="MobileNav__Link" (click)="doSubNavigation(mobileSub.route)">{{ mobileSub.title }}</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="Header__UserBlock"
+                             *ngIf="userInfo"
+                             (click)="doNavigation(profileNavOption)">
+                            <i class="Icon--inline">
+                                <svg-icon svgClass="Icon__User Icon__User--nav" [svgPath]="icons.user"></svg-icon>
+                            </i> {{ userInfo.get('name') }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>

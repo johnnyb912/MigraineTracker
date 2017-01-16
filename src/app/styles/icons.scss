@@ -1,0 +1,206 @@
+.Icon {
+    display: block;
+    font-size: 0;
+    fill: $gray-dark;
+
+    @include transition($transition: fill);
+
+    &--button {
+        cursor: pointer;
+    }
+
+    &--inline {
+        display: inline-block;
+        font-size: 0;
+        fill: $gray-dark;
+
+        @include transition($transition: fill);
+    }
+
+    &__Logo {
+        width: 11.4rem;
+        height: 3.7rem;
+
+        background: inline('images/unum-logo-login.svg') no-repeat center;
+
+        &:hover {
+            background: inline('images/unum-logo-login--active.svg') no-repeat center left;
+        }
+    }
+
+    // TODO: Replace everywhere this id used with the decision-group component
+    // scss-lint:disable all
+    /* stylelint-disable selector-no-type */
+    &__Checkbox {
+        input[type=checkbox] {
+            &:not(:checked) + label::after,
+            &:checked + label::after {
+                width: 2.2rem;
+                height: 2.2rem;
+
+                background: inline('images/icon-checkmark.svg') no-repeat center;
+            }
+        }
+    }
+    // scss-lint:enable all
+    /* stylelint-enable */
+
+    &__CheckGreen,
+    &__Filter {
+        fill: $color-white;
+    }
+
+    &__Check,
+    &__CheckCircle,
+    &__Close,
+    &__DollarCircle,
+    &__Info,
+    &__Message,
+    &__MessageFilled,
+    &__More,
+    &__Move,
+    &__Resize,
+    &__User {
+        fill: $gray;
+    }
+
+    &__AddressMap,
+    &__ArrowLeft,
+    &__Cigarette,
+    &__Collapse,
+    &__DateOfBirth,
+    &__Dollar,
+    &__Earning,
+    &__Grid,
+    &__PaidThrough,
+    &__PhoneOutline {
+        fill: $gray-light;
+    }
+
+    &__Statement {
+        fill: $gray-lighter;
+    }
+
+    &__Add {
+        &:hover {
+            fill: $gray;
+        }
+    }
+
+    &__Close,
+    &__CloseWithBg {
+        @include transition();
+
+        &:hover {
+            transform: rotate(-180deg);
+        }
+    }
+
+    &__Edit {
+        margin-left: .1rem;
+
+        &:hover {
+            fill: $gray-light;
+        }
+    }
+
+    &__User {
+        &--nav {
+            position: relative;
+            top: 6px;
+
+            margin-right: .4rem;
+        }
+    }
+}
+
+/// Icon styles for svg sprite icons located in app/content/images/SvgIcons
+/// `$icons` is a map that contains each icons name and image path
+/// The name should be capitalized camel case, it will be appended to `.Icon__` for use in HTML
+/// The image path should start at the `images` directory inside `app/content`
+$icons: (
+        Accident:            'images/SvgIcons/icon-accident.svg',
+        Add:                 'images/SvgIcons/icon-add.svg',
+        Address:             'images/SvgIcons/icon-address.svg',
+        AddressMap:          'images/SvgIcons/icon-address-map.svg',
+        Bank:                'images/SvgIcons/icon-bank.svg',
+        Bell:                'images/SvgIcons/icon-bell.svg',
+        Birthday:            'images/SvgIcons/icon-birthday.svg',
+        Building:            'images/SvgIcons/icon-building.svg',
+        Check:               'images/SvgIcons/icon-check.svg',
+        CheckCircle:         'images/SvgIcons/icon-check-circle.svg',
+        CheckGreen:          'images/SvgIcons/icon-check-green.svg',
+        Checkmark:           'images/SvgIcons/icon-checkmark.svg',
+        Cigarette:           'images/SvgIcons/icon-cigarette.svg',
+        Close:               'images/SvgIcons/icon-close.svg',
+        CloseBg:             'images/SvgIcons/icon-close-bg.svg',
+        Collapse:            'images/SvgIcons/icon-collapse.svg',
+        Contract:            'images/SvgIcons/icon-contract.svg',
+        ContractGradient:    'images/SvgIcons/icon-contract-gradient.svg',
+        CriticalIllness:     'images/SvgIcons/icon-critical-illness.svg',
+        DateOfBirth:         'images/SvgIcons/icon-date-of-birth.svg',
+        Disability:          'images/SvgIcons/icon-disability.svg',
+        DiscontinueCoverage: 'images/SvgIcons/icon-discontinue-coverage.svg',
+        Dollar:              'images/SvgIcons/icon-dollar.svg',
+        DollarCircle:        'images/SvgIcons/icon-dollar-circle.svg',
+        Earning:             'images/SvgIcons/icon-earning.svg',
+        Edit:                'images/SvgIcons/icon-edit.svg',
+        Email:               'images/SvgIcons/icon-email.svg',
+        Employee:            'images/SvgIcons/icon-employee.svg',
+        EmployeeId:          'images/SvgIcons/icon-employee-id.svg',
+        EmployeeProfile:     'images/SvgIcons/icon-employee-profile.svg',
+        Envelope:            'images/SvgIcons/icon-envelope.svg',
+        EnvelopeRed:         'images/SvgIcons/icon-envelope-red.svg',
+        Expand:              'images/SvgIcons/icon-expand.svg',
+        Eye:                 'images/SvgIcons/icon-eye.svg',
+        Fall:                'images/SvgIcons/icon-fall.svg',
+        Filter:              'images/SvgIcons/icon-filter.svg',
+        FmlaOthers:          'images/SvgIcons/icon-fmla-others.svg',
+        FmlaPersonal:        'images/SvgIcons/icon-fmla-personal.svg',
+        Gear:                'images/SvgIcons/icon-gear.svg',
+        Gender:              'images/SvgIcons/icon-gender.svg',
+        Group:               'images/SvgIcons/icon-group.svg',
+        Hamburger:           'images/SvgIcons/icon-hamburger.svg',
+        HospitalBenefit:     'images/SvgIcons/icon-hospital-benefit.svg',
+        Info:                'images/SvgIcons/icon-info.svg',
+        Injury:              'images/SvgIcons/icon-injury.svg',
+        Language:            'images/SvgIcons/icon-language.svg',
+        Life:                'images/SvgIcons/icon-life.svg',
+        Lock:                'images/SvgIcons/icon-lock.svg',
+        Medical:             'images/SvgIcons/icon-medical.svg',
+        Message:             'images/SvgIcons/icon-message.svg',
+        MessageFilled:       'images/SvgIcons/icon-message-filled.svg',
+        Minus:               'images/SvgIcons/icon-minus.svg',
+        More:                'images/SvgIcons/icon-more.svg',
+        Move:                'images/SvgIcons/icon-move.svg',
+        PaidThrough:         'images/SvgIcons/icon-paid-through.svg',
+        PdfDownload:         'images/SvgIcons/icon-pdf-download.svg',
+        PdfUpload:           'images/SvgIcons/icon-pdf-upload.svg',
+        Person:              'images/SvgIcons/icon-person.svg',
+        PersonGradient:      'images/SvgIcons/icon-person-gradient.svg',
+        Phone:               'images/SvgIcons/icon-phone.svg',
+        PhoneOutline:        'images/SvgIcons/icon-phone-outline.svg',
+        Plan:                'images/SvgIcons/icon-plan.svg',
+        Plus:                'images/SvgIcons/icon-plus.svg',
+        Pregnancy:           'images/SvgIcons/icon-pregnancy.svg',
+        QuestionMark:        'images/SvgIcons/icon-question-mark.svg',
+        Resize:              'images/SvgIcons/icon-resize.svg',
+        Search:              'images/SvgIcons/icon-search.svg',
+        Statement:           'images/SvgIcons/icon-statement.svg',
+        Stethoscope:         'images/SvgIcons/icon-stethoscope.svg',
+        Subsidiary:          'images/SvgIcons/icon-subsidiary.svg',
+        TerminateEmployment: 'images/SvgIcons/icon-terminate-employment.svg',
+        ThumbsUp:            'images/SvgIcons/icon-thumbs-up.svg',
+        Trash:               'images/SvgIcons/icon-trash.svg',
+        User:                'images/SvgIcons/icon-user.svg',
+        ViewList:            'images/SvgIcons/icon-view-list.svg',
+        ViewTile:            'images/SvgIcons/icon-view-tile.svg',
+        Wellness:            'images/SvgIcons/icon-wellness.svg'
+);
+
+@each $name, $icon in $icons {
+    .Icon__#{$name} {
+        width: width($icon);
+        height: height($icon);
+    }
+}

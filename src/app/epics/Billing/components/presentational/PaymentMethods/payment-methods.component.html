@@ -1,0 +1,16 @@
+<payment-method-header
+        [title]="'Payment Method'"
+        (onEditCard)="onEditCard($event)">
+</payment-method-header>
+
+<section class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="Method">
+                <payment-method-card
+                        [isEdit]="isEdit">
+                </payment-method-card>
+            </div>
+        </div>
+    </div>
+</section>

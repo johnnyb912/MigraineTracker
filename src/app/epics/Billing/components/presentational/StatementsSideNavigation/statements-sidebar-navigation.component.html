@@ -1,0 +1,28 @@
+<div class="History" [ngClass]="{Active: statementSidebarView}">
+    <div class="History__Container" *ngFor="let summary of statementSummary; let i = index" #sidebarContainer [ngClass]="{Active: i === 0}">
+        <div class="History__Title">
+            <i class="History__ChevronLeft" *ngIf="showPreviousYear" (click)="doNavigateYear('prev', i)"></i>
+            <i class="History__ChevronRight" *ngIf="showNextYear" (click)="doNavigateYear('next', i)"></i>
+            <span class="History__Title__Year">{{summary.get('statementYear')}}</span>
+        </div>
+
+        <div class="History__Item" *ngFor="let statement of summary.get('statements'); trackBy:trackByIndex; let j = index" [ngClass]="{Active: statement.get('selected')}" (click)="selectionMade(statement, j)">
+            <div class="History__Month" (click)="statementChecked($event, i, j)">
+                {{statement.get('monthShort')}}
+
+                <div class="History__Icon" *ngIf="statement.get('status') === 'Due' || statement.get('status') === 'Late'">
+                    <svg-icon *ngIf="statement.get('selected')"
+                              svgClass="Icon__Checkmark"
+                              [svgPath]="icons.checkmark">
+                    </svg-icon>
+                    <div class="History__Icon__Bkg"></div>
+                </div>
+            </div>
+
+            <div class="History__Content">
+                <div class="History__Content__Status {{statement.get('status')}}">{{statement.get('status')}}</div>
+                <div class="History__Content__Sum">$<span>{{statement.get('amount')}}</span></div>
+            </div>
+        </div>
+    </div>
+</div>

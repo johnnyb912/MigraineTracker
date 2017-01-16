@@ -1,0 +1,30 @@
+<div class="MessagesSidebar">
+    <div class="MessagesSidebar__Container">
+        <div class="MessagesSidebar__Header">
+            <i class="MessagesSidebar__Header__ChevronLeft" *ngIf="true"></i>
+            <i class="MessagesSidebar__Header__ChevronRight" *ngIf="false"></i>
+            <div class="MessagesSidebar__Title">{{ 'ALL_MESSAGES' | translate }}</div>
+        </div>
+
+        <div *ngFor="let message of messagesList">
+            <div class="MessagesSidebar__Item" [ngClass]="{Active: message.open}" [ngClass]="{New: message.newMessages}">
+                <div class="MessagesSidebar__Item__Label">{{ message.title}}</div>
+                <div class="MessagesSidebar__Item__Description">
+                    <i class="Icon--inline" *ngIf=" message.typeMessages === 'Notification' ">
+                        <svg-icon svgClass="Icon__Bell" [svgPath]="icons.bell"></svg-icon>
+                    </i>
+                    <i class="Icon--inline" *ngIf=" message.typeMessages === 'Message'">
+                        <svg-icon svgClass="Icon__Envelope" [svgPath]="icons.envelope"></svg-icon>
+                    </i>
+                    <i class="Icon--inline" *ngIf=" message.typeMessages === 'To Do'">
+                        <svg-icon svgClass="Icon__CheckCircle" [svgPath]="icons.check"></svg-icon>
+                    </i>
+                    {{ message.typeMessages}}
+                </div>
+                <i class="Icon--inline MessagesSidebar__Item__Checkmark" *ngIf="message.checked">
+                    <svg-icon svgClass="Icon__Checkmark" [svgPath]="icons.checkmark"></svg-icon>
+                </i>
+            </div>
+        </div>
+    </div>
+</div>

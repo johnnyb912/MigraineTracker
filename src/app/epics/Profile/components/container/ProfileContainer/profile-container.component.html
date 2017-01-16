@@ -1,0 +1,54 @@
+<app-navigation></app-navigation>
+
+<section class="container-fluid Profile" *ngIf="userInfo">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="Profile__Wrap">
+                <div class="Profile__Header">
+                    <div  class="Profile__Header__CloseBtn" (click)="closeProfile()">
+                        <i class="Icon">
+                            <svg-icon svgClass="Icon__Close" [svgPath]="icons.close"></svg-icon>
+                        </i>
+                    </div>
+                    <i class="Icon--inline Profile__Header__Icon">
+                        <svg-icon svgClass="Icon__User" [svgPath]="icons.user"></svg-icon>
+                    </i>
+                    <div class="Profile__Header__Name">{{ userInfo.get('name') }} </div>
+                </div>
+
+                <user-info
+                        [isEditing]="userProfile.get('personalInfoEditing')"
+                        [isExpanded]="userProfile.get('personalInfoExpanded')"
+                        [profileDetails]="userInfo"
+                        [isCollapsible]="true"
+                        (updateProfile)="onUpdateProfile($event)"
+                        (toggleExpanded)="onTogglePersonalInfoExpanded()"
+                        (toggleEditing)="onTogglePersonalInfoEditing($event)"
+                        (userFieldValueUpdate)="onUserFieldValueUpdate($event)">
+                </user-info>
+
+                <section>
+                    <div class="Profile__Topic" (click)="toggleCommunicationExpanded()" [ngClass]="{Active: userProfile.get('communicationExpanded')}">
+                        {{ 'PREFERRED_COMMUNICATION_METHOD' | translate }}
+                        <i class="Icon Icon__Minus Profile__Toggle">
+                            <svg-icon svgClass="Icon__Minus" [svgPath]="icons.minus"></svg-icon>
+                        </i>
+                        <i class="Icon Icon__Plus Profile__Toggle">
+                            <svg-icon svgClass="Icon__Plus" [svgPath]="icons.plus"></svg-icon>
+                        </i>
+                    </div>
+                    <div class="Profile__Detail">
+                        <decision-group
+                                [decisionOptions]="userProfile.get('contactPreferenceOptions')"
+                                [decisionName]="contactPreferencePicker"
+                                [multiSelectEnabled]="true"
+                                (itemSelected)="onComPreferenceUpdated($event, selection)">
+                        </decision-group>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-footer></app-footer>

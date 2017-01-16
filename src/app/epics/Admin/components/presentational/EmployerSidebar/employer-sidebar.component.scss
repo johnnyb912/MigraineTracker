@@ -1,0 +1,152 @@
+@import 'utility';
+@import 'variables';
+
+$sidebar-width: 22.5rem;
+
+:host /deep/ {
+    .Icon__Plus,
+    .Icon__Minus {
+        width: .9rem;
+        height: 2.3rem;
+
+        @include bp-small {
+            width: 1.4rem;
+            height: 2.8rem;
+        }
+    }
+}
+
+.EmployerSidebar {
+    position: relative;
+
+    width: $sidebar-width;
+
+    float: left;
+    overflow: hidden;
+
+    @include bp-small {
+        width: 100%;
+
+        margin-bottom: 2rem;
+    }
+
+    &__Container {
+        width: $sidebar-width;
+
+        background: $color-white;
+        border: .1rem solid $gray-light;
+        border-radius: $border-radius-base;
+        color: $gray-darker;
+        padding-bottom: 4.9rem;
+
+        @include bp-small {
+            width: 100%;
+        }
+    }
+
+    &__Section {
+        min-height: 6.4rem;
+
+        display: block;
+
+        &::after {
+            width: 92%;
+
+            border-bottom: .1rem solid $gray-lighter;
+            content: '';
+            display: block;
+            float: right;
+            margin: 1.7rem 0;
+        }
+    }
+
+    &__Title,
+    &__EmployeesLink {
+        color: $gray-darker;
+        cursor: pointer;
+        font-family: $font-primary-500;
+        font-weight: normal;
+        padding: 2rem 2.2rem;
+
+        @include font-size(18px);
+
+        @include bp-small {
+            @include font-size(22px);
+        }
+
+        .Icon {
+            width: .9rem;
+            height: 2.3rem;
+
+            display: inline-block;
+            float: right;
+        }
+
+    }
+
+    &__SectionInfo {
+        margin-top: -.9rem;
+    }
+
+    &__List {
+        line-height: 2.2rem;
+        list-style: none;
+        padding-left: 3.3rem;
+
+        @include font-size(12px);
+
+        @include bp-small {
+            @include font-size(15px);
+        }
+    }
+
+    &__Link {
+        color: $gray-darker;
+        cursor: pointer;
+        text-decoration: none;
+
+        &:hover {
+            color: $color-blue-primary-light;
+        }
+    }
+
+    &__AddGroupLink {
+        color: $gray;
+        cursor: pointer;
+        margin-left: 3.2rem;
+        text-decoration: none;
+
+        @include font-size(12px);
+
+        @include bp-small {
+            @include font-size(15px);
+        }
+
+        &:hover {
+            color: $color-blue-primary-light;
+        }
+    }
+
+    &__Collapsed {
+        &::after {
+            margin-top: -.1rem;
+        }
+
+        .EmployerSidebar__SectionInfo {
+            display: none;
+        }
+    }
+
+    &__ActiveLink {
+        color: $color-blue-primary-light;
+        cursor: default;
+    }
+
+    &__EmployeesLink {
+        display: inline-block;
+        margin-top: .3rem;
+        padding-top: 0;
+        padding-bottom: 0;
+        text-decoration: none;
+    }
+}

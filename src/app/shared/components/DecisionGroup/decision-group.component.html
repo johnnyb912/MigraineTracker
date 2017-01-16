@@ -1,0 +1,8 @@
+<span *ngFor="let option of decisionOptions; trackBy:trackByIndex; let i = index">
+    <input type="checkbox"
+           id="{{decisionName + '-' + option.get('label')}}"
+           name="{{decisionName}}"
+           [ngModel]="option.get('checked')"
+           (change)="selectionMade($event, i)"/>
+    <label [attr.for]="decisionName + '-' + option.get('label')" [ngClass]="{RadioButton: !multiSelectEnabled}">{{option.get('label')}}</label>
+</span>

@@ -1,0 +1,390 @@
+@import 'utility';
+@import 'variables';
+
+.EmployeeCoverage {
+    &__Item {
+        margin-top: 3rem;
+
+        &__Title {
+            position: relative;
+
+            color: $gray;
+            font-family: $font-primary-700;
+            letter-spacing: .3rem;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+
+            @include font-size(12px);
+
+            &::after {
+                position: absolute;
+                top: .7rem;
+                right: 0;
+                left: 10rem;
+
+                border-bottom: .1rem solid $gray-lighter;
+                content: '';
+            }
+        }
+
+        &__Description {
+            border: .1rem solid $gray-lighter;
+            border-radius: $border-radius-base 0;
+            margin: 0;
+        }
+
+        .Item__Description {
+            &__Title {
+                border-bottom: .1rem solid $gray-lighter;
+                padding: 2.7rem 3rem;
+
+                .Total__Text {
+                    color: $gray-dark;
+                    font-family: $font-primary-700;
+                    letter-spacing: .3rem;
+                    margin-right: 3rem;
+                    text-transform: uppercase;
+                    vertical-align: middle;
+
+                    @include font-size(12px);
+                }
+
+
+                .Total__Sum {
+                    color: $gray-dark;
+                    font-family: $font-primary-700;
+                    vertical-align: middle;
+
+                    @include font-size(32px);
+                }
+
+                .Total__Period {
+                    border-left: .2rem solid $gray-light;
+                    color: $gray-light;
+                    font-family: $font-primary-300;
+                    margin-left: 2.5rem;
+                    padding-left: 2.5rem;
+                    vertical-align: middle;
+
+                    @include font-size(32px);
+                }
+            }
+        }
+
+        .Item__Description__Info {
+            padding: 1.5rem 3rem 1.7rem;
+
+            .PaymentBlock {
+                border-right: .1rem solid $gray-lighter;
+                display: inline-block;
+                margin-right: 4.5rem;
+                padding-right: 4.5rem;
+
+                @include bp-medium {
+                    margin-right: 1rem;
+                    padding-right: 1rem;
+                }
+            }
+
+            .PaymentBlock.LastItem {
+                border-color: transparent;
+            }
+
+            .PaymentBlock__Sum {
+                color: $gray;
+
+                @include font-size(18px);
+            }
+
+            .PaymentBlock__Period {
+                border-left: .1rem solid $gray-light;
+                color: $gray-light;
+                margin-left: .6rem;
+                padding-left: 1rem;
+
+                @include font-size(18px);
+            }
+
+            .PaymentBlock__Status {
+                color: $gray;
+                font-family: $font-primary-700;
+                letter-spacing: .2rem;
+                margin-top: .7rem;
+                text-transform: uppercase;
+
+                @include font-size(12px);
+            }
+
+            .EffectiveDate {
+                float: right;
+                margin-top: 2rem;
+
+                @include font-size(11px);
+            }
+
+            .EffectiveDate__Text {
+                color: $gray-dark;
+                letter-spacing: .3rem;
+                text-transform: uppercase;
+            }
+
+            .EffectiveDate__Value {
+                color: $gray;
+            }
+        }
+
+        .ProductItem {
+            min-height: 30.5rem;
+
+            border: .1rem solid $gray-lighter;
+            border-radius: ($border-radius-base * 2) 0;
+            padding: 0 1.5rem;
+
+            @include bp-large {
+                min-height: 32.7rem;
+            }
+
+            @include bp-medium {
+                min-height: 36.4rem;
+            }
+
+            &__Title {
+                margin: 2.3rem 0;
+            }
+
+            &__Title__Sum {
+                color: $gray-dark;
+                font-family: $font-primary-700;
+
+                @include font-size(24px);
+
+                @include bp-medium {
+                    @include font-size(20px);
+                }
+            }
+
+            &__Title__Period {
+                border-left: .1rem solid $gray-light;
+                color: $gray-light;
+                font-family: $font-primary-300;
+                margin-left: .6rem;
+                padding-left: 1rem;
+
+                @include font-size(24px);
+
+                @include bp-medium {
+                    border: none;
+                    margin-left: 0;
+                    padding-left: 0;
+
+                    @include font-size(20px);
+                }
+            }
+
+            &__PaidDate {
+                border: .1rem solid;
+                border-color: $gray-lighter transparent $gray-lighter transparent;
+                padding: 1.2rem 0;
+
+                @include font-size(11px);
+
+                &__Text {
+                    color: $gray-dark;
+                    font-family: $font-primary-700;
+                    letter-spacing: .3rem;
+                    text-transform: uppercase;
+                }
+
+                &__Value {
+                    color: $gray;
+                    font-family: $font-primary-300;
+                }
+            }
+
+            &__Term {
+                padding: 2rem 0;
+
+                &__Icon {
+                    position: relative;
+
+                    width: 3.6rem;
+                    height: 3.6rem;
+
+                    display: inline-block;
+                    font-family: $font-primary-700;
+                    padding-top: 1.1rem;
+                    text-align: center;
+                    text-transform: uppercase;
+
+                    @include font-size(11px);
+                }
+
+                &__Icon::after {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+
+                    width: 100%;
+                    height: 100%;
+
+                    border: .2rem solid $gray-lighter;
+                    border-radius: 50%;
+                    content: '';
+                }
+
+                &__Description {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+
+                &__Description__Text {
+                    font-family: $font-primary-500;
+
+                    @include font-size(11.75px);
+                }
+
+                &__Description__Value {
+                    color: $gray-light;
+                    font-family: $font-primary-700;
+                    letter-spacing: .2rem;
+                    text-transform: uppercase;
+
+                    @include font-size(8.22px);
+                }
+            }
+
+            &__EffectiveDate {
+                background: $gray-lightest;
+                margin: 0 -1.5rem;
+                padding: 1.2rem 1.5rem;
+
+                @include font-size(11px);
+
+                &__Text {
+                    color: $gray-dark;
+                    font-family: $font-primary-700;
+                    letter-spacing: .3rem;
+                    text-transform: uppercase;
+                }
+
+                &__Value {
+                    color: $gray;
+                    font-family: $font-primary-300;
+                }
+            }
+
+            &__Info {
+                padding: 1.3rem 0 1.7rem;
+
+                &__Sum {
+                    font-family: $font-primary-300;
+
+                    @include font-size(14px);
+                }
+
+                &__Period {
+                    border-left: .1rem solid $gray-light;
+                    color: $gray-light;
+                    font-family: $font-primary-300;
+                    margin-left: .6rem;
+                    padding-left: 1rem;
+
+                    @include font-size(14px);
+                }
+
+                &__Description {
+                    color: $gray-light;
+                    font-family: $font-primary-700;
+                    letter-spacing: .2rem;
+                    text-transform: uppercase;
+
+                    @include font-size(10px);
+                }
+            }
+
+            &__Info__Item {
+                border-right: .1rem solid $gray-light;
+
+                @include bp-medium {
+                    border: none;
+                }
+
+                &:last-child {
+                    border-color: transparent;
+                }
+            }
+
+            &.AddCoverage {
+                padding: 3.5rem;
+                text-align: center;
+
+                @include bp-medium {
+                    padding: 1.5rem;
+                }
+            }
+
+            &.AddCoverage .AddCoverage {
+                &__Icon {
+                    position: relative;
+
+                    width: 11rem;
+                    height: 11rem;
+
+                    color: $gray-light;
+                    display: inline-block;
+                    font-family: $font-primary-700;
+                    padding-top: 2.5rem;
+                    text-align: center;
+                    text-transform: uppercase;
+
+                    @include font-size(41px);
+                }
+
+                &__Icon::after {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+
+                    width: 100%;
+                    height: 100%;
+
+                    border: .4rem solid $gray-lighter;
+                    border-radius: 50%;
+                    content: '';
+                }
+
+                &__Text {
+                    color: $gray-light;
+                    font-family: $font-primary-500;
+                    margin-top: 1.5rem;
+
+                    @include font-size(25px);
+                }
+
+                &__Value {
+                    color: $gray-light;
+                    font-family: $font-primary-700;
+                    letter-spacing: .3rem;
+                    text-transform: uppercase;
+
+                    @include font-size(12px);
+                }
+
+                &__AddButton {
+                    border: 0;
+                    border-radius: $border-radius-base 0;
+                    color: $gray-lightest;
+                    display: inline-block;
+                    margin-top: 3rem;
+                    padding: .5rem 2rem;
+
+                    @include linear-gradient(to right, $color-pink, darken($color-pink, 15%));
+                }
+
+                &__AddButton:hover {
+                    @include linear-gradient(to right, darken($color-pink, 15%), darken($color-pink, 15%));
+                }
+            }
+        }
+    }
+}

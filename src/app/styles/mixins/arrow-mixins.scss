@@ -1,0 +1,77 @@
+/// Mixin to create an arrow
+///
+/// @param {Number} $size Size of the arrow
+/// @param {Number} $weight [1px] - Thickness of the arrow, defaults to 1px
+/// @param {String} $color [#000] - Color of the arrow, defaults to black
+/// @param {String} $dir [right] - Direction the arrow will point, defaults to right
+/// @param {String} $bg [#fff] - Color the arrow will sit on top of, defaults to white
+///
+/// @example scss - Usage
+///     .Icon__ChevronRight {
+///         @include arrow(6px, 2px, $gray, right, $gray-darker);
+///     }
+///
+/// @example css - CSS output
+///     .Icon__ChevronRight {
+///         position: relative;
+///         height: 12px;
+///     }
+///     .Icon__ChevronRight::before,
+///     .Icon__ChevronRight::after {
+///         position: absolute;
+///
+///         border: 6px solid transparent;
+///         content: '';
+///         display: block;
+///     }
+///     .Icon__ChevronRight::before {
+///         left: 0;
+///         border-left-color: #4d4d4d;
+///     }
+///     .Icon__ChevronRight::after {
+///         left: -3px;
+///         border-left-color: #fff;
+///     }
+@mixin arrow($size, $weight: .1rem, $color: #000, $dir: right, $bg: #fff) {
+    @if $dir == up {
+        $dir: bottom;
+    }
+
+    @else if $dir == down {
+        $dir: top;
+    }
+
+    @else if $dir == right {
+        $dir: left;
+    }
+
+    @else {
+        $dir: right;
+    }
+
+    position: relative;
+
+    width: $size * 2;
+    height: $size * 2;
+
+    display: inline-block;
+
+    &::before,
+    &::after {
+        position: absolute;
+
+        border: $size solid transparent;
+        content: '';
+        display: block;
+    }
+
+    &::before {
+        #{$dir}: 0;
+        border-#{$dir}-color: $color;
+    }
+
+    &::after {
+        #{$dir}: -$weight;
+        border-#{$dir}-color: $bg;
+    }
+}

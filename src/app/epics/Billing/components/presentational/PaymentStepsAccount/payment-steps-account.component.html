@@ -1,0 +1,42 @@
+<h2 class="Step__Title">{{ 'SELECT_ACCOUNT' | translate }}</h2>
+
+<div class="Account" [ngClass]="{'Active': account.get('expanded')}" *ngFor='let account of paymentMappings; trackBy:trackByIndex; let i = index'>
+    <div class="row Account__Title" (click)="paymentAccountSelect(account)">
+        <div class="col-xs-8">
+            <h5 class="Account__Name">{{account.getIn(['paymentAccount', 'accountName'])}}</h5>
+            <div class="Account__Code">{{account.getIn(['paymentAccount', 'accountMask'])}}</div>
+        </div>
+
+        <div class="col-xs-4">
+            <i class="Icon__Edit" [ngClass]="{Light: account.get('expanded')}">
+                <svg-icon svgClass="Icon__Edit" [svgPath]="icons.edit"></svg-icon>
+            </i>
+            <div class="Account__MonthBlock">
+                <div *ngFor="let selectedStatement of account.get('selectedStatements'); trackBy:trackByIndex">
+                    <div *ngIf="selectedStatement.get('checked')">{{selectedStatement.get('monthShort')}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="Account__Options" [ngClass]="{Expand: account.get('expanded')}">
+        <div class="Account__Options__Title">{{ 'WHICH_STATEMENT' | translate }}?</div>
+        <decision-group
+                [decisionOptions]="account.get('selectedStatements')"
+                [decisionName]="'account' + i"
+                [multiSelectEnabled]="true"
+                (itemSelected)="billAssignedToAccount($event, account)">
+        </decision-group>
+    </div>
+</div>
+
+<button class="Button Account__Button" (click)="showAddAccount()">{{ 'ADD_NEW' | translate }}</button>
+
+<div class="col-md-12 Step__Next">
+    <button (click)="nextStep()" class="Button">{{ 'NEXT' | translate }}</button>
+</div>
+
+<payment-steps-add-account
+    *ngIf="showAddPaymentAccount"
+    (closeAddAccount)="onCloseAddAccount($event)">
+</payment-steps-add-account>

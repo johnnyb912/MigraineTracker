@@ -1,0 +1,19 @@
+<div class="Footer">
+    <div class="col-sm-6 Footer__Back">
+         <a class="Footer__Link" (click)="prevStep()">{{ 'BACK' | translate }}</a>
+    </div>
+    <div class="col-sm-6 Footer__Cancel">
+         <a class="Footer__Link" (click)="doShowCancelPrompt()">{{ 'CANCEL' | translate }}</a>
+    </div>
+</div>
+
+<div class="Cancel" [ngClass]="{Active: showCancelPrompt}">
+    <div class="Cancel__Text">
+        <div>{{ 'ARE_YOU_SURE' | translate }} {{ 'CANCEL' | translate }}<br/>
+            {{ 'PAYMENT_PROCESS' | translate }}?</div>
+        <div class="Cancel__Buttons">
+            <a class="Button Button--reversed" (click)="doCancelPayment(true)">{{ 'YES' | translate }}</a>
+            <a class="Button Button--reversed" (click)="doCancelPayment(false)">{{ 'NO' | translate }}</a>
+        </div>
+    </div>
+</div>

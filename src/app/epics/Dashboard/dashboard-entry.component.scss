@@ -1,0 +1,10 @@
+@import 'variables';
+@import 'utility';
+
+.DashboardContainer {
+    max-width: 100rem;
+    min-height: 500px;
+
+    margin: 2rem auto 0;
+    padding-bottom: 5rem;
+}

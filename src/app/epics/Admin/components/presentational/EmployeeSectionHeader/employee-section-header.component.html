@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <div class="row EmployeeSectionHeader">
+        <div class="row EmployeeSectionHeader__Wrap" [ngClass]="{Active: isSearchExpanded}">
+            <div class="col-lg-2 col-md-3 EmployeeSectionHeader__TitleBlock">
+                <i class="Icon--inline Icon__Person">
+                    <svg-icon svgClass="Icon__Person" [svgPath]="icons.person"></svg-icon>
+                </i>
+
+                <h1 class="EmployeeSectionHeader__Title">
+                    {{ 'EMPLOYEES' | translate }}
+                    <span class="EmployeeSectionHeader__Subtitle">TestCorp, Inc.</span>
+                </h1>
+            </div>
+
+            <div class="col-lg-8 col-md-6 EmployeeSectionHeader__SearchField" (click)="isSearchExpanded = true">
+                <i class="Icon--inline Icon__Search">
+                    <svg-icon svgClass="Icon__Search" [svgPath]="icons.search"></svg-icon>
+                </i>
+                <input class="EmployeeSectionHeader__SearchField__Input" type="text" placeholder="Search by Employee Name or ID">
+            </div>
+            <div class="EmployeeSectionHeader__SearchField__Close" (click)="isSearchExpanded = false"></div>
+
+            <div class="col-lg-2 col-md-3 EmployeeSectionHeader__AddEmployee">
+                <i class="Icon--inline Icon__Plus">
+                    <svg-icon svgClass="Icon__Plus" [svgPath]="icons.plus"></svg-icon>
+                </i>
+                <span class="EmployeeSectionHeader__AddEmployeeText">{{ 'ADD_EMPLOYEE' | translate }}</span>
+            </div>
+        </div>
+    </div>
+</div>

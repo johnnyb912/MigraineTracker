@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 74 44">
+    <defs>
+        <linearGradient id="a" x1="12.79" y1="44.5" x2="12.79" y2="-0.5" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#ff9a10"/>
+            <stop offset="1" stop-color="#f9d942"/>
+        </linearGradient>
+        <linearGradient id="b" x1="37" y1="44.5" x2="37" y2="-0.5" xlink:href="#a"/>
+        <linearGradient id="c" x1="3599.35" y1="2658.5" x2="3599.35" y2="2613.5" xlink:href="#a"/>
+    </defs>
+    <title>icon-critical-illness</title>
+    <circle style="fill:url(#a);" cx="12.79" cy="15.61" r="6.68"/>
+    <polygon style="fill:url(#b);" points="2 33 2 0 0 0 0 44 2 44 2 35 72 35 72 44 74 44 74 33 2 33"/>
+    <path style="fill:url(#c);"
+          d="M3633.68,2638c0-4.12-2.88-7.44-7-7.44a85.94,85.94,0,0,1-16.51,1.79c-7.33-.17-12.33-8.28-18.2-8.28-3.71,0,0,0,0,0-6.67,0-8.23,4.82-8.93,6.88l-0.14.5c-1.16,3.58-3.56,11-17,7.7L3565,2643h68.66v-5Z"
+          transform="translate(-3559.68 -2614)"/>
+</svg>

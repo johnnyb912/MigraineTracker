@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title><%= title %></title>
+
+    <meta name="description" content="<%= title %>">
+
+    <!-- base url -->
+    <base href="<%= baseUrl %>">
+</head>
+
+<body>
+    <depalma-app>Loading...</depalma-app>
+
+    <% if (isDevServer) { %>
+        <!-- Webpack Dev Server reload -->
+        <script src="/webpack-dev-server.js"></script>
+    <% } %>
+</body>
+</html>

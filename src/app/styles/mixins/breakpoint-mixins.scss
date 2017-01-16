@@ -1,0 +1,96 @@
+/// Mixins to simplify the inclusion of media queries in styles
+/// These relate directly to the Bootstrap breakpoints defined in variables.scss
+///
+/// @example scss - Usage
+///     .Wrapper {
+///         position: relative;
+///         box-shadow: 0 0 18px -4px $gray-lighter;
+///         margin-bottom: 30px;
+///
+///         @include bp-medium {
+///             box-shadow: 0 0 0 0;
+///             margin-bottom: 0;
+///         }
+///     }
+///
+/// @example css - CSS output
+///     .Wrapper {
+///         position: relative;
+///         box-shadow: 0 0 18px -4px $gray-lighter;
+///         margin-bottom: 30px;
+///     }
+///
+///     @media only screen and (max-width: 61.938em) {
+///         .Wrapper {
+///             box-shadow: 0 0 0 0;
+///             margin-bottom: 0;
+///         }
+///     }
+@mixin bp-large {
+    @media only screen and (max-width: $screen-lg-min) {
+        @content;
+    }
+}
+
+@mixin bp-medium {
+    @media only screen and (max-width: $screen-md-min) {
+        @content;
+    }
+}
+
+@mixin bp-small {
+    @media only screen and (max-width: $screen-sm-min) {
+        @content;
+    }
+}
+
+@mixin bp-xsmall {
+    @media only screen and (max-width: $screen-xs-min) {
+        @content;
+    }
+}
+
+/// Mixin to simplify the inclusion of a custom media query
+/// @param {String} $features - list of media query features as a string
+///
+/// @example scss - Usage
+///     .Wrapper {
+///         position: relative;
+///         box-shadow: 0 0 18px -4px $gray-lighter;
+///         margin-bottom: 30px;
+///
+///         @include bp-custom('(max-width: 800px)') {
+///             box-shadow: 0 0 0 0;
+///             margin-bottom: 0;
+///         }
+///         @include bp-custom('(min-device-width: 20em) and (max-device-width: 80em) and (orientation: portrait)') {
+///             max-height: 100vh;
+///         }
+///     }
+///
+/// @example css - CSS output
+///     .Wrapper {
+///         position: relative;
+///         box-shadow: 0 0 18px -4px $gray-lighter;
+///         margin-bottom: 30px;
+///     }
+///
+///     @media only screen and (max-width: 800px) {
+///         .Wrapper {
+///             box-shadow: 0 0 0 0;
+///             margin-bottom: 0;
+///         }
+///     }
+///
+///      @media only screen and (min-device-width: 20em) and (max-device-width: 80em) and (orientation: portrait) {
+///          .Wrapper {
+///              max-height: 100vh;
+///          }
+///      }
+@mixin bp-custom($features) {
+    $feature-list: unquote($features);
+
+    @media only screen and #{$feature-list} {
+        @content;
+    }
+}

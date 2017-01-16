@@ -1,0 +1,16 @@
+// @import 'variables';
+
+.Success {
+    &__Text {
+        width: 26rem;
+        margin: 0 auto;
+    }
+
+    &__Buttons {
+        padding-top: 4.5rem;
+
+        .Button {
+            padding: 1rem 7rem;
+        }
+    }
+}

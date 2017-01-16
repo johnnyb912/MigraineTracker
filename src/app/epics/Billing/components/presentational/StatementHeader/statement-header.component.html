@@ -1,0 +1,12 @@
+<div class="Header">
+    <i class="Icon Header__Resize" (click)="doStatementBodyExpand()">
+        <svg-icon svgClass="Icon__Resize" [svgPath]="icons.resize"></svg-icon>
+    </i>
+    <i class="Icon Header__Move">
+        <svg-icon svgClass="Icon__Move" [svgPath]="icons.move"></svg-icon>
+    </i>
+
+    <div class="Header__DueDate" *ngIf="dueDate">Due <span>{{ dueDate }}</span></div>
+
+    <div class="Header__Amount" *ngIf="selectedTotal">$<span>{{ selectedTotal }}</span></div>
+</div>

@@ -1,0 +1,74 @@
+<div class="Body">
+    <employer-section-header
+        [selectedEmployer] = currentCompanyName
+        [isSearchExpanded]="employerChangesState.get('isSearchExpanded')">
+    </employer-section-header>
+
+    <section class="EmployerChanges container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <employer-sidebar
+                        [companies]="employerChangesState.get('companies')"
+                        [plans]="employerChangesState.get('plans')"
+                        [sideBarState]="employerChangesState.get('sideBarState')"
+                        (updateCompanyName)="onUpdateCompanyName($event)"
+                        (updatePlanType)="onUpdatePlanType($event)"
+                        (toggleExpanded)="onToggleExpanded($event)">
+                </employer-sidebar>
+
+                <div class="EmployerCompany">
+                    <div class="row EmployerCompany__Wrap">
+                        <div class="EmployerCompany__Info col-md-12" *ngFor="let company of employerChangesState.get('companies'); trackBy:trackByIndex">
+                            <div *ngIf="company.get('selected')">
+                                <h1 class="EmployerCompany__City">{{ company.get('city') }}</h1>
+                                <h3 class="EmployerCompany__Name">{{ company.get('name') | translate }}</h3>
+
+                                <employer-company-group-card
+                                        [cardData]="company"
+                                        (updateCompanyInfo)="onUpdateCompanyInfo($event)"
+                                        (toggleEditing)="onUpdateFormStateGroup($event)">
+                                </employer-company-group-card>
+
+                                <employer-company-admin-card
+                                        [cardData]="company"
+                                        (updateCompanyInfo)="onUpdateCompanyInfo($event)"
+                                        (toggleEditing)="onUpdateFormStateAdmin($event)">
+                                </employer-company-admin-card>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row EmployerCompany__Wrap">
+                        <div class="col-md-12 EmployerCompany__ThreeWraps">
+                            <h2 class="EmployerCompany__Caption">{{ 'PLANS' | translate }}</h2>
+                            <employer-plan-card
+                                    *ngFor="let plan of employerChangesState.get('plans'); trackBy:trackByIndex"
+                                    [cardData]="plan">
+                            </employer-plan-card>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 EmployerCompany__ThreeWraps">
+                            <div class="row">
+                                <div class="col-sm-7 EmployerCompany__CustomAlign">
+                                    <h2 class="EmployerCompany__Caption">{{ 'CHANGE_REQUESTS' | translate }}</h2>
+                                </div>
+                                <div class="col-sm-5 text-right EmployerCompany__CustomAlign">
+                                    <div class="Button">
+                                        {{ 'OTHER_REQUEST' | translate }}
+                                    </div>
+                                </div>
+                            </div>
+                            <employer-change-card
+                                    *ngFor="let card of changeCard; trackBy:trackByIndex"
+                                    [cardData]="card">
+                            </employer-change-card>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

@@ -1,0 +1,173 @@
+@import 'variables';
+@import 'utility';
+
+.PaymentHistoryCard {
+    margin-bottom: 5rem;
+
+    @include bp-small() {
+        padding: 0 2%;
+    }
+
+    &__Year {
+        width: 100%;
+
+        color: $gray;
+        display: table;
+        font-family: $font-primary-700;
+        font-weight: 700;
+        letter-spacing: .3rem;
+        padding: 2.5rem 0;
+        text-align: center;
+        white-space: nowrap;
+
+        @include font-size(10px);
+
+        &::before,
+        &::after {
+            position: relative;
+            top: .6rem;
+
+            width: 46%;
+
+            border-top: .1rem solid $gray-light;
+            content: '';
+            display: table-cell;
+        }
+    }
+}
+
+.HistoryCardItem {
+    height: 17.5rem;
+
+    background-color: $color-white;
+    border: .1rem solid $gray-light;
+    border-radius: $border-radius-base 0;
+    line-height: 1;
+    margin-bottom: 1.4rem;
+    overflow: hidden;
+
+    @include bp-small() {
+        height: auto;
+    }
+
+    &__Title {
+        position: relative;
+
+        height: 100%;
+
+        color: $color-white;
+        padding: 2.5rem 1rem 3rem;
+        text-align: center;
+
+        @include linear-gradient(to right, $color-purple, $color-blue-gray-dark);
+
+        @include bp-small {
+            min-height: 14rem;
+            padding-top: 1.5rem;
+        }
+    }
+
+    &__Label {
+        font-family: $font-primary-300;
+        letter-spacing: .2rem;
+        margin-top: 3.5rem;
+        text-transform: uppercase;
+
+        @include font-size(29px);
+    }
+
+    &__Year {
+        color: $gray-light;
+        font-family: $font-primary-700;
+        font-weight: 700;
+        letter-spacing: .2rem;
+        margin-top: .5rem;
+
+        @include font-size(10px);
+    }
+
+    &__Subtitle {
+        height: 2.5rem;
+
+        color: $gray;
+        letter-spacing: .2rem;
+        margin-top: .5rem;
+        text-transform: uppercase;
+
+        @include font-size(11px);
+    }
+
+    &__Text {
+        color: $gray-darker;
+        font-family: $font-primary-300;
+        font-weight: 300;
+        margin-top: 2rem;
+
+        @include bp-medium {
+            margin-top: 0;
+        }
+    }
+
+    &__PostTitle {
+        color: $gray;
+        font-family: $font-primary-300;
+        font-weight: 300;
+        margin-top: 1rem;
+
+        @include font-size(14px);
+    }
+
+    &__Amount {
+        color: $gray-darker;
+        font-family: $font-primary-700;
+        font-weight: 700;
+        margin-top: 4rem;
+
+        @include font-size(25px);
+
+        @include bp-medium {
+            margin-top: 3rem;
+        }
+    }
+
+    &__Content {
+        position: relative;
+
+        height: 100%;
+
+        padding: 3.4rem 4rem 2rem;
+
+        @include bp-large() {
+            padding: 2.4rem 2.5rem 2rem;
+        }
+
+        .Status {
+            text-align: right;
+
+            &__Pending,
+            &__Paid {
+                background: $gray;
+                border-radius: $border-radius-large;
+                color: $color-white;
+                display: inline-block;
+                font-family: $font-primary-700;
+                font-weight: 700;
+                letter-spacing: .1rem;
+                line-height: 1rem;
+                margin-bottom: .8rem;
+                padding: .5rem .8rem .4rem 1rem;
+                text-transform: uppercase;
+
+                @include font-size(10px);
+            }
+
+            &__Pending {
+                @include linear-gradient(to right, $color-orange-dark, $color-orange);
+            }
+
+            &__Paid {
+                @include linear-gradient(to right, $color-green-dark, $color-green-light);
+            }
+        }
+    }
+}

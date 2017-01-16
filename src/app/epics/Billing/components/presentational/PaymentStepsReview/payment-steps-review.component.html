@@ -1,0 +1,68 @@
+<h2 class="Step__Title">{{ 'EVERYTHING_CORRECT' | translate }}?</h2>
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2 Review">
+        <div class="Review__Table">
+            <div class="row">
+                <div class="col-md-2 Review__Title">{{ 'METHOD' | translate }}</div>
+                <div class="col-md-10 Review__Content">
+                    <div class="Review__Account" *ngFor="let mapping of paymentMappings; trackBy:trackByIndex">
+                        <div class="Review__Cell">
+                            <h5 class="Review__Account__Name">{{ mapping.getIn(['paymentAccount', 'accountName']) }}</h5>
+                            <div class="Review__Account__Code">{{ mapping.getIn(['paymentAccount', 'accountMask']) }}</div>
+                        </div>
+                        <div class="Review__Cell Review__EditBlock">
+                            <div class="Review__Account__Month" *ngFor="let statement of mapping.get('selectedStatements'); trackBy:trackByIndex">
+                                <div *ngIf="statement.get('checked')">
+                                    {{ statement.get('monthShort') }}
+                                </div>
+                                <div class="Review__Account__Amount">
+                                    <div *ngIf="statement.get('checked')">
+                                        ${{ statement.getIn('amount') }}
+                                    </div>
+                                </div>
+                            </div>
+                            <i class="Icon__Edit">
+                                <svg-icon svgClass="Icon__Edit" [svgPath]="icons.edit" (click)="editPayment(mapping)"></svg-icon>
+                            </i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="Review__Table">
+            <div class="row">
+                <div class="col-md-2 Review__Title">{{ 'WHEN' | translate }}</div>
+                <div class="col-md-10 Review__Content">
+                    <h5 class="text-left Review__Account__Name Review__EditBlock" *ngIf="selectedPaymentDate">{{ selectedPaymentDate }}</h5>
+                    <h5 class="text-left Review__Account__Name Review__EditBlock" *ngIf="!selectedPaymentDate">{{ 'TODAY' | translate }}</h5>
+
+                    <i class="Icon__Edit" #datepickerButton>
+                        <svg-icon svgClass="Icon__Edit" [svgPath]="icons.edit"></svg-icon>
+                    </i>
+                    <div class="HiddenElement">
+                        <date-picker
+                                [selectedDate]="selectedPaymentDate"
+                                [dateFormat]="dateFormat"
+                                [dateTrigger]="datepickerButton"
+                                (itemSelected)="formatDate($event)">
+                        </date-picker>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="Review__Table">
+            <div class="row">
+                <div class="col-md-2 Review__Title">{{ 'TOTAL' | translate }}</div>
+                <div class="col-md-10 Review__Content">
+                    <h5 class="text-left Review__Account__Name">${{ selectedPaymentTotal | currencyFormat : '0,0.00' }}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 text-center NextStep">
+        <button class="Button" (click)="payNow()">{{ 'PAY' | translate }}</button>
+    </div>
+</div>

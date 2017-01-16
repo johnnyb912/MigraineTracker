@@ -1,0 +1,129 @@
+@import 'variables';
+@import 'utility';
+
+:host {
+    .Icon__User {
+        position: absolute;
+        top: -.1rem;
+        left: -.1rem;
+
+        width: 6rem;
+        height: 6rem;
+
+        fill: $gray-darker;
+    }
+}
+
+.ProfilePanel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+
+    width: 100%;
+    height: 100%;
+
+    transform: translateX(100%);
+
+    &.Active {
+        transform: translateX(0);
+    }
+
+    &__Overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 101;
+
+        width: 0;
+        height: 0;
+
+        background: transparent;
+        opacity: 0;
+        visibility: hidden;
+
+        @include transition($transition: opacity);
+
+        .Active & {
+            width: 100%;
+            height: 100%;
+
+            background: $color-white;
+            opacity: .9;
+            visibility: visible;
+        }
+    }
+
+    &__Content {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 102;
+
+        width: 30rem;
+
+        background: $gray-darker;
+        overflow-y: auto;
+        padding: 3.8rem 2rem 4rem 3rem;
+
+        transform: translateX(30rem);
+
+        @include transition($transition: transform);
+
+        .Active & {
+            transform: translateX(0);
+        }
+    }
+
+    &__Block {
+        border-top: 1px solid $gray;
+        color: $gray-light;
+        font-family: $font-primary-500;
+        padding: 1.4rem 0;
+    }
+
+    &__Title {
+        color: $gray-lightest;
+        cursor: pointer;
+
+        @include font-size(22px);
+    }
+
+    &__Edit {
+        cursor: pointer;
+        float: right;
+    }
+
+    &__Subtitle {
+        color: $gray;
+        margin: 1.2rem 0 0 1.2rem;
+
+        @include font-size(13px);
+    }
+
+    &__Text {
+        margin-left: 1.2rem;
+
+        @include font-size(16px);
+    }
+
+    &__UserImage {
+        position: relative;
+
+        width: 5.8rem;
+        height: 5.8rem;
+
+        background: $gray;
+        border-radius: 50%;
+        margin-bottom: 2.4rem;
+    }
+
+    &__CloseBox {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+
+        cursor: pointer;
+    }
+}

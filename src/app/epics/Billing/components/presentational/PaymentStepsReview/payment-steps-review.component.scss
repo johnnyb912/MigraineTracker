@@ -1,0 +1,148 @@
+@import 'variables';
+@import 'utility';
+
+:host /deep/ {
+    .Icon__Edit {
+        cursor: pointer;
+        fill: $gray-light;
+
+        &:hover {
+            fill: $brand-primary;
+        }
+    }
+}
+
+.Review {
+    border: .1rem solid $gray-lighter;
+    border-radius: $border-radius-base;
+    padding: 0;
+
+    &__Table {
+        width: 100%;
+
+        display: table;
+
+        &:first-child {
+            .Review__Title {
+                border-radius: $border-radius-base 0 0;
+            }
+        }
+
+        &:last-child {
+            border-bottom: 0;
+
+            .Review__Title {
+                border-radius: 0 0 0 $border-radius-base;
+            }
+        }
+    }
+
+    &__Title {
+        width: 10rem;
+        height: 8rem;
+
+        border-bottom: .1rem solid rgba($color-white, .3);
+        color: $color-white;
+        display: table-cell;
+        float: none;
+        font-family: $font-primary-500;
+        letter-spacing: .3rem;
+        text-align: right;
+        text-transform: uppercase;
+        vertical-align: middle;
+
+        @include font-size(11px);
+        @include linear-gradient(to right, $color-purple, $color-blue-gray-dark);
+    }
+
+    &__Content {
+        height: 8rem;
+
+        border-bottom: .1rem solid $gray-lighter;
+        display: table-cell;
+        float: none;
+        padding: 0 2.5rem;
+        vertical-align: middle;
+    }
+
+    &__Cell {
+        width: 50%;
+
+        display: table-cell;
+        padding: 2.6rem 0 1.8rem;
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    &__EditBlock {
+        position: relative;
+
+        &.Review__Cell {
+            padding-left: 1.5rem;
+
+            &::before {
+                position: absolute;
+                top: 1.5rem;
+                left: 0;
+
+                height: 5rem;
+
+                border-left: .1rem solid $gray-lighter;
+                content: '';
+            }
+
+            .Icon__Edit {
+                right: 0;
+            }
+        }
+    }
+
+    &__Account {
+        width: 100%;
+
+        border-bottom: .1px solid $gray-lighter;
+        display: table;
+
+        &__Name {
+            color: $gray-dark;
+            margin: 0;
+        }
+
+        &__Code,
+        &__Amount {
+            color: $gray;
+            margin-top: .2rem;
+
+            @include font-size(12px);
+        }
+
+        &__Month {
+            color: $gray-dark;
+            font-family: $font-primary-500;
+            text-transform: uppercase;
+
+            @include font-size(12px);
+        }
+
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+
+    .Icon__Edit {
+        position: absolute;
+        top: 3rem;
+        right: 2.5rem;
+    }
+}
+
+.NextStep {
+    padding: 45px 0 0;
+
+    .Button {
+        border: 0;
+        color: $color-white;
+
+        @include linear-gradient(90deg, $color-green-dark, $color-green-light);
+    }
+}

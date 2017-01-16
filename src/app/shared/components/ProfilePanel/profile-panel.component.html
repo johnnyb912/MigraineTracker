@@ -1,0 +1,52 @@
+<section class="container">
+    <div class="ProfilePanel" [ngClass]="{Active: profileVisible}">
+        <div class="ProfilePanel__Overlay" (click)=closePanel()></div>
+        <div class="ProfilePanel__Content">
+            <div class="ProfilePanel__CloseBox" (click)=closePanel()>
+                <i class="Icon">
+                    <svg-icon svgClass="Icon__Close" [svgPath]="icons.close"></svg-icon>
+                </i>
+            </div>
+            <div class="ProfilePanel__UserImage">
+                <i class="Icon">
+                    <svg-icon svgClass="Icon__User" [svgPath]="icons.user"></svg-icon>
+                </i>
+            </div>
+            <div class="ProfilePanel__Body">
+                <div class="ProfilePanel__Block">
+                    <div class="ProfilePanel__Title">
+                        Profile
+                        <i class="Icon ProfilePanel__Edit">
+                            <svg-icon svgClass="Icon__Edit" [svgPath]="icons.edit"></svg-icon>
+                        </i>
+                    </div>
+                    <div class="ProfilePanel__Subtitle">Plan Administer</div>
+                    <div class="ProfilePanel__Text">{{profileDetails.name}}</div>
+                    <div class="ProfilePanel__Subtitle">Email</div>
+                    <div class="ProfilePanel__Text">{{profileDetails.username}}</div>
+                    <div class="ProfilePanel__Subtitle">Phone</div>
+                    <div class="ProfilePanel__Text">{{profileDetails.mobilePhone}}</div>
+                </div>
+                <div class="ProfilePanel__Block">
+                    <div class="ProfilePanel__Title">
+                        Company
+                        <i class="Icon ProfilePanel__Edit">
+                            <svg-icon svgClass="Icon__Edit" [svgPath]="icons.edit"></svg-icon>
+                        </i>
+                    </div>
+                    <div class="ProfilePanel__Subtitle">Company Name</div>
+                    <div class="ProfilePanel__Text">{{ profileDetails.companyName }}</div>
+                    <div class="ProfilePanel__Subtitle">Company Address</div>
+                    <div class="ProfilePanel__Text">{{profileDetails.street}}</div>
+                    <div class="ProfilePanel__Subtitle">Billing Group</div>
+                    <div class="ProfilePanel__Text">{{profileDetails.companyName}}</div>
+                </div>
+                <div class="ProfilePanel__Block">
+                    <div class="ProfilePanel__Title" (click)="logout()">
+                        Logout
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

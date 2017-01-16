@@ -1,0 +1,177 @@
+<section class="EmployeeProfile">
+    <div class="EmployeeProfile__Item">
+        <div class="EmployeeProfile__Item__Title">{{ 'EMPLOYMENT_INFORMATION' | translate }}</div>
+
+        <div class="row Description">
+            <div class="row Description__NoPad">
+                <div class="col-md-3 col-sm-4 Description__Item">
+                    <div class="Description__LeftSide">
+                        <i class="Icon">
+                            <svg-icon svgClass="Icon__Dollar Icon__Fill" [svgPath]="icons.dollar"></svg-icon>
+                        </i>
+                    </div>
+                    <div class="Description__RightSide">
+                        <div class="Description__Item__Info">
+                            <div class="Info__Title">{{ 'EARNINGS' | translate }}</div>
+                            <div class="Info__Value">$4,000</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-4 Description__Item">
+                    <div class="Description__LeftSide">
+                        <i class="Icon">
+                            <svg-icon svgClass="Icon__Earning Icon__Fill" [svgPath]="icons.earning"></svg-icon>
+                        </i>
+                    </div>
+                    <div class="Description__RightSide">
+                        <div class="Description__Item__Info">
+                            <div class="Info__Title">{{ 'EARNINGS_MODE' | translate }}</div>
+                            <div class="Info__Value">{{ 'MONTHLY' | translate }}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-4 Description__Item LastItem">
+                    <div class="Description__LeftSide">
+                        <i class="Icon">
+                            <svg-icon svgClass="Icon__PaidThrough Icon__Fill" [svgPath]="icons.paidThrough"></svg-icon>
+                        </i>
+                    </div>
+                    <div class="Description__RightSide">
+                        <div class="Description__Item__Info">
+                            <div class="Info__Title">{{ 'PAID_THROUGH' | translate }}</div>
+                            <div class="Info__Value">07/15/2015</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row Description__NoPad">
+                <div class="col-md-3 col-sm-4 Description__Item">
+                    <div class="Description__LeftSide">
+                        <i class="Icon EmployeeId">
+                            <svg-icon svgClass="Icon__EmployeeId Icon__Fill" [svgPath]="icons.employeeId"></svg-icon>
+                        </i>
+                    </div>
+                    <div class="Description__RightSide">
+                        <div class="Description__Item__Info">
+                            <div class="Info__Title">{{ 'EMPLOYEE_ID' | translate }}</div>
+                            <div class="Info__Value">M27 - D4Z - 23A9</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-9 col-sm-8 Description__Item LastItem">
+                    <div class="Description__LeftSide">
+                        <i class="Icon Person">
+                            <svg-icon svgClass="Icon__Person Icon__Fill" [svgPath]="icons.person"></svg-icon>
+                        </i>
+                    </div>
+                    <div class="Description__RightSide">
+                        <div class="Description__Item__Info">
+                            <div class="Info__Title">{{ 'DATE_OF_HIRE' | translate }}</div>
+                            <div class="Info__Value">07/02/2014</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="EmployeeProfile__Item">
+        <div class="EmployeeProfile__Item__Title">{{ 'DEMOGRAPHICS' | translate }}</div>
+
+        <div class="row Description">
+            <div class="col-md-3 col-sm-4 Description__Item">
+                <div class="Description__LeftSide">
+                    <i class="Icon">
+                        <svg-icon svgClass="Icon__DateOfBirth Icon__Fill" [svgPath]="icons.dateOfBirth"></svg-icon>
+                    </i>
+                </div>
+                <div class="Description__RightSide">
+                    <div class="Description__Item__Info">
+                        <div class="Info__Title">{{ 'DATE_OF_BIRTH' | translate }}</div>
+                        <div class="Info__Value">02/19/1971</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-sm-4 Description__Item">
+                <div class="Description__LeftSide">
+                    <i class="Icon">
+                        <svg-icon svgClass="Icon__Gender Icon__Fill" [svgPath]="icons.gender"></svg-icon>
+                    </i>
+                </div>
+                <div class="Description__RightSide">
+                    <div class="Description__Item__Info">
+                        <div class="Info__Title">{{ 'GENDER' | translate }}</div>
+                        <div class="Info__Value">M</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7 col-md-6 col-sm-4 Description__Item LastItem">
+                <div class="Description__LeftSide">
+                    <i class="Icon">
+                        <svg-icon svgClass="Icon__Cigarette Icon__Fill" [svgPath]="icons.cigarette"></svg-icon>
+                    </i>
+                </div>
+                <div class="Description__RightSide">
+                    <div class="Description__Item__Info">
+                        <div class="Info__Title">{{ 'SMOKER' | translate }}</div>
+                        <div class="Info__Value">N</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="EmployeeProfile__Item">
+        <div class="EmployeeProfile__Item__Title">{{ 'CONTACT_INFORMATION' | translate }}</div>
+
+        <div class="row Description EmployeeProfile__ContactInfo">
+            <div class="col-lg-3 col-sm-4 Description__Item">
+                <div class="Description__LeftSide">
+                    <i class="Icon">
+                        <svg-icon svgClass="Icon__AddressMap Icon__Fill" [svgPath]="icons.address"></svg-icon>
+                    </i>
+                </div>
+                <div class="Description__RightSide">
+                    <div class="Description__Item__Info">
+                        <div class="Info__Title">{{ 'ADDRESS' | translate }}</div>
+                        <div class="Info__Value">123 Fifth Ave S. <br> Nashville, TN 37203</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-sm-4 Description__Item">
+                <div class="Description__LeftSide">
+                    <i class="Icon Email">
+                        <svg-icon svgClass="Icon__Email Icon__Fill" [svgPath]="icons.email"></svg-icon>
+                    </i>
+                </div>
+                <div class="Description__RightSide">
+                    <div class="Description__Item__Info">
+                        <div class="Info__Title">{{ 'EMAIL' | translate }} {{ 'ADDRESS' | translate }}</div>
+                        <div class="Info__Value">john.c.smith@testcorp.com</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5 col-sm-4 Description__Item LastItem">
+                <div class="Description__LeftSide">
+                    <i class="Icon">
+                        <svg-icon svgClass="Icon__PhoneOutline Icon__Fill" [svgPath]="icons.phoneOutline"></svg-icon>
+                    </i>
+                </div>
+                <div class="Description__RightSide">
+                    <div class="Description__Item__Info">
+                        <div class="Info__Title">{{ 'PHONE_NUMBER' | translate }} / {{ 'TYPE' | translate }}</div>
+                        <div class="Info__Value">838-231-2987 / Cell</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

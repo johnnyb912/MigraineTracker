@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 16">
+    <title>icon-trash</title>
+    <path d="M444,198h2v1h-1v11a1,1,0,0,1-1,1h-9a1,1,0,0,1-1-1V199h-1v-1h2v-2a1,1,0,0,1,1-1h7a1,1,0,0,1,1,1v2h0Zm-8-1v1h7v-1a1,1,0,0,0-1-1h-5A1,1,0,0,0,436,197Zm-1,2v11h9V199h-9Zm2,1h1v9h-1v-9Zm2,0h1v9h-1v-9Zm2,0v9h1v-9h-1Z"
+          transform="translate(-433 -195)"/>
+</svg>

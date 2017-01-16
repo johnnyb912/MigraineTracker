@@ -1,0 +1,25 @@
+.Modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: $zindex-modal;
+
+    background: rgba($color-white, .9);
+    outline: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+
+    &__Body {
+        position: relative;
+        top: 10rem;
+        z-index: $zindex-modal;
+
+        width: 50rem;
+
+        background: $color-white;
+        margin: 0 auto;
+        padding-bottom: 8rem;
+    }
+}

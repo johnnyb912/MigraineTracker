@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.37 18.37">
+    <defs>
+        <linearGradient id="a" x1="4277.73" y1="2748.58" x2="4296.1" y2="2748.58" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#e6000c"/>
+            <stop offset="1" stop-color="#ff469a"/>
+        </linearGradient>
+    </defs>
+    <title>icon-message-filled</title>
+    <path style="fill:url(#a);"
+          d="M4277.73,2756.82a0.44,0.44,0,0,0,.23.39,4.6,4.6,0,0,0,5-.37,9.07,9.07,0,0,0,4,.92,9.21,9.21,0,1,0-7-3.19,4.63,4.63,0,0,1-2,1.86A0.44,0.44,0,0,0,4277.73,2756.82Z"
+          transform="translate(-4277.73 -2739.4)"/>
+</svg>

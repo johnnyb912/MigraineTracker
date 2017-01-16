@@ -1,0 +1,303 @@
+<employee-section-header></employee-section-header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <section>
+                <ul class="Filter">
+                    <li class="Filter__Item"
+                        *ngFor="let filter of employeeChangesState.get('topMenu'); let i = index; trackBy:trackByIndex"
+                        (click)="filterAction(i, employeeChangesState.get('yearActive'), employeeChangesState.get('monthIndex'));">
+                        <span class="Filter__Link" [ngClass]="{Active: i === employeeChangesState.get('topMenuActive')}">
+                            {{filter | translate}}
+                        </span>
+                    </li>
+                </ul>
+
+                <div class="FilterWrap" [ngClass]="{Visible : employeeChangesState.get('topMenuActive') === 1}">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-3 FilterWrap__LeftSide">
+                            <ul class="FilterWrap__Years">
+                                <li class="FilterWrap__Li"
+                                    *ngFor="let year of employeeChangesState.get('years'); trackBy:trackByIndex"
+                                    (click)="updateYear(year, employeeChangesState.get('monthActive'))"
+                                    [ngClass]="{Active: year === employeeChangesState.get('yearActive')}">
+
+                                    {{year}}
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-10 col-sm-9 FilterWrap__RightSide">
+                            <ul class="FilterWrap__Months">
+                                <li class="FilterWrap__Li"
+                                    *ngFor="let month of employeeChangesState.get('months'); trackBy:trackByIndex;"
+                                    (click)="updateMonth(employeeChangesState.get('yearActive'), month)"
+                                    [ngClass]="{Active: month === employeeChangesState.get('monthActive')}">
+
+                                    {{month}}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="FilterWrap" [ngClass]="{Visible : employeeChangesState.get('topMenuActive') === 2}">
+                    <div class="row">
+                        <ul class="FilterWrap__Statuses">
+                            <li class="FilterWrap__Li"
+                                *ngFor="let status of employeeChangesState.get('statuses'); let i = index; trackBy:trackByIndex"
+                                (click)="updateStatus(i)"
+                                [ngClass]="{Active: i === employeeChangesState.get('statusActive')}">
+
+                                {{status | translate}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="FilterWrap" [ngClass]="{Visible : employeeChangesState.get('topMenuActive') === 3}">
+                    <div class="row">
+                        <div class="FilterWrap__Coverages">
+                            <div class="FilterWrap__Li"
+                                *ngFor="let coverage of employeeChangesState.get('coverages'); let i = index; trackBy:trackByIndex"
+                                (click)="updateCoverage(i)"
+                                [ngClass]="{'FilterWrap__VisibleWrap': i === employeeChangesState.get('coverageActive')}">
+                                <div class="row">
+                                    <div class="col-xs-2">
+                                        <div class="FilterWrap__Checkbox"
+                                            [ngClass]="{'Active': i === employeeChangesState.get('coverageActive')}">
+                                            <i class="Icon">
+                                                <svg-icon svgClass="Icon__Checkmark"
+                                                    [svgPath]="icons.checkmark"></svg-icon>
+                                            </i>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        <div class="FilterWrap__Data">
+                                            {{coverage | translate}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Employee"
+                     [ngClass]="{Active: showActions, ChangeView__List: employeeChangesState.get('viewTypeActive') === 'LIST', ChangeView__Tile: employeeChangesState.get('viewTypeActive') === 'TILE'}">
+
+                    <div class="Employee__UpdateCaption" [ngClass]="{Visible : employeeChangesState.get('topMenuActive') === 6}">
+                        {{ 'RECENTLY_UPDATED' | translate }}
+                    </div>
+
+                    <div class="Employee__HireCaption" [ngClass]="{Visible : employeeChangesState.get('topMenuActive') === 5 || employeeChangesState.get('topMenuActive') === 6}">
+                        <div class="row Employee__CaptionRow">
+                            <div class="col-md-3 col-sm-4 FilterWrap__LeftSide">
+                                <ul class="FilterWrap__Years">
+                                    <li class="FilterWrap__Li"
+                                        (click)="updateYear('ALL_YEARS')"
+                                        [ngClass]="{Active: employeeChangesState.get('yearActive') === 'ALL_YEARS'}">
+                                        {{ 'ALL_YEARS' | translate }}
+                                    </li>
+                                    <li class="FilterWrap__Li"
+                                        *ngFor="let year of employeeChangesState.get('years'); trackBy:trackByIndex"
+                                        (click)="updateYear(year, employeeChangesState.get('monthActive'))"
+                                        [ngClass]="{Active: year === employeeChangesState.get('yearActive')}">
+                                        {{year}}
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-9 col-sm-8 FilterWrap__RightSide">
+                                <ul class="FilterWrap__Months">
+                                    <li class="FilterWrap__Li"
+                                        (click)="updateMonth(employeeChangesState.get('yearActive'), 'ALL_MONTHS', 'ALL_DAYS')"
+                                        [ngClass]="{Active: employeeChangesState.get('monthActive') === 'ALL_MONTHS'}">
+                                        {{ 'ALL_MONTHS' | translate }}
+                                    </li>
+                                    <li class="FilterWrap__Li"
+                                        *ngFor="let month of employeeChangesState.get('months'); let i = index; trackBy:trackByIndex;"
+                                        (click)="updateMonth(employeeChangesState.get('yearActive'), month, i)"
+                                        [ngClass]="{Active: month === employeeChangesState.get('monthActive'), Hidden: employeeChangesState.get('yearActive') === 'ALL_YEARS'}">
+
+                                        {{month}}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <ul class="FilterWrap__Days">
+                                    <li class="FilterWrap__Li"
+                                        *ngFor="let day of daysArray; trackBy:trackByIndex"
+                                        (click)="updateDay(day)"
+                                        [ngClass]="{Active: day === employeeChangesState.get('dayActive')}">
+
+                                        {{day | translate}}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="employeeChangesState.get('topMenuActive') !== 6">
+                        <div class="Employee__Sort">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="Employee__Label">{{ 'SORT' | translate }}:</div>
+                                    <div class="Dropdown" (click)="$event.preventDefault()">
+                                        <div dropdown keyboardNav="true">
+                                            <button id="alphabetFilterList" class="Dropdown__Toggle" dropdownToggle>
+                                                <span *ngIf="employeeChangesState.get('filterActive') === ''">
+                                                    {{(employeeChangesState.get('topMenuActive') === 5 ? 'DATE_OF_HIRE' : 'SELECT_A_PROVIDER') | translate}}
+                                                </span>
+                                                <span *ngIf="employeeChangesState.get('filterActive') !== ''">
+                                                    {{employeeChangesState.getIn(['filterList', employeeChangesState.get('filterActive')]) | translate}}
+                                                </span>
+                                                <span class="Icon--inline Dropdown__ChevronDown"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu" aria-labelledby="alphabetFilterList">
+                                                <li role="menuitem" *ngFor="let filter of employeeChangesState.get('filterList'); let i = index; trackBy:trackByIndex">
+                                                    <a class="dropdown-item" href="#"
+                                                        (click)="setFilterList(i)">
+                                                        {{filter | translate}}
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-sm-4 Employee__ChangeView">
+                                    <i class="Icon--inline" *ngFor="let view of employeeChangesState.get('viewType'); let i = index; trackBy:trackByIndex"
+                                       [ngClass]="{
+                                            Active: employeeChangesState.get('viewTypeActive') === i,
+                                            Employee__ChangeView__Tile : employeeChangesState.get('viewTypeActive') === 0,
+                                            Employee__ChangeView__List : employeeChangesState.get('viewTypeActive') === 1
+                                        }"
+                                       (click)="changeView(i)">
+                                        <svg-icon *ngIf="i === 0" svgClass="Icon__ViewTile" [svgPath]="icons.viewTile"></svg-icon>
+                                        <svg-icon *ngIf="i === 1" svgClass="Icon__ViewList" [svgPath]="icons.viewList"></svg-icon>
+                                    </i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <ul class="Employee__Action">
+                            <li class="Button Employee__Action__Btn">{{ 'EDIT_PROFILE' | translate }}</li>
+                            <li class="Button Employee__Action__Btn">{{ 'MODIFY_COVERAGE' | translate }}</li>
+                            <li class="Button Employee__Action__Btn">{{ 'DISCONTINUE_COVERAGE' | translate }}</li>
+                            <li class="Button Employee__Action__Btn">{{ 'UPDATE_EARNINGS' | translate }}</li>
+                            <li class="Button Employee__Action__Btn">{{ 'TERMINATE' | translate }}</li>
+                        </ul>
+
+                        <employee-card *ngFor="let card of employeeCards; trackBy:trackByIndex; let i = index"
+                                       [changeViewState]="employeeChangesState.get('viewTypeActive')"
+                                       [cardData]="card"
+                                       (actionSelected)="onEmployeeActionSelected($event)"
+                                       (cardChecked)="onCardChecked($event)">
+                        </employee-card>
+                    </div>
+
+                    <div class="RecentlyUpdate" [ngClass]="{Visible : employeeChangesState.get('topMenuActive') === 6}">
+
+                        <div class="FilterWrap" [ngClass]="{Visible : employeeChangesState.get('topMenuActive') === 6}">
+                            <div class="row">
+                                <div class="FilterWrap__Coverages">
+                                    <div class="FilterWrap__Li"
+                                         *ngFor="let type of employeeChangesState.get('recentlyUpdatedTypes'); let i = index; trackBy:trackByIndex"
+                                         (click)="updateRecentlyUpdatedType(i)"
+                                         [ngClass]="{'FilterWrap__VisibleWrap': i === employeeChangesState.get('recentlyUpdatedTypeActive')}">
+                                        <div class="FilterWrap__Checkbox"
+                                            [ngClass]="{'Active': i === employeeChangesState.get('recentlyUpdatedTypeActive')}">
+                                            <i class="Icon">
+                                                <svg-icon svgClass="Icon__Checkmark"
+                                                    [svgPath]="icons.checkmark"></svg-icon>
+                                            </i>
+                                        </div>
+                                        <div class="FilterWrap__Data">
+                                            {{type | translate}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="CalendarVertical">
+                            <div class="CalendarVertical__Title" (click)="selectedItem(action = !action);">
+                                <span class="ExpandAll">{{ 'EXPAND_ALL' | translate }}</span>
+                                /
+                                <span class="ContractAll">{{ 'CONTRACT_ALL' | translate }}</span>
+                            </div>
+
+                            <section class="CalendarVertical__Content" *ngFor="let item of updatedList; trackBy:trackByIndex; let i=index">
+                                <div class="CalendarVertical__Item"
+                                     [ngClass]="{'Active': item.isCollapsed,
+                                     'FirstItem': i === 0,
+                                     'LastItem': i === updatedList.length - 1}"
+                                     (click)="item.isCollapsed = !item.isCollapsed;">
+                                    <div class="CalendarVertical__Item__Day">
+                                        <div class="ShortDay">
+                                            <div class="ShortDay__Month">{{item.date.format("MMM")}}</div>
+                                            <div class="ShortDay__Day">{{item.date.format('L').substring(0,2)}}</div>
+                                        </div>
+
+                                        <div class="LongDay">
+                                            <span class="LongDay__WeekDay">{{item.date.format("ddd")}}</span>
+                                            <span class="LongDay__Date">{{item.date.format('MMMM Do YYYY')}}</span>
+                                        </div>
+
+                                        <div class="Changes">
+                                            <span class="Changes__Count">{{item.events.length}}</span>
+                                            <span class="Changes__Text">{{ 'CHANGES' | translate }}</span>
+                                        </div>
+                                    </div>
+
+                                    <i class="Icon Icon__Minus CalendarVertical__Item__Toggle">
+                                        <svg-icon svgClass="Icon__Minus" [svgPath]="icons.minus"></svg-icon>
+                                    </i>
+                                    <i class="Icon Icon__Plus CalendarVertical__Item__Toggle">
+                                        <svg-icon svgClass="Icon__Plus" [svgPath]="icons.plus"></svg-icon>
+                                    </i>
+                                </div>
+                                <div class="CalendarVertical__Item__Detail">
+                                    <table class="Details">
+                                        <tbody>
+                                        <tr class="Details__Row" *ngFor="let event of item.events; trackBy:trackByIndex">
+                                            <td class="Details__Time">{{event.time}}</td>
+                                            <td class="Details__Info">
+                                                <a>{{event.name}}</a>{{ 'POSSESSIVE' | translate }}
+                                                <i class="Icon--inline">
+                                                    <svg-icon svgClass="Icon__Gear" [svgPath]="icons.gear"></svg-icon>
+                                                </i>
+                                                <i class="CalendarVertical__ChevronDown"></i>
+                                                {{event.typeUpdate}}
+                                                {{ 'UPDATED' | translate }} {{ 'FROM' | translate }} <b>{{event.from}}</b>
+                                                {{ 'TO' | translate }} <b> {{event.to}}</b>
+                                                {{ 'BY' | translate }} <a>{{event.by}}</a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<div class="Modal" *ngIf="showModal">
+    <div class="Modal__Body">
+        <discontinue-coverage *ngIf="modal.modalType === 'discontinue'"
+                              [employee]="modal.employee"
+                              (closeModal)="onCloseModal($event)">
+        </discontinue-coverage>
+
+        <terminate-employee *ngIf="modal.modalType === 'terminate'"
+                            [employee]="modal.employee"
+                            (closeModal)="onCloseModal($event)">
+        </terminate-employee>
+    </div>
+</div>

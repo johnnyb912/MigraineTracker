@@ -1,0 +1,60 @@
+@import 'variables';
+@import 'utility';
+
+.Footer {
+    background-color: $color-white;
+    border-top: 1px solid $gray-lighter;
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+
+    @media screen and (max-width: 900px) {
+        text-align: center;
+    }
+
+    &__List {
+        width: 11%;
+
+        display: inline-block;
+        list-style: none;
+        padding: 0;
+        vertical-align: top;
+
+        &:first-child {
+            margin-left: 11%;
+
+            @media screen and (max-width: 900px) {
+                margin-left: 0;
+            }
+        }
+
+        @media screen and (max-width: 900px) {
+            width: auto;
+
+            margin-left: 2rem;
+        }
+
+        &__Header {
+            margin-bottom: .6rem;
+        }
+
+        &__Item {
+            color: $gray;
+            display: block;
+            line-height: 1.8;
+
+            @include font-size(14px);
+
+            @media screen and (max-width: 900px) {
+                display: none;
+            }
+        }
+    }
+
+    &__Copyright {
+        font-family: $font-primary-100;
+        margin-top: 4rem;
+        text-align: center;
+
+        @include font-size(14px);
+    }
+}

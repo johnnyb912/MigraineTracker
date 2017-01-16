@@ -1,0 +1,87 @@
+@import 'variables';
+@import 'utility';
+
+:host /deep/ {
+    .Login {
+        .Icon__Collapse {
+            position: relative;
+            top: .7rem;
+            right: .7rem;
+            width: 2.4rem;
+            height: 2.4rem;
+
+            transform: rotate(90deg);
+            fill: $gray-light;
+        }
+    }
+}
+
+.container-fluid { /* stylelint-disable-line selector-class-pattern */
+    height: 100%;
+}
+
+.Login {
+    min-height: 100%;
+
+    padding-top: 8.4rem;
+    padding-bottom: 7.8rem;
+
+    &__Container,
+    &__Forgot {
+        max-width: 68rem;
+
+        border-radius: $border-radius-base;
+
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    &__Container {
+        background-color: $color-white;
+        border: 1px solid $gray-light;
+        padding-top: 6.5rem;
+        padding-bottom: 6rem;
+    }
+
+    .Icon__Logo {
+        margin: 0 auto 4.4rem;
+    }
+
+    &__Forgot {
+        line-height: 2.4;
+        text-align: center;
+
+        &__Link {
+            color: $gray-light;
+            letter-spacing: .05em;
+
+            @include font-size(14px);
+
+            &:hover,
+            &:focus {
+                color: lighten($gray-light, 10%); /* stylelint-disable-line sh-waqar/declaration-use-variable */
+            }
+        }
+    }
+}
+
+.LoginForm {
+    padding: 0 2rem;
+
+    &__Title {
+        color: $gray-darker;
+        font-family: $font-primary-300;
+        font-weight: normal;
+        margin-bottom: 3.2rem;
+    }
+
+    &__Buttons {
+        margin-top: 2.2rem;
+    }
+
+    .FormInput__Field {
+        &.ng-touched.ng-valid.ng-dirty + .FormInput__Label .FormInput__Label__Text { /* stylelint-disable-line selector-class-pattern */
+            color: lighten($gray, .3); /* stylelint-disable-line sh-waqar/declaration-use-variable */
+        }
+    }
+}

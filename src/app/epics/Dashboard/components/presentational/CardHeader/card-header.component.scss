@@ -1,0 +1,12 @@
+@import 'utility';
+@import 'variables';
+
+.Header {
+    background: $gray-lightest;
+    color: $gray-darker;
+
+    &__Title {
+        font-family: $font-primary-500;
+        font-weight: normal;
+    }
+}

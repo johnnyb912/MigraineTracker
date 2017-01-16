@@ -1,0 +1,19 @@
+@import 'utility';
+@import 'variables';
+
+.Header {
+    background: $gray-lightest;
+    color: $gray-darker;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+
+    &__Title {
+        display: inline-block;
+        font-family: $font-primary-300;
+        font-weight: 300;
+        margin-bottom: 1rem;
+        padding-right: 2.4rem;
+
+        @include font-size(28px);
+    }
+}

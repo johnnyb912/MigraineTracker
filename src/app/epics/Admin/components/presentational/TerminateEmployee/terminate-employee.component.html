@@ -1,0 +1,54 @@
+<div class="Terminate">
+    <div class="Terminate__Header">
+        <i class="Icon">
+            <svg-icon svgClass="Icon__TerminateEmployment" [svgPath]="icons.terminateEmployment"></svg-icon>
+        </i>
+        <div class="Terminate__Header__Title">{{ 'TERMINATE_EMPLOYMENT' | translate }}</div>
+    </div>
+    <div class="Terminate__Content">
+        <div class="Terminate__Content__Title">{{employee.firstName}} {{employee.middleInitial}}. <span class="Terminate__Content__LastName">{{employee.lastName}}</span></div>
+        <div class="Terminate__Content__Id">{{employee.codes}}</div>
+        <div *ngIf="!downloadForm">
+            <div class="Terminate__Content__SubTitle">{{ 'TERMINATION_REASON' | translate }}</div>
+            <div class="Dropdown" (click)="$event.preventDefault()">
+                <div dropdown>
+                    <button id="terminationReason" class="Dropdown__Toggle" dropdownToggle>
+                        {{ selectedReason }} <span class="Icon--inline Dropdown__ChevronDown"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="terminationReason">
+                        <li role="menuitem" *ngFor="let choice of reasonList; trackBy:trackByIndex">
+                            <a class="dropdown-item" href="#" (click)="setReasonList(choice.id, $event)">{{choice.value}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="Terminate__Content__SubTitle">{{ 'EFFECTIVE_DATE' | translate }}</div>
+            <div class="Terminate__Content__SignatureDate">
+                <date-picker
+                        [selectedDate]="selectedDate"
+                        [dateFormat]="dateFormat"
+                        (itemSelected)="onItemSelected($event)">
+                </date-picker>
+                <i class="Terminate__Content__ChevronDown"></i>
+            </div>
+        </div>
+        <div *ngIf="downloadForm" class="Terminate__DownloadForm">
+            <div class="Terminate__DownloadForm__SubTitle">{{ 'EMPLOYEE_TERMINATED_SUCCESSFULLY' | translate }}</div>
+            <div class="Terminate__DownloadForm__Text">{{ 'PROVIDE_FORM' | translate }}</div>
+        </div>
+        <div class="Terminate__ButtonWrap" [ngClass]="{Active: questionShow, ShowForm: downloadForm}">
+            <div class="Terminate__ButtonWrap__Text">{{ 'ARE_YOU_SURE' | translate }} {{ 'DISCONTINUE' | translate }} {{employee.firstName}} {{employee.lastName}} {{ 'COVERAGE' | translate }}?</div>
+            <div class="Button__Pill Terminate__ButtonWrap__Terminate"(click)="questionShow = true">{{ 'TERMINATE' | translate }}</div>
+            <div class="Button__Pill Terminate__ButtonWrap__Confirm"(click)="submitConfirm()">{{ 'CONFIRM' | translate }}</div>
+            <a class="Button__Pill Terminate__ButtonWrap__Download" href="#" download>{{ 'DOWNLOAD_FORM' | translate }}</a>
+        </div>
+        <button class="Button__Text"
+                (click)="closeModalWindow($event)" *ngIf="downloadForm">
+           {{ 'DONE' | translate }}
+        </button>
+        <button class="Button__Text"
+                (click)="closeModalWindow($event)" *ngIf="!downloadForm">
+            {{ 'CANCEL' | translate }}
+        </button>
+    </div>
+</div>

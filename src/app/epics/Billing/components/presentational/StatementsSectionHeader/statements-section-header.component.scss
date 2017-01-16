@@ -1,0 +1,57 @@
+@import 'utility';
+@import 'variables';
+
+.SectionHeader {
+    background-image: linear-gradient(to right, $color-blue-violet 0%, $color-blue-gray-dark 20%, $color-purple 100%);
+
+    &__Wrap {
+        max-width: 139rem;
+
+        margin: 0 auto;
+        padding: 2rem 1.2rem 2rem 3rem;
+
+        .Icon--inline {
+            vertical-align: middle;
+        }
+    }
+
+    &__Title {
+        color: $color-white;
+        display: inline-block;
+        font-family: $font-primary-300;
+        font-weight: 300;
+        margin: 0 0 0 1rem;
+        vertical-align: middle;
+
+        @include font-size(20px);
+    }
+
+    &__Extra {
+        color: $color-white;
+        padding-top: .4rem;
+        text-align: right;
+
+        &__Description {
+            color: $gray-lighter;
+            display: inline-block;
+            letter-spacing: .2rem;
+            margin-right: .8rem;
+            text-transform: uppercase;
+
+            @include font-size(12px);
+        }
+
+        &__Amount {
+            display: inline-block;
+            line-height: 4rem;
+            margin-right: 1.4rem;
+
+            @include font-size(40px);
+        }
+
+        &__Button {
+            margin-right: 2rem;
+            vertical-align: top;
+        }
+    }
+}

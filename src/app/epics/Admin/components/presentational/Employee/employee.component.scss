@@ -1,0 +1,149 @@
+@import 'utility';
+@import 'variables';
+
+:host /deep/ {
+    .Employee__Header {
+        .Icon__User {
+            width: 8rem;
+            height: 8rem;
+
+            fill: $color-blue-secondary-light;
+        }
+
+        .Icon__Close {
+            position: relative;
+            z-index: $zindex-navbar;
+        }
+    }
+}
+
+.container { /* stylelint-disable-line selector-class-pattern */
+    max-width: 118rem;
+}
+
+.Employee {
+    padding: 3rem 0;
+
+    &__Wrapper {
+        position: relative;
+
+        background-color: $color-white;
+        border: .1rem solid $gray-light;
+        border-radius: $border-radius-base;
+        padding: 6rem;
+
+        @include bp-medium {
+            padding: 3rem;
+        }
+    }
+
+    &__Header {
+        margin-bottom: 7rem;
+
+        &__Avatar {
+            @include rounded-border-gradient();
+        }
+
+        &__Name {
+            color: $gray;
+            display: inline-block;
+            margin-left: 3rem;
+            vertical-align: top;
+
+            @include font-size(42px);
+        }
+
+        &__CloseBtn {
+            position: absolute;
+            top: 4.5rem;
+            right: 4rem;
+
+            cursor: pointer;
+
+            @include transition($transition: right);
+
+            &::before {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                z-index: 1;
+
+                width: 5rem;
+                height: 5rem;
+
+                background-color: $gray-lightest;
+                border-radius: 50%;
+                content: '';
+                margin-top: -2.5rem;
+                margin-left: -2.5rem;
+            }
+        }
+    }
+}
+
+.Employee__Item {
+    border-bottom: .1rem solid $gray-lighter;
+    color: $gray-darker;
+    cursor: pointer;
+    font-family: $font-primary-700;
+    font-weight: 700;
+    padding: 2.6rem 1.5rem;
+    text-transform: capitalize;
+
+    @include transition();
+    @include font-size (22px);
+
+    @include bp-xsmall {
+        @include font-size (18px);
+    }
+
+    &:hover {
+        background: $gray-lightest;
+    }
+
+    .Employee__Item__Toggle {
+        display: block;
+        float: right;
+
+        &.Icon__Minus {
+            display: none;
+        }
+
+        &.Icon__Plus {
+            display: block;
+        }
+    }
+
+    &.Active {
+        border-bottom-color: $gray-light;
+
+        .Employee__Item__Toggle {
+            &.Icon__Minus {
+                display: block;
+            }
+
+            &.Icon__Plus {
+                display: none;
+            }
+        }
+
+        + .Employee__Item__Detail {
+            max-height: 300rem;
+
+            opacity: 1;
+            padding-bottom: 3rem;
+            visibility: visible;
+        }
+    }
+
+    &__Detail {
+        max-height: .1rem;
+
+        margin: 0;
+        opacity: 0;
+        overflow: hidden;
+        visibility: hidden;
+
+        @include transition();
+    }
+}

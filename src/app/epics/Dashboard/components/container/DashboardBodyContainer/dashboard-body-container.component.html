@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="col-md-8" *ngIf="dashboard">
+        <card-header
+                [cardTitle]="'Billing'">
+        </card-header>
+
+        <dashboard-card
+                [cardType]="cardTypes.BILLING"
+                [cardData]="dashboard.get('billing')">
+        </dashboard-card>
+    </div>
+
+    <div class="col-md-4" *ngIf="dashboard">
+        <card-header
+                [cardTitle]="'Employees'">
+        </card-header>
+
+        <dashboard-card
+                [cardType]="cardTypes.EMPLOYEE"
+                [cardData]="dashboard.get('employee')">
+        </dashboard-card>
+    </div>
+</div>
+
+<div class="row" *ngIf="dashboard">
+    <div class="col-md-4">
+        <card-header
+                [cardTitle]="'Claims'">
+        </card-header>
+
+        <dashboard-card
+                [cardType]="cardTypes.CLAIM"
+                [cardData]="dashboard.get('claims')">
+        </dashboard-card>
+    </div>
+
+    <div class="col-md-8">
+        <card-header
+                [cardTitle]="'Plans'">
+        </card-header>
+
+        <div class="PlanCard" *ngFor="let plan of dashboard.get('plans'); trackBy:trackByIndex; let i = index">
+            <dashboard-card
+                    [cardType]="cardTypes.PLAN"
+                    [cardData]="plan">
+            </dashboard-card>
+        </div>
+    </div>
+</div>
+
+<div class="row" *ngIf="dashboard">
+    <div class="col-md-12 text-center Pay">
+        <div class="Pay__Header">{{ 'ONLINE' | translate }} {{ 'PAY' | translate }}</div>
+        <div class="Pay__SubHeader">{{ 'NEVER_MISS_PAYMENT' | translate }}</div>
+        <button class="Button">{{ 'SETUP' | translate }}</button>
+    </div>
+</div>

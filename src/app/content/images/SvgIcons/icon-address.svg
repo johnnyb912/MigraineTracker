@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.6 35.39">
+    <title>icon-address</title>
+    <rect x="9.26" y="11.57" width="2.99" height="1.49"/>
+    <rect x="15.31" y="11.57" width="2.99" height="1.49"/>
+    <rect x="21.36" y="11.57" width="2.99" height="1.49"/>
+    <rect x="9.26" y="16.05" width="2.99" height="1.49"/>
+    <rect x="15.31" y="16.05" width="2.99" height="1.49"/>
+    <rect x="21.36" y="16.05" width="2.99" height="1.49"/>
+    <rect x="9.26" y="20.61" width="2.99" height="1.49"/>
+    <rect x="15.31" y="20.61" width="2.99" height="1.49"/>
+    <rect x="21.36" y="20.61" width="2.99" height="1.49"/>
+    <rect x="9.26" y="25.16" width="2.99" height="1.49"/>
+    <rect x="15.31" y="25.16" width="2.99" height="1.49"/>
+    <rect x="21.36" y="25.16" width="2.99" height="1.49"/>
+    <path d="M288.61,925.68v-26l-25.39-7.91v33.9h-4.11v1.49h33.6v-1.49h-4.11Zm-1.49,0H276.67v-3.73h-1.49v3.73H264.72V893.79l22.4,7v24.87Z"
+          transform="translate(-259.12 -891.77)"/>
+</svg>

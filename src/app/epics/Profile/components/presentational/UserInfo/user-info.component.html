@@ -1,0 +1,170 @@
+<form [formGroup]="userProfileForm" novalidate>
+    <div class="UserInfo__Topic" (click)="toggleExpandedState()" [ngClass]="{Active: isExpanded, Collapsible: isCollapsible}">
+        {{ 'PERSONAL_INFORMATION' | translate }}
+        <i class="Icon--inline Icon__Edit--profile" (click)="enableEdit(true, $event, isExpanded)" [ngClass]="{HiddenElement: isEditing}">
+            <svg-icon svgClass="Icon__Edit" [svgPath]="icons.edit"></svg-icon>
+        </i>
+        <div class="UserInfo__Buttons" [ngClass]="{HiddenElement: !isEditing}">
+            <button class="Button" (click)="saveUserProfile($event)">{{ 'SAVE' | translate }}</button>
+            <button class="Button__Secondary" (click)="enableEdit(false, $event)">{{ 'CANCEL' | translate }}</button>
+        </div>
+        <i class="Icon Icon__Minus UserInfo__Toggle">
+            <svg-icon svgClass="Icon__Minus" [svgPath]="icons.minus"></svg-icon>
+        </i>
+        <i class="Icon Icon__Plus UserInfo__Toggle">
+            <svg-icon svgClass="Icon__Plus" [svgPath]="icons.plus"></svg-icon>
+        </i>
+    </div>
+    <div class="row UserInfo__Detail" [ngClass]="{Edit: isEditing}">
+        <div class="col-md-6 UserInfo__ColumnLeft">
+            <div class="UserInfo__Block">
+                <i class="Icon">
+                    <svg-icon svgClass="Icon--profile Icon__EmployeeId" [svgPath]="icons.employeeId"></svg-icon>
+                </i>
+                <div class="UserInfo__Caption">{{ 'EMPLOYEE_ID' | translate }}</div>
+                <label class="UserInfo__Label">{{ profileDetails.get('employeeId') }}</label>
+                <div class="UserInfo__Input">
+                    <input type="text"
+                           id="employeeId"
+                           class="form-control"
+                           placeholder="XXXXXXXXXX"
+                           [ngModel]="profileDetails.get('employeeId')"
+                           [formControl]="employeeId">
+                </div>
+            </div>
+            <div class="UserInfo__Block">
+                <i class="Icon">
+                    <svg-icon svgClass="Icon--profile Icon__Language" [svgPath]="icons.language"></svg-icon>
+                </i>
+                <div class="UserInfo__Caption">{{ 'LANGUAGE_PREFERENCE' | translate }}</div>
+                <label class="UserInfo__Label">{{ profileDetails.get('language') }}</label>
+                <div class="UserInfo__Input">
+                    <input type="text"
+                           id="language"
+                           class="form-control"
+                           placeholder="English"
+                           [ngModel]="profileDetails.get('language')"
+                           [formControl]="language">
+                </div>
+            </div>
+            <div class="UserInfo__Block">
+                <i class="Icon">
+                    <svg-icon svgClass="Icon--profile Icon__Address" [svgPath]="icons.address"></svg-icon>
+                </i>
+                <div class="UserInfo__Caption">{{ 'ADDRESS' | translate }}</div>
+                <label class="UserInfo__Label">{{profileDetails.get('street')}}<br>{{profileDetails.get('city')}}<span *ngIf="profileDetails.city">,</span> {{profileDetails.get('state')}} {{profileDetails.get('postalCode')}}</label>
+                <div class="UserInfo__Input">
+                    <input type="text"
+                           id="street"
+                           class="form-control"
+                           placeholder="123 Main Street"
+                           [ngModel]="profileDetails.get('street')"
+                           [formControl]="street">
+
+                    <input type="text"
+                           id="city"
+                           class="form-control City"
+                           placeholder="New York"
+                           [ngModel]="profileDetails.get('city')"
+                           [formControl]="city">
+
+                    <input type="text"
+                           id="state"
+                           class="form-control State"
+                           placeholder="NY"
+                           [ngModel]="profileDetails.get('state')"
+                           [formControl]="state">
+
+                    <input type="text"
+                           id="postalCode"
+                           class="form-control Zipcode"
+                           placeholder="12345"
+                           [ngModel]="profileDetails.get('postalCode')"
+                           [formControl]="postalCode">
+                </div>
+            </div>
+            <div class="UserInfo__Block">
+                <i class="Icon">
+                    <svg-icon svgClass="Icon--profile Icon__Gender" [svgPath]="icons.gender"></svg-icon>
+                </i>
+                <div class="UserInfo__Caption">{{ 'GENDER' | translate }}</div>
+                <label class="UserInfo__Label">{{ profileDetails.get('gender') }}</label>
+                <div class="UserInfo__Input">
+                    <div class="Dropdown" (click)="$event.preventDefault()">
+                        <div dropdown keyboardNav="true">
+                            <button id="gender" class="Dropdown__Toggle" dropdownToggle>
+                              {{ profileDetails.get('gender') }} <span class="Icon--inline Dropdown__ChevronDown"></span>
+                            </button>
+                            <ul class="dropdown-menu Dropdown__Menu" role="menu" aria-labelledby="gender">
+                                <li role="menuitem" *ngFor="let choice of genders; trackBy:trackByIndex">
+                                    <a class="dropdown-item" href="#" (click)="updateGender(choice, $event)">{{choice.value}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 UserInfo__ColumnRight">
+            <div class="UserInfo__Block">
+                <i class="Icon">
+                    <svg-icon svgClass="Icon--profile Icon__Birthday" [svgPath]="icons.birthday"></svg-icon>
+                </i>
+                <div class="UserInfo__Caption">{{ 'DATE_OF_BIRTH' | translate }}</div>
+                <label class="UserInfo__Label">{{ profileDetails.get('DOB') }}</label>
+                <div class="UserInfo__Input">
+                    <date-picker
+                            *ngIf="profileDetails.get('DOB')"
+                            [selectedDate]="profileDetails.get('DOB')"
+                            [dateFormat]="dateFormat"
+                            [dateTrigger]="datePickerButton"
+                            (itemSelected)="updateSelectedDOB($event)">
+                    </date-picker>
+                </div>
+            </div>
+            <div class="UserInfo__Block">
+                <i class="Icon">
+                    <svg-icon svgClass="Icon--profile Icon__Phone" [svgPath]="icons.phone"></svg-icon>
+                </i>
+                <div class="UserInfo__Caption">{{ 'PHONE_NUMBER' | translate }} / {{ 'TYPE' | translate }}</div>
+                <label class="UserInfo__Label" for="phoneNumber">{{ profileDetails.get('mobilePhone') }} / {{ profileDetails.get('phoneType') }}</label>
+                <div class="UserInfo__Input">
+                    <input type="text"
+                           id="phoneNumber"
+                           class="form-control PhoneNumber"
+                           placeholder="XXX-XXX-XXXX"
+                           [ngModel]="profileDetails.get('mobilePhone')"
+                           [formControl]="phoneNumber">
+                    <span>/ </span>
+                    <div class="Dropdown PhoneType" (click)="$event.preventDefault()">
+                        <div dropdown keyboardNav="true">
+                            <button id="phoneType" class="Dropdown__Toggle" dropdownToggle>
+                              {{ profileDetails.get('phoneType') }} <span class="Icon--inline Dropdown__ChevronDown"></span>
+                            </button>
+                            <ul class="dropdown-menu Dropdown__Menu" role="menu" aria-labelledby="phoneType">
+                                <li role="menuitem" *ngFor="let choice of phoneTypes; trackBy:trackByIndex;">
+                                    <a class="dropdown-item" href="#" (click)="updatePhoneType(choice, $event)">{{choice.value}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="UserInfo__Block">
+                <i class="Icon">
+                    <svg-icon svgClass="Icon--profile Icon__Email" [svgPath]="icons.email"></svg-icon>
+                </i>
+                <div class="UserInfo__Caption">{{ 'EMAIL_ADDRESS' | translate }}</div>
+                <label class="UserInfo__Label" for="emailAddress">{{ profileDetails.get('username') }}</label>
+                <div class="UserInfo__Input">
+                    <input type="text"
+                           id="emailAddress"
+                           class="form-control"
+                           placeholder="address@domain.com"
+                           [ngModel]="profileDetails.get('email')"
+                           [formControl]="emailAddress">
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

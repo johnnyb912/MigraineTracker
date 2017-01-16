@@ -1,0 +1,101 @@
+<div class="AddAccount Visible">
+    <div class="AddAccount__Close" (click)="hideAddAccount()">
+        <i class="Icon">
+            <svg-icon svgClass="Icon__Close" [svgPath]="icons.close"></svg-icon>
+        </i>
+    </div>
+
+    <div class="AddAccount__Overlay"></div>
+
+    <div class="AddAccount__Container">
+        <form [formGroup]="newAccountForm" novalidate (keydown.enter)="formSubmit($event)">
+            <div class="AddAccount__Title">{{ 'ADD' | translate }} {{ 'BANK' | translate }} {{ 'ACCOUNT' | translate }}</div>
+
+            <div class="AddAccount__Content">
+                <div class="AddAccount__Name" [ngClass]="{Shrink: accountNameComplete}">
+                    <label for="accountName" class="AddAccount__Name__Text">{{ 'WHAT_WOULD_LIKE' | translate }} <br>{{ 'NAME_ACCOUNT' | translate }}?</label>
+                    <div class="AddAccount__Input">
+                        <input type="text"
+                               #accountNameInput
+                               id="accountName"
+                               autocomplete="off"
+                               class="form-control"
+                               placeholder="Name of Bank"
+                               (keydown.enter)="accountNameEntered($event)"
+                               [(ngModel)]="accountDetails.accountName"
+                               [formControl]="accountName">
+                    </div>
+                </div>
+
+                <div class="AddAccount__Block" [ngClass]="{Visible: accountNameComplete}">
+                    <div class="AddAccount__Question">
+                        <div class="AddAccount__Label">
+                            {{ 'WHAT_ROUTING_NUMBER' | translate }}?
+                        </div>
+                        <div class="AddAccount__Answer">
+                            <div class="FormInput">
+                                <input type="text"
+                                       id="accountRouting"
+                                       autocomplete="off"
+                                       class="form-control FormInput__Field"
+                                       placeholder="064000022"
+                                       [(ngModel)]="accountDetails.accountRouting"
+                                       [formControl]="accountRouting">
+                                <label for="accountRouting" class="FormInput__Label">
+                                    <span class="FormInput__Label__Text">{{ 'ROUTING' | translate }}</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="AddAccount__Question">
+                        <div class="AddAccount__Label">
+                            {{ 'WHAT_ACCOUNT_NUMBER' | translate }}?
+                        </div>
+                        <div class="AddAccount__Answer">
+                            <div class="FormInput">
+                                <input type="text"
+                                       id="accountNumber"
+                                       autocomplete="off"
+                                       class="form-control FormInput__Field"
+                                       placeholder="004442300434"
+                                       [(ngModel)]="accountDetails.accountNumber"
+                                       [formControl]="accountNumber">
+                                <label for="accountNumber" class="FormInput__Label">
+                                    <span class="FormInput__Label__Text">{{ 'ACCOUNT_NUMBER' | translate }}</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="AddAccount__Question">
+                        <div class="AddAccount__Label">
+                            {{ 'WHAT_BANK_S_PHONE' | translate }}?
+                        </div>
+                        <div class="AddAccount__Answer">
+                            <div class="FormInput">
+                                <input type="text"
+                                       id="accountPhone"
+                                       autocomplete="off"
+                                       class="form-control FormInput__Field"
+                                       placeholder="XXX-XXX-XXXX"
+                                       [(ngModel)]="accountDetails.accountPhone"
+                                       (keydown.enter)="accountPhoneEntered($event)"
+                                       (keydown.tab)="accountPhoneEntered($event)"
+                                       [formControl]="accountPhone">
+                                <label for="accountPhone" class="FormInput__Label">
+                                    <span class="FormInput__Label__Text">{{ 'PHONE_NUMBER' | translate }}</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="Button__Secondary AddAccount__Button"
+                    (click)="createNewAccount()"
+                    (keydown.enter)="createNewAccount()"
+                    [ngClass]="{Visible: accountFormComplete}">{{ 'CREATE' | translate }}</button>
+        </form>
+    </div>
+</div>

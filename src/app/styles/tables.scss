@@ -1,0 +1,41 @@
+.DataTable {
+    width: 100%;
+    max-width: 100%;
+
+    background-color: $table-bg;
+    color: $gray-dark;
+    margin-bottom: $line-height-computed;
+
+    &__Header__Cell,
+    &__Cell {
+        border-top: 1px solid $table-border-color;
+        line-height: $line-height-base;
+        padding: $table-cell-padding;
+        vertical-align: top;
+    }
+
+    &__Header {
+        &__Cell {
+            border-bottom: 1px solid $table-border-color;
+            vertical-align: bottom;
+
+            .Table & {
+                //border: 0;
+                font-family: $font-primary-700;
+                font-weight: 700;
+
+                @include font-size(20px);
+            }
+        }
+    }
+
+    &__Cell {
+        .Table & {
+            //border: 0;
+            font-family: $font-primary-300;
+            font-weight: 300;
+
+            @include font-size(16px);
+        }
+    }
+}

@@ -1,0 +1,140 @@
+@import 'utility';
+@import 'variables';
+
+:host /deep/ {
+    .Description__Item {
+        .Icon {
+            &__Fill {
+                fill: $gray-light;
+            }
+
+            &__Person {
+                width: 4rem;
+                height: 3rem;
+            }
+        }
+    }
+}
+
+.EmployeeProfile {
+    &__Item {
+        margin-top: 3.5rem;
+
+        &__Title {
+            color: $gray;
+            font-family: $font-primary-700;
+            letter-spacing: .3rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+
+            @include font-size(12px);
+        }
+
+        .Description {
+            &__Item {
+                border: .1rem solid;
+                border-color: $gray-lighter $gray-lighter transparent transparent;
+                padding: 2rem 1.8rem;
+
+                @include bp-large {
+                    min-height: 9.9rem;
+
+                    padding: 2rem 1.5rem;
+                }
+
+                @include bp-small {
+                    padding: 2rem .5rem;
+                }
+
+                &.LastItem {
+                    border-right-color: transparent;
+                }
+
+                &__Info {
+                    display: inline-block;
+                    margin: .7rem 0 0 1rem;
+                }
+            }
+
+            &__Item .Info__Value {
+                color: $color-black;
+                font-family: $font-primary-300;
+
+                @include font-size(16px);
+
+                @include bp-large {
+                    @include font-size(14px);
+                }
+
+                @include bp-small {
+                    @include font-size(12px);
+                }
+            }
+
+            &__Item .Info__Title {
+                color: $gray-darker;
+                font-family: $font-primary-700;
+                letter-spacing: .3rem;
+                text-transform: uppercase;
+
+                @include font-size(12px);
+
+                @include bp-large {
+                    @include font-size(11px);
+                }
+            }
+
+            &__Item .Icon {
+                width: 5rem;
+                height: 5rem;
+
+                display: inline-block;
+                float: left;
+                text-align: center;
+
+                &.EmployeeId {
+                    padding-top: 1rem;
+                }
+
+                &.Person {
+                    padding-top: 1rem;
+                }
+
+                &.Email {
+                    padding-top: 1rem;
+                }
+            }
+
+            &__NoPad {
+                margin: 0;
+            }
+
+            &__LeftSide,
+            &__RightSide {
+                float: left;
+            }
+
+            &__LeftSide {
+                width: 5rem;
+            }
+
+            &__RightSide {
+                width: calc(100% - 5rem);
+            }
+        }
+    }
+
+    &__ContactInfo {
+        .Description__Item {
+            min-height: 11rem;
+
+            @include bp-large {
+                min-height: 10.3rem;
+            }
+
+            @include bp-medium {
+                min-height: 9.9rem;
+            }
+        }
+    }
+}

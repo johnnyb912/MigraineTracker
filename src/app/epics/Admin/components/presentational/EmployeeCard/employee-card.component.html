@@ -1,0 +1,60 @@
+<div class="Card {{cardData.status}}"
+     [ngClass]="{'ChangeViewList': changeViewState === 1}">
+    <i class="Icon Card__Setting" (click)="showEmployeeActions = true">
+        <svg-icon svgClass="Icon__Gear" [svgPath]="icons.gear"></svg-icon>
+    </i>
+    <a class="Card__Expand__Wrapper" [routerLink]="['/Admin/EmployeeProfile']">
+        <i class="Icon Card__Expand">
+            <svg-icon svgClass="Icon__Resize" [svgPath]="icons.resize"></svg-icon>
+        </i>
+    </a>
+
+    <div class="Card__Header">
+        <div class="Card__Avatar">
+            {{cardData.initials}}
+        </div>
+    </div>
+
+    <div class="Card__Content">
+        <div class="Card__Description">
+            <div class="Card__Title">{{cardData.firstName}} {{cardData.middleInitial}}. <span class="Card__Title__LastName">{{cardData.lastName}}</span></div>
+            <div class="Card__Code">{{cardData.codes}}</div>
+        </div>
+        <div class="Card__Delimiter"></div>
+        <div class="Card__Type">
+            <span [ngClass]="{Active: cardData.STD}">{{ 'DISABILITY_STD' | translate }}</span> /
+            <span [ngClass]="{Active: cardData.LTD}">{{ 'DISABILITY_LTD' | translate }}</span> /
+            <span [ngClass]="{Active: cardData.CI}">{{ 'DISABILITY_CI' | translate }}</span>
+        </div>
+        <div class="Card__Checkbox" [ngClass]="{Card__Checked: isCardChecked}" (click)="cardCheckbox()">
+            <svg-icon *ngIf="isCardChecked"
+                      svgClass="Icon__Checkmark"
+                      [svgPath]="icons.checkmark"></svg-icon>
+            <div class="Card__Checkbox__Icon__Bkg"></div>
+        </div>
+    </div>
+
+    <div class="Card__Date">
+        <div class="Card__Column Card__Date__Hired">
+            {{cardData.hiredDate}}
+            <div class="Card__Column__Subtitle">{{ 'HIRED' | translate }}</div>
+        </div>
+        <div class="Card__Column">
+            {{cardData.dateOfBirth}}
+            <div class="Card__Column__Subtitle">{{ 'DOB' | translate }}</div>
+        </div>
+    </div>
+    <button class="Button Card__Button">{{cardData.status}}</button>
+
+    <div class="Card__SettingWrapper" [ngClass]="{Setting: showEmployeeActions}">
+        <div class="Card__FlipBlock">
+            <div class="Card__ListItem">
+                <a class="Button Card__Button Card__Link" [routerLink]="['/Admin/EmployeeProfile']">{{ 'EDIT_PROFILE' | translate }}</a>
+                <button class="Button Card__Button">{{ 'MODIFY_COVERAGE' | translate }}</button>
+                <button class="Button Card__Button" (click)="employeeAction('discontinue')">{{ 'DISCONTINUE_COVERAGE' | translate }}</button>
+                <button class="Button Card__Button">{{ 'UPDATE_EARNINGS' | translate }}</button>
+                <button class="Button Card__Button Card__Button--last" (click)="employeeAction('terminate')">{{ 'TERMINATE' | translate }}</button>
+            </div>
+        </div>
+    </div>
+</div>

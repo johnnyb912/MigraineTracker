@@ -1,0 +1,98 @@
+@import 'utility';
+@import 'variables';
+
+:host /deep/ {
+    .Icon__Statement {
+        width: 3.4rem;
+        height: 3rem;
+    }
+
+    .Icon__Edit {
+        cursor: pointer;
+        fill: $color-white;
+    }
+}
+
+.PaymentMethodHeader {
+    background-image: linear-gradient(to right, $color-blue-violet 0%, $color-blue-gray-dark 20%, $color-purple 100%);
+    margin-bottom: 3rem;
+    padding: 0 1.5rem;
+
+    &__Wrap {
+        padding: 1.5rem 0;
+
+        .Icon--inline {
+            vertical-align: middle;
+        }
+
+        @include bp-small {
+            padding: 1.5rem 1rem;
+        }
+    }
+
+    &__TitleBlock {
+        padding: 0;
+    }
+
+    &__Title {
+        color: $color-white;
+        display: inline-block;
+        font-family: $font-primary-100;
+        font-weight: 100;
+        margin: 0 0 0 1rem;
+        vertical-align: middle;
+
+        @include font-size(20px);
+    }
+
+    &__Extra {
+        position: relative;
+
+        margin-top: .3rem;
+        padding: 0;
+        text-align: right;
+
+        @include bp-xsmall {
+            .PaymentMethodHeader__Extra__Icon {
+                position: absolute;
+                right: 0;
+                bottom: 1.2rem;
+            }
+
+            .Button {
+                &,
+                &__Cancel,
+                &__Secondary {
+                    display: block;
+                    margin-top: .5rem;
+                }
+            }
+        }
+    }
+
+    &__ButtonWrapper {
+        display: none;
+    }
+
+    &.Edit {
+        .PaymentMethodHeader__Wrap {
+            padding: 3.5rem 0;
+
+            @include bp-xsmall {
+                padding: 1.5rem 0;
+            }
+        }
+
+        .PaymentMethodHeader__TitleBlock {
+            margin-top: 1rem;
+        }
+
+        .PaymentMethodHeader__ButtonWrapper {
+            display: block;
+        }
+
+        .PaymentMethodHeader__Extra__Icon {
+            display: none;
+        }
+    }
+}

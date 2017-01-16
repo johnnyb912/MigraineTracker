@@ -1,0 +1,145 @@
+@import 'utility';
+@import 'variables';
+
+:host /deep/ {
+    .Icon__Edit {
+        fill: $gray-light;
+
+        &:hover {
+            fill: $brand-primary;
+        }
+    }
+
+    .Light .Icon__Edit {
+        fill: rgba($color-white, .5);
+
+        &:hover {
+            fill: rgba($color-white, 1);
+        }
+    }
+}
+
+%hide-placeholder {
+    opacity: 0;
+    visibility: hidden;
+}
+
+%show-placeholder {
+    opacity: 1;
+    visibility: visible;
+}
+
+.Account {
+    max-width: 55rem;
+
+    margin: 0 auto 1rem;
+
+    &__Title {
+        background: $gray-lightest;
+        border: .1rem solid $gray-light;
+        border-radius: $border-radius-base 0;
+        cursor: pointer;
+        margin: 0;
+        padding: 1.8rem 1rem 1.2rem .4rem;
+        text-align: left;
+
+        @include linear-gradient(to bottom, $color-white, $gray-lightest);
+        @include transition();
+
+        &:hover {
+            @include linear-gradient(to bottom, $gray-lightest, $gray-lightest);
+        }
+    }
+
+    &__MonthBlock {
+        position: relative;
+
+        color: $gray;
+        float: right;
+        font-family: $font-primary-500;
+        font-weight: 500;
+        letter-spacing: .25rem;
+        padding: .7rem 1.4rem 0 0;
+
+        @include font-size(12px);
+
+        &::before {
+            position: absolute;
+            top: -.7rem;
+            left: -2.6rem;
+
+            height: 4.6rem;
+
+            border: .1rem solid rgba($gray-light, .3);
+            content: '';
+        }
+    }
+
+    &__Name {
+        letter-spacing: .05rem;
+        margin: 0;
+    }
+
+    &__Code {
+        color: $gray-light;
+        font-weight: 700;
+        margin-top: .2rem;
+
+        @include font-size(12px);
+    }
+
+    &__Options {
+        max-height: .01rem;
+
+        overflow: hidden;
+
+        @include transition();
+
+        &.Expand {
+            max-height: 20rem;
+        }
+    }
+
+    &.Active {
+        .Account__Title {
+            border-radius: $border-radius-base 0 0;
+            vertical-align: bottom;
+
+            @include linear-gradient(to right, $color-purple, $color-blue-gray-dark);
+        }
+
+        .Account__Name {
+            color: $color-white;
+        }
+
+        .Account__Options {
+            border: .1rem solid $gray-lighter;
+            border-radius: 0 0 $border-radius-base;
+            margin-top: -.1rem;
+            padding: 3rem 0 4rem;
+
+            &__Title {
+                margin-bottom: 3.3rem;
+            }
+        }
+    }
+
+    &__Button {
+        width: 100%;
+        max-width: 55rem;
+
+        border: .1rem solid $gray-light;
+        border-radius: $border-radius-base 0;
+        color: $gray;
+        margin: 0 auto;
+
+        &:hover {
+            color: $color-white;
+        }
+    }
+
+    .Icon__Edit {
+        float: right;
+        margin-top: .6rem;
+    }
+}

@@ -1,0 +1,247 @@
+@import 'utility';
+@import 'variables';
+
+:host-context(.ClaimProfile) {
+    .UserInfo {
+        &__Detail {
+            border-bottom: 1px solid $gray-lighter;
+        }
+
+        &__Topic {
+            padding: 6rem 0 1rem;
+        }
+    }
+}
+
+:host /deep/ {
+    .Icon__Edit--profile {
+        cursor: pointer;
+        padding: .8rem 1.4rem;
+    }
+
+    .Icon--profile {
+        width: 3.6rem;
+        height: 3.2rem;
+
+        fill-opacity: .5;
+    }
+}
+
+.UserInfo {
+    &__Toggle {
+        display: none;
+    }
+
+    &__Topic {
+        font-family: $font-primary-500;
+        font-weight: 500;
+        padding: 4.6rem 0;
+
+        @include font-size (24px);
+
+        @include bp-xsmall {
+            @include font-size (18px);
+        }
+
+        &.Collapsible {
+            cursor: pointer;
+
+            .UserInfo__Toggle {
+                display: block;
+                float: right;
+
+                &.Icon__Minus {
+                    display: none;
+                }
+
+                &.Icon__Plus {
+                    display: block;
+                }
+            }
+
+            &.Active {
+                .UserInfo__Toggle.Icon__Minus {
+                    display: block;
+                }
+
+                .UserInfo__Toggle.Icon__Plus {
+                    display: none;
+                }
+            }
+        }
+
+        &.Active {
+            + .UserInfo__Detail {
+                display: block;
+            }
+        }
+    }
+
+    &__Buttons {
+        display: inline-block;
+
+        .Button,
+        .Button__Secondary {
+            padding: .4rem 2rem;
+
+            @include font-size(16px);
+        }
+    }
+
+    &__Detail {
+        display: none;
+        margin: 0;
+        padding-bottom: 1.6rem;
+
+        &.Edit {
+            .UserInfo__Label {
+                opacity: 0;
+                visibility: hidden;
+            }
+
+            .UserInfo__Input {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+
+    &__ColumnLeft {
+        border-top: 1px solid $gray-lighter;
+        border-right: 1px solid $gray-lighter;
+        padding: 0 6rem 0 0;
+
+        @include bp-medium {
+            border-right: 0;
+            padding: 0;
+        }
+    }
+
+    &__ColumnRight {
+        border-top: 1px solid $gray-lighter;
+        padding: 0 0 0 6rem;
+
+        @include bp-medium {
+            padding: 0;
+        }
+    }
+
+    &__Block {
+        position: relative;
+
+        border-top: 1px solid $gray-lighter;
+        padding: 2.6rem 0 3rem 6.6rem;
+
+        &:first-child {
+            border-top: 0;
+        }
+
+        .Icon {
+            position: absolute;
+            top: 50%;
+            left: 0;
+
+            margin-top: -1.6rem;
+        }
+    }
+
+    &__Caption {
+        color: $gray-light;
+        font-family: $font-primary-700;
+        letter-spacing: .3rem;
+        margin: .4rem 0 .6rem;
+        text-transform: uppercase;
+
+        @include font-size (11px);
+    }
+
+    &__Label {
+        font-family: $font-primary-300;
+        font-weight: 300;
+        opacity: 1;
+        text-transform: initial;
+        visibility: visible;
+
+        word-break: break-all;
+
+        @include font-size (16px);
+        @include transition();
+    }
+
+    &__Input {
+        position: absolute;
+        top: 54px;
+        left: 76px;
+
+        width: calc(100% - 6.6rem);
+
+        margin-left: -1.1rem;
+        opacity: 0;
+        visibility: hidden;
+
+        @include transition();
+
+        .form-control { /* stylelint-disable-line selector-class-pattern */
+            height: 26px;
+
+            letter-spacing: 1.3px;
+            padding: 0;
+        }
+
+        .City,
+        .State,
+        .Zipcode,
+        .PhoneNumber,
+        .PhoneType {
+            display: inline-block;
+        }
+
+        .City,
+        .State,
+        .Zipcode {
+            float: left;
+        }
+
+        .State,
+        .Zipcode {
+            margin-left: .5rem;
+        }
+
+        .City {
+            width: 60%;
+        }
+
+        .State {
+            width: 10%;
+        }
+
+        .Zipcode {
+            width: calc(30% - 1rem);
+        }
+
+        .PhoneNumber {
+            width: 120px;
+        }
+
+        .PhoneType {
+            width: auto;
+
+            margin-left: .5rem;
+        }
+    }
+
+    &__NumberBlock {
+        margin-bottom: 3rem;
+
+        .UserInfo__Text {
+            color: $brand-info;
+            text-decoration: underline;
+        }
+    }
+}
+
+.Dropdown {
+    &__Toggle {
+        color: $brand-primary;
+    }
+}

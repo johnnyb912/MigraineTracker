@@ -1,0 +1,65 @@
+<employee-section-header></employee-section-header>
+
+<section class="Employee">
+    <div class="container">
+        <div class="Employee__Wrapper">
+            <div class="Employee__Header">
+                <div  class="Employee__Header__CloseBtn" (click)="closeEmployee()">
+                    <i class="Icon">
+                        <svg-icon svgClass="Icon__Close" [svgPath]="icons.close"></svg-icon>
+                    </i>
+                </div>
+                <div class="Employee__Header__Avatar">
+                    <div class="Label">JA</div>
+                </div>
+                <div class="Employee__Header__Name">{{ userInfo.name || 'John C. Anderson' }} </div>
+            </div>
+
+            <section>
+                <div class="Employee__Item Profile__Topic" (click)="section.employeeProfile = !section.employeeProfile" [ngClass]="{Active: section.employeeProfile}">
+                    {{ 'PROFILE' | translate }}
+                    <i class="Icon Icon__Minus Employee__Item__Toggle">
+                        <svg-icon svgClass="Icon__Minus" [svgPath]="icons.minus"></svg-icon>
+                    </i>
+                    <i class="Icon Icon__Plus Employee__Item__Toggle">
+                        <svg-icon svgClass="Icon__Plus" [svgPath]="icons.plus"></svg-icon>
+                    </i>
+                </div>
+                <div class="Employee__Item__Detail">
+                    <employee-profile></employee-profile>
+                </div>
+            </section>
+
+            <section>
+                <div class="Employee__Item Profile__Topic" (click)="section.employeeCoverage = !section.employeeCoverage" [ngClass]="{Active: section.employeeCoverage}">
+                    {{ 'COVERAGE' | translate }}
+                    <i class="Icon Icon__Minus Employee__Item__Toggle">
+                        <svg-icon svgClass="Icon__Minus" [svgPath]="icons.minus"></svg-icon>
+                    </i>
+                    <i class="Icon Icon__Plus Employee__Item__Toggle">
+                        <svg-icon svgClass="Icon__Plus" [svgPath]="icons.plus"></svg-icon>
+                    </i>
+                </div>
+                <div class="Employee__Item__Detail">
+                    <employee-coverage></employee-coverage>
+                </div>
+            </section>
+
+            <section>
+                <div class="Employee__Item Profile__Topic" (click)="section.employeeHistory = !section.employeeHistory" [ngClass]="{Active: section.employeeHistory}">
+                    {{ 'HISTORY' | translate }}
+                    <i class="Icon Icon__Minus Employee__Item__Toggle">
+                        <svg-icon svgClass="Icon__Minus" [svgPath]="icons.minus"></svg-icon>
+                    </i>
+                    <i class="Icon Icon__Plus Employee__Item__Toggle">
+                        <svg-icon svgClass="Icon__Plus" [svgPath]="icons.plus"></svg-icon>
+                    </i>
+                </div>
+                <div class="Employee__Item__Detail">
+                    <employee-history></employee-history>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+

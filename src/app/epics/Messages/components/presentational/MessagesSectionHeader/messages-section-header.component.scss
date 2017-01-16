@@ -1,0 +1,32 @@
+@import 'utility';
+@import 'variables';
+
+.MessagesSectionHeader {
+    background-image: linear-gradient(to right, $color-blue-violet 0%, $color-blue-gray-dark 20%, $color-purple 100%);
+
+    &__Wrap {
+        max-width: 137rem;
+
+        margin: 0 auto;
+        padding: 2rem;
+
+        @include bp-small {
+            text-align: center;
+        }
+
+        .Icon--inline {
+            vertical-align: middle;
+        }
+    }
+
+    &__Title {
+        color: $color-white;
+        display: inline-block;
+        font-family: $font-primary-300;
+        font-weight: 300;
+        margin: 0 0 0 1rem;
+        vertical-align: middle;
+
+        @include font-size(20px);
+    }
+}

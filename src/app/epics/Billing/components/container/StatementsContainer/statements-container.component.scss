@@ -1,0 +1,206 @@
+@import 'variables';
+@import 'utility';
+
+:host /deep/ {
+    .AppTooltip {
+        top: .1rem;
+
+        margin-left: .5rem;
+        text-align: left;
+    }
+
+    .Icon__Minus,
+    .Icon__Plus {
+        width: 1.2rem;
+        height: 2.4rem;
+
+        fill: $color-white;
+    }
+}
+
+.Statements {
+    max-width: $container-width;
+
+    margin: 0 auto 10rem;
+    padding-top: 2rem;
+
+    &__None {
+        font-family: $font-primary-300;
+        line-height: 2;
+        margin-top: 10rem;
+        text-align: center;
+
+        @include font-size(22px);
+    }
+
+    &__Main {
+        background: $color-white;
+        border: .1rem solid;
+        border-color: $gray-light;
+        border-radius: $border-radius-base;
+        margin-left: 32rem;
+        padding: 0 3rem 10rem;
+
+        @include transition();
+
+        @include bp-large {
+            margin-left: 23rem;
+            padding: 0 3% 3rem;
+        }
+
+        &.Active {
+            margin-left: 0;
+        }
+    }
+
+    &__Title {
+        color: $gray-darker;
+        margin: 2.5rem 0 2rem;
+        text-align: center;
+
+        &:first-child {
+            margin-bottom: 3rem;
+        }
+    }
+
+    &__SubTitle {
+        color: $gray;
+        font-family: $font-primary-700;
+        font-weight: 700;
+        letter-spacing: .2rem;
+        text-transform: uppercase;
+
+        @include font-size(10px);
+    }
+
+    &__Month {
+        position: relative;
+
+        background: $gray;
+        border-radius: $border-radius-large * 2;
+        color: $color-white;
+        cursor: pointer;
+        display: none;
+        font-family: $font-primary-700;
+        font-weight: 700;
+        letter-spacing: .3rem;
+        line-height: 2.4;
+        margin-top: 4.6rem;
+        padding: .3rem 1rem 0 1.8rem;
+        text-transform: uppercase;
+
+        @include bp-large {
+            margin-top: 2.5rem;
+        }
+
+        @include font-size(11px);
+
+        &.Due {
+            @include linear-gradient(to right, $color-green-dark, $color-green-light);
+        }
+
+        &.Late {
+            @include linear-gradient(to right, $color-red-dark, $color-red-light);
+        }
+
+        &.Pending {
+            @include linear-gradient(to right, $color-orange-dark, $color-orange);
+        }
+
+        .Multiples & {
+            display: block;
+        }
+
+        &.Active {
+            .Statements__Toggle {
+                &.Icon__Minus {
+                    display: block;
+                }
+
+                &.Icon__Plus {
+                    display: none;
+                }
+            }
+
+            + .Statements__Block {
+                max-height: 120rem;
+
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+
+    &__Toggle {
+        position: relative;
+        top: -.1rem;
+        left: -.6rem;
+
+        display: block;
+        float: right;
+
+        &.Icon__Minus {
+            display: none;
+        }
+
+        &.Icon__Plus {
+            display: block;
+        }
+    }
+
+    &__Block {
+        .Multiples & {
+            max-height: .1rem;
+
+            opacity: 0;
+            overflow: hidden;
+            visibility: hidden;
+
+            @include transition();
+        }
+    }
+
+    &__Total {
+        position: relative;
+
+        font-family: $font-primary-700;
+        font-weight: 700;
+        margin-top: 3.4rem;
+        padding-top: 3.2rem;
+        text-align: right;
+
+        &::before {
+            position: absolute;
+            top: 0;
+            right: 0;
+
+            width: 8rem;
+            height: .1rem;
+
+            background: $gray-lighter;
+            content: '';
+        }
+
+        &__Title {
+            color: $gray-light;
+            letter-spacing: .3rem;
+            text-transform: uppercase;
+
+            @include font-size(12px);
+        }
+
+        &__Amount {
+            color: $gray-darker;
+            margin-bottom: 1rem;
+
+            @include font-size(33px);
+        }
+
+        .Button__Secondary {
+            margin-right: 0;
+            padding: 1rem 2.4rem;
+
+            @include font-size(13px);
+        }
+    }
+}

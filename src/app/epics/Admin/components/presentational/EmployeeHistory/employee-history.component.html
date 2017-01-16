@@ -1,0 +1,128 @@
+<section class="EmployeeHistory">
+    <div class="EmployeeHistory__Horizontal">
+        <div class="Employee__HireCaption">
+            <div class="row Employee__CaptionRow">
+                <div class="col-md-3 col-sm-4 FilterWrap__LeftSide">
+                    <ul class="FilterWrap__Years">
+                        <li class="FilterWrap__Li"
+                            (click)="dateAction('All Years', 'All Months', 'All Days')"
+                            [ngClass]="{Active: yearValue === 'All Years'}">
+                            {{ 'ALL_YEARS' | translate }}
+                        </li>
+                        <li class="FilterWrap__Li"
+                            *ngFor="let year of yearsArray.reverse(); trackBy:trackByIndex"
+                            (click)="dateAction(year, monthValue)"
+                            [ngClass]="{Active: year === yearValue}">
+                            {{year}}
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-9 col-sm-8 FilterWrap__RightSide">
+                    <ul class="FilterWrap__Months">
+                        <li class="FilterWrap__Li"
+                            (click)="dateAction(yearValue, 'All Months', 'All Days')"
+                            [ngClass]="{Active: monthValue === 'All Months'}">
+                            {{ 'ALL_MONTHS' | translate }}
+                        </li>
+                        <li class="FilterWrap__Li"
+                            *ngFor="let month of monthsArray; trackBy:trackByIndex; let i=index;"
+                            (click)="dateAction(yearValue, month, i+1)"
+                            [ngClass]="{Active: month === monthValue, Hidden: yearValue === 'All Years'}">
+
+                            {{month}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul class="FilterWrap__Days">
+                        <li class="FilterWrap__Li"
+                            *ngFor="let day of daysArray; trackBy:trackByIndex;"
+                            (click)="dayValue = day;"
+                            [ngClass]="{Active: day === dayValue}">
+                            {{day}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="FilterWrap">
+            <div class="row">
+                <div class="FilterWrap__Coverages">
+                    <div class="FilterWrap__Li FilterWrap__VisibleWrap"
+                         *ngFor="let updated of updatedArray; trackBy:trackByIndex;"
+                         (click)="updatedValue = updated;"
+                         [ngClass]="{'FilterWrap__VisibleWrap': updated === updatedValue}">
+                        <div class="FilterWrap__Checkbox" [ngClass]="{'Active': updated === updatedValue}">
+                            <i class="Icon">
+                                <svg-icon svgClass="Icon__Checkmark" [svgPath]="icons.checkmark"></svg-icon>
+                            </i>
+                        </div>
+                        <div class="FilterWrap__Data">
+                            {{updated}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="EmployeeHistory__Calendar">
+        <div class="EmployeeHistory__Title" (click)="selectedItem(action = !action);">
+            <span>{{ 'EXPAND_ALL' | translate }}</span>
+            /
+            <span>{{ 'CONTRACT_ALL' | translate }}</span>
+        </div>
+
+        <section *ngFor="let item of updatedList; trackBy:trackByIndex; let i=index">
+            <div class="EmployeeHistory__Item"
+                 [ngClass]="{ 'Active': item.isCollapsed,
+                              'FirstItem': i === 0,
+                              'LastItem': i === updatedList.length - 1 }"
+                 (click)="item.isCollapsed = !item.isCollapsed;">
+                <div class="EmployeeHistory__Day">
+                    <div class="EmployeeHistory__Short">
+                        <div class="EmployeeHistory__Short__Month">{{item.date.format("MMM")}}</div>
+                        <div>{{item.date.format('L').substring(0,2)}}</div>
+                    </div>
+
+                    <div class="EmployeeHistory__Long">
+                        <span>{{item.date.format("ddd")}}</span>
+                        <span class="EmployeeHistory__Long__Date">{{item.date.format('MMMM Do YYYY')}}</span>
+                    </div>
+
+                    <div class="EmployeeHistory__Changes">
+                        <span class="EmployeeHistory__Changes__Count">{{item.events.length}}</span>
+                        <span>{{ 'CHANGES' | translate }}</span>
+                    </div>
+                </div>
+
+                <i class="Icon Icon__Minus EmployeeHistory__Toggle">
+                    <svg-icon svgClass="Icon__Minus" [svgPath]="icons.minus"></svg-icon>
+                </i>
+                <i class="Icon Icon__Plus EmployeeHistory__Toggle">
+                    <svg-icon svgClass="Icon__Plus" [svgPath]="icons.plus"></svg-icon>
+                </i>
+            </div>
+
+            <div class="EmployeeHistory__Detail">
+                <table class="EmployeeHistory__Table">
+                    <tbody>
+                    <tr class="EmployeeHistory__Table__Row" *ngFor="let event of item.events; trackBy:trackByIndex;">
+                        <td class="EmployeeHistory__Table__Time">{{event.time}}</td>
+                        <td class="EmployeeHistory__Table__Info">
+                            {{event.typeUpdate}}
+                            {{ 'UPDATED' | translate }} {{ 'FROM' | translate }} <b>{{event.from}}</b>
+                            {{ 'TO' | translate }} <b> {{event.to}}</b>
+                            {{ 'BY' | translate }} <a>{{event.by}}</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</section>

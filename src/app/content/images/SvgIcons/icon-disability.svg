@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38.97 44.82">
+    <defs>
+        <linearGradient id="a" x1="937.21" y1="1502.83" x2="937.21" y2="1551.91" gradientUnits="userSpaceOnUse">
+            <stop offset="0.01" stop-color="#92aabf"/>
+            <stop offset="1" stop-color="#5a83a5"/>
+        </linearGradient>
+    </defs>
+    <title>icon-disability</title>
+    <path style="fill:url(#a)"
+          d="M931.09,1522.32l0.8,0v3l-0.63,0A11.16,11.16,0,1,0,943,1537.13c0-.22,0-0.45,0-0.68h3c0,0.29,0,.57,0,0.85A14.16,14.16,0,1,1,931.09,1522.32Zm18.59,8.38,7,12.51-2.62,1.47-6.16-11h-13.1v-15.22h3V1522h8v3h-8v5.67h11.86Zm-13.36-14.27a5.32,5.32,0,1,0-5.32-5.32A5.32,5.32,0,0,0,936.32,1516.43Zm0-7.64a2.32,2.32,0,1,1-2.32,2.32A2.32,2.32,0,0,1,936.32,1508.8Z"
+          transform="translate(-917.72 -1505.8)"/>
+</svg>

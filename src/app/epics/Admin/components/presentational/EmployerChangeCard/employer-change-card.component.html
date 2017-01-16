@@ -1,0 +1,38 @@
+<div class="ChangeRequest col-sm-4">
+    <div class="Card">
+        <div class="Card__Header">
+            <div *ngIf="cardData === 'GROUP'">
+                <i class="Icon">
+                    <svg-icon svgClass="Icon__Group Card__PlanIcons"
+                              [svgPath]="icons.group"></svg-icon>
+                </i>
+            </div>
+            <div class="row">
+                <div *ngIf="cardData === 'SUBSIDIARY'" class="Card__Subsidiary">
+                    <i class="Icon">
+                        <svg-icon svgClass="Icon__Subsidiary Card__PlanIcons"
+                                  [svgPath]="icons.subsidiary"></svg-icon>
+                    </i>
+                </div>
+            </div>
+            <div *ngIf="cardData === 'PLAN'">
+                <i class="Icon">
+                    <svg-icon svgClass="Icon__Plan Card__PlanIcons"
+                              [svgPath]="icons.plan"></svg-icon>
+                </i>
+            </div>
+            {{cardData | translate}}
+        </div>
+
+        <div class="Card__Body">
+            <div class="row">
+                <div class="col-xs-6 text-right Card__NoPad Card__CustomAlign">
+                    <div class="Button" (click)="addButton(cardData)">{{ 'ADD' | translate }}</div>
+                </div>
+                <div class="col-xs-6 text-left Card__NoPad Card__CustomAlign">
+                    <div class="Button" (click)="editButton(cardData)">{{ 'EDIT' | translate }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

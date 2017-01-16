@@ -1,0 +1,150 @@
+@import 'variables';
+@import 'utility';
+
+$sidebar-width: 30rem;
+
+:host /deep/ {
+    .Icon__Checkmark {
+        height: 1.2rem;
+
+        fill: $color-white;
+    }
+
+    .Icon__Bell,
+    .Icon__Envelope,
+    .Icon__CheckCircle {
+        margin-right: .7rem;
+
+        fill: $gray-light;
+    }
+
+    .MessagesSidebar__Item.Active,
+    .MessagesSidebar__Item:hover {
+        .Icon__Bell,
+        .Icon__Envelope,
+        .Icon__CheckCircle {
+            fill: $color-red-light;
+        }
+    }
+}
+
+.MessagesSidebar {
+    width: $sidebar-width;
+
+    background: $color-white;
+    border: .1rem solid $gray-light;
+    border-radius: $border-radius-base;
+    color: $gray;
+    float: left;
+    font-family: $font-primary-500;
+    overflow: hidden;
+
+    @include bp-medium {
+        width: 100%;
+
+        float: none;
+        margin-bottom: 3rem;
+    }
+
+    @include font-size(19px);
+
+    .Icon--inline {
+        vertical-align: middle;
+    }
+
+    &__Header {
+        position: relative;
+
+        padding: 2.4rem 0;
+        text-align: center;
+
+        &::before {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+
+            width: 100%;
+            height: .1rem;
+
+            background: $gray-lighter;
+            content: '';
+        }
+
+        &__ChevronLeft {
+            @include arrow($size: .9rem, $dir: left, $weight: .2rem, $color: $gray-light);
+
+            left: 1.2rem;
+        }
+
+        &__ChevronRight {
+            @include arrow($size: .9rem, $dir: right, $weight: .2rem, $color: $gray-light);
+
+            right: 1.2rem;
+        }
+
+        &__ChevronLeft,
+        &__ChevronRight {
+            position: absolute;
+            top: 3rem;
+
+            cursor: pointer;
+            vertical-align: middle;
+
+            @include transition();
+        }
+    }
+
+    &__Item {
+        position: relative;
+
+        border-bottom: .1rem solid $gray-lighter;
+        cursor: pointer;
+        padding: 1.6rem 2rem;
+
+        &:last-child {
+            border-bottom: 0;
+        }
+
+        &__Label {
+            margin-bottom: .8rem;
+        }
+
+        &__Description {
+            color: $gray-light;
+            letter-spacing: .2rem;
+            text-transform: uppercase;
+
+            @include font-size(11px);
+        }
+
+        &__Checkmark {
+            position: absolute;
+            top: 50%;
+            right: 2rem;
+
+            background-color: $color-green-light;
+            border-radius: $border-radius-large;
+            margin-top: -.9rem;
+            padding: .4rem;
+        }
+
+        &.New {
+            .MessagesSidebar__Item__Label {
+                color: $color-black;
+            }
+        }
+
+        &.Active,
+        &:hover {
+            @include linear-gradient(to right, $color-purple, $color-blue-gray-dark);
+
+            .MessagesSidebar__Item__Label {
+                color: $color-white;
+            }
+
+            .MessagesSidebar__Item__Description {
+                color: $color-red-light;
+            }
+        }
+    }
+}

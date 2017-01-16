@@ -1,0 +1,674 @@
+@import 'utility';
+@import 'variables';
+
+:host /deep/ {
+    .CalendarVertical {
+        .Icon {
+            &__Gear {
+                width: 1.4rem;
+                height: 1.2rem;
+            }
+        }
+    }
+
+    .Employee__ChangeView {
+        padding-top: 1rem;
+        text-align: right;
+
+        .Icon--inline {
+            &:hover {
+                cursor: pointer;
+            }
+
+            .Icon__ViewList {
+                width: 2.3rem;
+                height: 1.7rem;
+
+                fill: $gray-light;
+            }
+
+            &.Active {
+                &:hover {
+                    cursor: default;
+                }
+
+                .Icon__ViewTile,
+                .Icon__ViewList {
+                    fill: $color-purple-dark;
+                }
+            }
+        }
+    }
+}
+
+.Employee {
+    position: relative;
+
+    background-color: $color-white;
+    border: 1px solid $gray-light;
+    border-radius: $border-radius-base;
+    margin-bottom: 4rem;
+    overflow: auto;
+    padding: 0 4rem 2rem 2rem;
+
+    @include bp-medium {
+        padding-bottom: 4rem;
+    }
+
+    &.ChangeView__List {
+        @include bp-medium {
+            padding-bottom: 2rem;
+        }
+    }
+
+    &__Sort {
+        position: relative;
+
+        background-color: $gray-lightest;
+        margin: 0 -4rem 2rem -2rem;
+        opacity: 1;
+        padding: 1rem 2rem;
+        visibility: visible;
+
+        @include transition();
+    }
+
+    &__Action {
+        background: $color-white;
+        border-bottom: .1rem solid $gray-light;
+        display: none;
+        line-height: 0;
+        margin: 0;
+        padding: 0;
+        text-align: justify;
+
+        @include transition();
+
+        &::after {
+            width: 100%;
+            height: 0;
+
+            content: '';
+            display: inline-block;
+            overflow: hidden;
+            visibility: hidden;
+        }
+
+        &__Btn {
+            border-color: $color-blue-gray-light;
+            color: $color-green-light;
+            margin: 0 0 1rem;
+            padding: .8rem 2rem;
+
+            @include font-size(13px);
+
+            @include bp-small {
+                float: left;
+                margin: 0 1rem 1rem 0;
+            }
+
+            &:hover,
+            &:focus,
+            &:active {
+                background: $color-green-dark;
+                color: $color-white;
+
+                @include linear-gradient(to right, $color-green-dark, $color-green-light);
+            }
+        }
+    }
+
+    &__Label {
+        color: $gray;
+        display: inline-block;
+        letter-spacing: .2rem;
+        padding-top: .6rem;
+        text-transform: uppercase;
+
+        @include font-size(16px);
+    }
+
+    &.Active {
+        .Employee {
+            &__Sort {
+                display: none;
+            }
+
+            &__Action {
+                display: block;
+                padding: 1.5rem 0 0;
+            }
+        }
+    }
+
+    &__HireCaption {
+        color: $color-white;
+        display: none;
+
+        &.Visible {
+            display: block;
+        }
+
+        &.FilterWrap__Months {
+            @include bp-medium {
+                text-align: left;
+            }
+        }
+    }
+
+    &__UpdateCaption {
+        border-radius: $border-radius-base $border-radius-base 0 0;
+        color: $color-white;
+        display: none;
+        margin: 0 -4rem 0 -2rem;
+        padding: 3rem;
+
+        @include font-size(26px);
+        @include linear-gradient(to right, $color-purple, $color-blue-gray-dark);
+
+        &.Visible {
+            display: block;
+        }
+    }
+
+    &__CaptionRow {
+        background-image: linear-gradient(to right, $color-blue-violet 0%, $color-blue-gray-dark 20%, $color-purple 100%);
+        margin: 0 -4rem 0 -3rem;
+        padding-top: 1rem;
+    }
+}
+
+.Filter {
+    color: $gray;
+    font-family: $font-primary-300;
+    font-weight: 300;
+    list-style: none;
+    margin: 3rem 0;
+    padding: 0;
+
+    @include bp-small {
+        margin-bottom: 1.5rem;
+    }
+
+    &__Item {
+        display: inline-block;
+
+        @include bp-small {
+            margin-bottom: 1.5rem;
+
+            @include font-size(12.4px);
+        }
+    }
+
+    &__Link {
+        border-radius: 3rem;
+        padding: .7rem 1.7rem;
+
+        @include transition();
+
+        &.Active {
+            color: $gray-lightest;
+
+            @include linear-gradient(to top, $color-blue-primary, $color-blue-primary-light);
+
+            &:hover {
+                cursor: default;
+
+                @include linear-gradient(to top, $color-blue-primary, $color-blue-primary-light);
+            }
+        }
+
+        &:hover {
+            background: $gray-lighter;
+            cursor: pointer;
+        }
+    }
+
+    &__Alphabet {
+        position: absolute;
+        top: 7rem;
+        right: 0;
+
+        width: 4rem;
+
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        &__Item {
+            color: $gray-light;
+            font-family: $font-primary-500;
+            line-height: 1.5;
+
+            &.Empty {
+                color: $gray-lighter;
+            }
+        }
+    }
+}
+
+.Dropdown {
+    display: inline-block;
+
+    &__Toggle {
+        border: 0;
+        font-family: $font-primary-300;
+
+        @include font-size(18px);
+
+        &:hover,
+        &:focus {
+            background: none;
+            color: $gray;
+
+            .Dropdown__ChevronDown {
+                @include arrow(6px, 2px, $gray, down, $gray-lightest);
+
+                top: .4rem;
+                left: .4rem;
+            }
+        }
+    }
+
+    &__ChevronDown {
+        @include arrow(6px, 2px, $gray, down, $gray-lightest);
+
+        top: .4rem;
+        left: .4rem;
+    }
+}
+
+.FilterWrap {
+    border-top: 1px solid $gray-light;
+    color: $gray;
+    display: none;
+    padding: 2rem 2rem 1rem;
+
+    &__RightSide {
+        text-align: right;
+
+        @include bp-large {
+            padding: 0 .3rem 0 0;
+            text-align: left;
+        }
+
+        @include bp-medium {
+            padding: 0 .3rem 0 0;
+        }
+    }
+
+    &__Years,
+    &__Months {
+        list-style: none;
+        padding: 0;
+
+        @include bp-medium {
+            @include font-size(13px);
+        }
+    }
+
+    &__Days {
+        background-color: $gray-lightest;
+        color: $gray-darker;
+        margin: 0 -4rem 0 -2rem;
+        padding: 1rem 2rem;
+
+        .Active {
+            color: $gray-lightest;
+
+            @include linear-gradient(to top, $color-blue-primary, $color-blue-primary-light);
+        }
+    }
+
+    &__Months {
+        margin-bottom: .6rem;
+
+        .FilterWrap__Li {
+            margin-bottom: .5rem;
+            margin-left: 1.5rem;
+
+            @include bp-medium {
+                margin-left: 0;
+            }
+        }
+    }
+
+    &__Statuses {
+        padding-left: 1.5rem;
+
+        .FilterWrap__Li {
+            margin-right: 2rem;
+        }
+    }
+
+    &__Li {
+        border-radius: 3rem;
+        display: inline-block;
+        padding: .1rem .9rem;
+
+        @include transition();
+
+        &.Active {
+            color: $gray-lightest;
+
+            @include linear-gradient(90deg, $color-green-dark, $color-green-light);
+
+            &:hover {
+                cursor: default;
+            }
+        }
+
+        &.Hidden {
+            display: none;
+        }
+
+        &:hover:not(.Active) {
+            background: $gray-lighter;
+            color: $gray;
+            cursor: pointer;
+        }
+    }
+
+    &__Coverages {
+        padding: 0 1rem .5rem;
+    }
+
+    &__Checkbox {
+        border: 1px solid $gray;
+        border-radius: 5rem;
+        float: left;
+        margin-right: .6rem;
+        padding: .9rem;
+
+        .Icon {
+            display: none;
+        }
+
+        &.Active {
+            display: inline-block;
+            padding: .4rem .3rem;
+
+            .Icon {
+                fill: $color-white;
+            }
+
+            @include linear-gradient(90deg $color-green-dark, $color-green-light);
+        }
+    }
+
+    &__Data {
+        float: left;
+        text-transform: capitalize;
+    }
+
+    &__VisibleWrap {
+        .Icon {
+            display: block;
+        }
+
+        .FilterWrap__Data {
+            margin: 0;
+        }
+    }
+
+    &.Visible {
+        display: block;
+    }
+}
+
+.RecentlyUpdate {
+    display: none;
+    margin: 0 -4rem 0 -2rem;
+
+    &.Visible {
+        display: block;
+    }
+
+    .FilterWrap {
+        background-color: $gray-lighter;
+        border-top: 1px solid $color-white;
+    }
+}
+
+.CalendarVertical {
+    width: 90%;
+
+    &__Title {
+        position: relative;
+
+        color: $gray;
+        cursor: pointer;
+        font-family: $font-primary-500;
+        margin-bottom: 3rem;
+        padding-top: 2rem;
+        text-align: right;
+
+        @include font-size(15px);
+
+        &::after {
+            position: absolute;
+            top: 3rem;
+            right: 19rem;
+            left: 0;
+
+            border-bottom: .1rem solid $gray-lighter;
+            content: '';
+        }
+    }
+
+    &__Item {
+        border-radius: $border-radius-small;
+        color: $gray-darker;
+        cursor: pointer;
+        font-family: $font-primary-700;
+        font-weight: 700;
+        padding: 3rem 0 2rem 2rem;
+
+        @include transition();
+        @include font-size (22px);
+
+        @include bp-xsmall {
+            @include font-size (18px);
+        }
+
+        .CalendarVertical__Item__Toggle {
+            display: block;
+            float: right;
+
+            &.Icon__Minus {
+                display: none;
+            }
+
+            &.Icon__Plus {
+                display: block;
+            }
+        }
+
+        &__Day {
+            display: inline-block;
+
+            .ShortDay {
+                position: relative;
+
+                width: 4rem;
+                height: 4rem;
+
+                border: .1rem solid $gray-lighter;
+                border-radius: $border-radius-base;
+                display: inline-block;
+                padding-top: .5rem;
+                text-align: center;
+
+                &::before,
+                &::after {
+                    position: absolute;
+
+                    height: 3.1rem;
+
+                    border-left: .1rem solid $gray-lighter;
+                    content: '';
+                }
+
+                &::before {
+                    bottom: 3.9rem;
+                }
+
+                &::after {
+                    top: 3.9rem;
+                }
+
+                &__Month {
+                    color: $gray-light;
+                    line-height: 1rem;
+                    text-transform: uppercase;
+
+                    @include font-size(10px);
+                }
+
+                &__Day {
+                    color: $gray;
+                    font-family: $font-primary-300;
+
+                    @include font-size(16.8px);
+                }
+            }
+
+            .LongDay {
+                display: inline-block;
+                margin-left: 2rem;
+                vertical-align: super;
+
+                &__WeekDay {
+                    color: $gray;
+                    font-family: $font-primary-500;
+                    text-transform: uppercase;
+
+                    @include font-size(12px);
+                }
+
+                &__Date {
+                    color: $gray-dark;
+                    font-family: $font-primary-700;
+
+                    @include font-size(17px);
+                }
+            }
+
+            .Changes {
+                display: inline-block;
+                margin-left: 1rem;
+                vertical-align: super;
+
+                &__Count {
+                    width: 2.2rem;
+                    height: 2.2rem;
+
+                    background: $color-pink;
+                    border-radius: 50%;
+                    color: $color-white;
+                    display: inline-block;
+                    font-family: $font-primary-500;
+                    padding-top: .3rem;
+                    text-align: center;
+                    vertical-align: middle;
+
+                    @include font-size(12px);
+                }
+
+                &__Text {
+                    color: $gray;
+                    font-family: $font-primary-500;
+
+                    @include font-size(12px);
+                }
+            }
+        }
+
+        &__Detail {
+            max-height: .1rem;
+
+            border-left: .1rem solid $gray-lighter;
+            margin: 0 0 0 4rem;
+            opacity: 0;
+            overflow: hidden;
+            padding-right: 3rem;
+            padding-left: 3rem;
+            visibility: hidden;
+
+            @include transition();
+
+            .Details {
+                table-layout: fixed;
+
+                &__Row:hover {
+                    background: lighten($gray-lightest, 2%);
+
+                    @include transition();
+                }
+
+                &__Info {
+                    line-height: 3rem;
+                }
+            }
+
+            .Details__Time {
+                width: 15%;
+
+                line-height: 6rem;
+                text-align: center;
+
+                @include bp-small {
+                    width: 20%;
+                }
+            }
+        }
+
+        &.FirstItem {
+            .ShortDay {
+                &::before {
+                    content: none;
+                }
+            }
+        }
+
+        &.LastItem {
+            .ShortDay {
+                &::after {
+                    content: none;
+                }
+            }
+
+            &.Active.ShortDay {
+                &::after {
+                    content: '';
+                }
+            }
+        }
+
+        &.Active {
+            border-bottom-color: $gray-light;
+
+            .CalendarVertical__Item__Toggle {
+                &.Icon__Minus {
+                    display: block;
+                }
+
+                &.Icon__Plus {
+                    display: none;
+                }
+            }
+
+            + .CalendarVertical__Item__Detail {
+                max-height: 120rem;
+
+                opacity: 1;
+                padding-bottom: 3rem;
+                visibility: visible;
+            }
+        }
+    }
+
+    &__ChevronDown {
+        @include arrow($size: .5rem, $dir: down, $weight: .1rem, $color: $gray-light);
+    }
+}

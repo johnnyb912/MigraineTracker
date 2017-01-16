@@ -1,0 +1,37 @@
+<div class="container-fluid">
+    <div class="row PaymentHistoryHeader" [ngClass]="{Active: searchFieldExpand}">
+        <div class="col-md-12">
+            <div class="PaymentHistoryHeader__Wrapper">
+                <div class="row">
+                    <div class="col-sm-4 col-md-3">
+                        <i class="Icon--inline">
+                            <svg-icon svgClass="Icon__Statement" [svgPath]="icons.statement"></svg-icon>
+                        </i>
+
+                        <h1 class="PaymentHistoryHeader__Title">{{title}}</h1>
+                    </div>
+
+                    <div class="col-sm-8 col-md-9 PaymentHistoryHeader__Search">
+                        <div class="PaymentHistoryHeader__Search__Field">
+                            <i class="Icon--inline PaymentHistoryHeader__Icon" (click)="searchFieldExpand = true">
+                                <svg-icon svgClass="Icon__Search" [svgPath]="icons.search"></svg-icon>
+                            </i>
+
+                            <input class="PaymentHistoryHeader__Search__Input" type="text" placeholder="Search">
+                        </div>
+
+                        <div class="PaymentHistoryHeader__Search__Filter Button">
+                            <i class="Icon--inline">
+                                <svg-icon svgClass="Icon__Filter" [svgPath]="icons.filter"></svg-icon>
+                            </i>
+                        </div>
+
+                        <i class="Icon--inline PaymentHistoryHeader__Close" (click)="searchFieldExpand = false">
+                            <svg-icon svgClass="Icon__Close" [svgPath]="icons.close"></svg-icon>
+                        </i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

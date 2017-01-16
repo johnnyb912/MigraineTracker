@@ -1,0 +1,135 @@
+@import 'utility';
+@import 'variables';
+
+.Card {
+    min-height: 370px;
+
+    background-color: $color-white;
+    border: 1px solid $gray-lighter;
+    border-radius: $border-radius-base;
+    font-family: $font-primary-700;
+    margin-bottom: 4rem;
+    padding: 1rem 2rem;
+    text-align: center;
+
+    .Icon {
+        margin-top: 5.6rem;
+        margin-bottom: 3.8rem;
+    }
+
+    .PlanCard__Icon {
+        height: 5.3rem;
+
+        margin-bottom: 2.4rem;
+    }
+
+    &__Header {
+        font-family: $font-primary-300;
+        font-weight: normal;
+
+        @include font-size(42px);
+
+        &--small {
+            font-family: $font-primary-500;
+            font-weight: normal;
+            margin-top: 1rem;
+            text-transform: uppercase;
+
+            @include font-size(13px);
+        }
+    }
+
+    &__Buttons {
+        margin-top: 3.5rem;
+
+        .Button {
+            margin: 0;
+
+            &:first-child {
+                margin-right: .4rem;
+            }
+
+            &:last-child {
+                margin-left: .4rem;
+            }
+        }
+    }
+
+    &__Claims {
+        .Icon {
+            margin-bottom: 2.4rem;
+        }
+
+        &__Row {
+            font-size: 0;
+        }
+
+        &__Content {
+            width: 30%;
+
+            display: inline-block;
+            text-align: center;
+        }
+    }
+
+    &__PlanType,
+    &__PlanAmt {
+        border-bottom: 1px solid $gray-lighter;
+        line-height: 3.5;
+    }
+
+    &__PlanType {
+        font-family: $font-primary-700;
+
+        @include font-size(20px);
+    }
+
+    &__PlanAmt {
+        margin-bottom: 0;
+        padding-bottom: 1.2rem;
+    }
+
+    &__PlanAmt,
+    &__PlanButton {
+        font-family: $font-primary-500;
+
+        @include font-size(13px);
+    }
+
+    &__PlanButton {
+        width: 50%;
+
+        cursor: pointer;
+        float: left;
+        padding-bottom: 1rem;
+
+        @include transition($transition: background-color);
+
+        &:first-child {
+            border-right: 1px solid $gray-lighter;
+        }
+
+        &:hover {
+            background-color: $gray-lightest;
+        }
+
+        .Icon {
+            margin-top: 1.8rem;
+            margin-bottom: .6rem;
+        }
+    }
+
+    &__Footer {
+        color: $gray;
+        letter-spacing: .25rem;
+        margin-top: 2.4rem;
+        margin-bottom: 0;
+        text-transform: uppercase;
+
+        @include font-size(11px);
+
+        &__Bold {
+            color: $gray-darker;
+        }
+    }
+}

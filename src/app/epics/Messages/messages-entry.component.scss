@@ -1,0 +1,9 @@
+@import 'variables';
+@import 'utility';
+
+.MessagesWrapper {
+    max-width: $container-width;
+
+    margin: 0 auto 10rem;
+    padding-top: 2rem;
+}

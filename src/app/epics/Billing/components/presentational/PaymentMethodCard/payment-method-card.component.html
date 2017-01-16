@@ -1,0 +1,68 @@
+<div *ngFor="let card of paymentMethodCard; trackBy:trackByIndex" class="row MethodCard" [ngClass]="{Edit: isEdit}">
+    <div class="col-sm-3 MethodCard__Title">
+        <i class="Icon Method__Bank">
+            <svg-icon svgClass="Icon__Bank" [svgPath]="icons.bank"></svg-icon>
+        </i>
+        <div class="MethodCard__Label">{{card.title}}</div>
+        {{ 'BANK' | translate }}
+        <div class="MethodCard__EditBlock">
+            <a class="Button__Circle">
+                <i class="Icon">
+                    <svg-icon svgClass="Icon__Checkmark" [svgPath]="icons.checkmark"></svg-icon>
+                </i>
+            </a>
+            <a class="Button__Circle">
+                <i class="Icon">
+                    <svg-icon svgClass="Icon__Trash" [svgPath]="icons.trash"></svg-icon>
+                </i>
+            </a>
+        </div>
+    </div>
+    <div class="col-sm-9 MethodCard__Content">
+        <div *ngIf="card.default" class="MethodCard__Default">{{ 'DEFAULT' | translate }}</div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="MethodCard__Subtitle">{{ 'PHONE' | translate }}</div>
+                <label for="card-phone" class="MethodCard__Text">
+                    {{card.phone}}
+                </label>
+                <div class="MethodCard__Input">
+                    <input type="text"
+                           id="card-phone"
+                           class=" form-control"
+                           placeholder="##"
+                           required
+                           [(ngModel)]="card.phone">
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="MethodCard__Subtitle">{{ 'ACCOUNT' | translate }}</div>
+                <label for="card-phone" class="MethodCard__Text">
+                    {{card.account}}
+                </label>
+                <div class="MethodCard__Input">
+                    <input type="text"
+                           id="card-account"
+                           class="form-control"
+                           placeholder="##"
+                           required
+                           [(ngModel)]="card.account">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="MethodCard__Subtitle">{{ 'ROUTING' | translate }}</div>
+                <label for="card-phone" class="MethodCard__Text">
+                    {{card.routing}}
+                </label>
+                <div class="MethodCard__Input">
+                    <input type="text"
+                           id="card-routing"
+                           class="form-control"
+                           placeholder="##"
+                           required
+                           [(ngModel)]="card.routing">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

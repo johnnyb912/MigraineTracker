@@ -1,0 +1,31 @@
+<div class="Discontinue">
+    <div class="Discontinue__Header">
+        <i class="Icon">
+            <svg-icon svgClass="Icon__DiscontinueCoverage" [svgPath]="icons.discontinueCoverage"></svg-icon>
+        </i>
+        <div class="Discontinue__Header__Title">{{ 'DISCONTINUE_COVERAGE' | translate }}</div>
+        <div class="Discontinue__Header__SubTitle">{{ 'SHORT_TERM_DISABILITY' | translate }}</div>
+    </div>
+    <div class="Discontinue__Content">
+        <div class="Discontinue__Content__Title">{{employee.firstName}} {{employee.middleInitial}}. <span class="Discontinue__Content__LastName">{{employee.lastName}}</span></div>
+        <div class="Discontinue__Content__Id">{{employee.codes}}</div>
+        <div class="Discontinue__Content__SubTitle">{{ 'EMPLOYEE_SIGNATURE_DATE' | translate }}</div>
+        <div class="Discontinue__Content__SignatureDate">
+            <date-picker
+                    [selectedDate]="selectedDate"
+                    [dateFormat]="dateFormat"
+                    (itemSelected)="onItemSelected($event)">
+            </date-picker>
+            <i class="Discontinue__Content__ChevronDown"></i>
+        </div>
+        <div class="Discontinue__ButtonWrap" [ngClass]="{Active: questionShow}">
+            <div class="Discontinue__ButtonWrap__Text">{{ 'ARE_YOU_SURE' | translate }} {{ 'DISCONTINUE' | translate }} {{employee.firstName}} {{employee.lastName}} {{ 'COVERAGE' | translate }}?</div>
+            <div class="Button__Pill Discontinue__ButtonWrap__Discontinue"(click)="questionShow = true">{{ 'DISCONTINUE' | translate }}</div>
+            <div class="Button__Pill Discontinue__ButtonWrap__Confirm"(click)="closeModalWindow($event)">{{ 'CONFIRM' | translate }}</div>
+        </div>
+        <button class="Button__Text"
+                (click)="closeModalWindow($event)">
+            {{ 'CANCEL' | translate }}
+        </button>
+    </div>
+</div>

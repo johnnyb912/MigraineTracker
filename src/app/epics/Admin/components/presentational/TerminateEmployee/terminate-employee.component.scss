@@ -1,0 +1,165 @@
+@import 'utility';
+@import 'variables';
+
+:host /deep/ {
+    .Icon__TerminateEmployment {
+        fill: $color-white;
+    }
+
+    .form-control { /* stylelint-disable-line selector-class-pattern */
+        background: transparent;
+        border-bottom: 0;
+        color: $gray-dark;
+        padding: 0;
+        text-align: center;
+    }
+}
+
+.Terminate {
+    &__Header {
+        border-radius: $border-radius-base 0 0;
+        color: $gray-light;
+        padding: 4rem 0 3rem;
+        text-align: center;
+
+        @include font-size(20px);
+        @include linear-gradient(to right, $color-purple, $color-blue-gray-dark);
+
+        &__Title {
+            color: $color-white;
+            margin-top: 2rem;
+
+            @include font-size(26px);
+        }
+    }
+
+    &__Content {
+        border: .1rem solid $gray-light;
+        border-radius: 0 0 $border-radius-base;
+        padding: 3rem 0 1.5rem;
+        text-align: center;
+
+        &__Title {
+            color: $gray-dark;
+            font-family: $font-primary-300;
+
+            @include font-size(26px);
+        }
+
+        &__LastName {
+            font-family: $font-primary-700;
+        }
+
+        &__Id {
+            color: $gray-light;
+
+            @include font-size(14px);
+        }
+
+        &__SubTitle {
+            color: $gray-light;
+            letter-spacing: .2rem;
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+
+            @include font-size(10px);
+        }
+
+        &__SignatureDate {
+            position: relative;
+
+            width: 12rem;
+
+            margin: 0 auto 1rem;
+            text-align: center;
+        }
+
+        &__ChevronDown {
+            @include arrow($size: .6rem, $dir: down, $weight: .2rem, $color: $gray);
+
+            position: absolute;
+            top: 1.4rem;
+            right: 0;
+            z-index: -1;
+        }
+    }
+
+    &__ButtonWrap {
+        margin-bottom: 1rem;
+
+        &__Text {
+            color: $gray-light;
+            font-family: $font-primary-300;
+            margin: 2rem 0 1rem;
+            opacity: 0;
+
+            @include font-size(12px);
+            @include transition();
+        }
+
+        &__Confirm,
+        &__Download {
+            display: none;
+        }
+
+        &.Active {
+            .Terminate__ButtonWrap__Terminate {
+                display: none;
+            }
+
+            .Terminate__ButtonWrap__Text {
+                opacity: 1;
+            }
+
+            .Terminate__ButtonWrap__Confirm {
+                display: inline-block;
+            }
+        }
+
+        &.ShowForm {
+            .Terminate__ButtonWrap__Terminate {
+                display: none;
+            }
+
+            .Terminate__ButtonWrap__Download {
+                display: inline-block;
+            }
+        }
+    }
+
+    &__DownloadForm {
+        line-height: 2;
+        padding: 0 5rem;
+
+        @include font-size(13px);
+
+        &__SubTitle {
+            margin: 2.5rem;
+        }
+    }
+}
+
+.Dropdown {
+    &__Toggle {
+        border: 0;
+        color: $gray-dark;
+        font-family: $font-primary-300;
+
+        &:hover,
+        &:focus {
+            background: none;
+
+            .Dropdown__ChevronDown {
+                &::after {
+                    border-top-color: $color-white;
+                }
+            }
+        }
+    }
+
+    .dropdown-menu { /* stylelint-disable-line selector-class-pattern */
+        left: 50%;
+
+        margin-left: -8rem;
+    }
+}

@@ -1,0 +1,49 @@
+@import 'variables';
+@import 'utility';
+
+.Header {
+    position: relative;
+
+    &__Resize {
+        left: 0;
+    }
+
+    &__Move {
+        right: 0;
+    }
+
+    &__DueDate {
+        color: $gray;
+        font-family: $font-primary-700;
+        font-weight: 700;
+        letter-spacing: .2rem;
+        margin-top: 4.7rem;
+        text-align: center;
+        text-transform: uppercase;
+
+        @include font-size(10px);
+    }
+
+    &__Amount {
+        color: $color-blue-violet;
+        font-family: $font-primary-300;
+        font-weight: 300;
+        margin-top: 2rem;
+        text-align: center;
+
+        @include font-size(60px);
+    }
+
+    .Icon {
+        position: absolute;
+        top: -2rem;
+
+        @include transition($time: .2s);
+
+        &:hover {
+            cursor: pointer;
+
+            transform: scale(1.2, 1.2);
+        }
+    }
+}

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50.61 62.42">
+    <defs>
+        <linearGradient id="a" x1="280.55" y1="1112.31" x2="280.55" y2="1057.86" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#472f90"/>
+            <stop offset="1" stop-color="#ba3492"/>
+        </linearGradient>
+        <linearGradient id="b" x1="307.64" y1="1112.31" x2="307.64" y2="1057.86" xlink:href="#a"/>
+        <linearGradient id="c" x1="298.39" y1="1109.31" x2="298.39" y2="1054.86" xlink:href="#a"/>
+        <linearGradient id="d" x1="289.8" y1="1115.23" x2="289.8" y2="1082.7" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#fff" stop-opacity="0.87"/>
+            <stop offset="0.15" stop-color="#fff"/>
+            <stop offset="1" stop-color="#fff" stop-opacity="0.5"/>
+        </linearGradient>
+        <linearGradient id="e" x1="289.04" y1="1115.23" x2="289.04" y2="1082.7" xlink:href="#d"/>
+        <linearGradient id="f" x1="289.08" y1="1112.31" x2="289.08" y2="1057.86" xlink:href="#a"/>
+        <linearGradient id="g" x1="289.08" y1="1115.23" x2="289.08" y2="1082.7" xlink:href="#d"/>
+        <linearGradient id="h" x1="304.87" y1="1112.31" x2="304.87" y2="1057.86" xlink:href="#a"/>
+        <linearGradient id="i" x1="304.87" y1="1113.22" x2="304.87" y2="1085.01" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#fff"/>
+            <stop offset="1" stop-color="#fff" stop-opacity="0.5"/>
+        </linearGradient>
+    </defs>
+    <title>icon-accident</title>
+    <path style="fill:url(#a);" d="M273.09,1103.57v5a5.32,5.32,0,0,0,5,5.29l10-30.17A20.76,20.76,0,0,0,273.09,1103.57Z"
+          transform="translate(-273.09 -1052.81)"/>
+    <path style="fill:url(#b);"
+          d="M302.94,1082.81h-9.1a20.93,20.93,0,0,0-2.26.13l8.52,30.92h18.26a5.33,5.33,0,0,0,5.33-5.33v-5A20.76,20.76,0,0,0,302.94,1082.81ZM310,1112.5c0,1-.84.5-1.34,0.5h-8.43l-0.5-2H308v-4.69l-4.05-1.93-2.77,2.43-0.52-1.94,2.46-2.22a1,1,0,0,1,1.06-.14l5.1,2.44a1.16,1.16,0,0,1,.72.81v6.75Z"
+          transform="translate(-273.09 -1052.81)"/>
+    <path style="fill:url(#c);"
+          d="M298.39,1080.51c7.17,0,13-6.21,13-13.85s-5.84-13.85-13-13.85-13,6.21-13,13.85S291.22,1080.51,298.39,1080.51Z"
+          transform="translate(-273.09 -1052.81)"/>
+    <path style="fill:url(#d);opacity:0.63;" d="M291.52,1082.7l-3.22.12-0.28.84a20.61,20.61,0,0,1,3.57-.72Z"
+          transform="translate(-273.09 -1052.81)"/>
+    <path style="fill:url(#d);opacity:0.63;" d="M278.42,1113.87c-0.12,0-.24,0-0.36,0l-0.46,1.4h22.88l-0.38-1.37H278.42Z"
+          transform="translate(-273.09 -1052.81)"/>
+    <path style="fill:url(#f);" d="M288,1083.66l-10,30.17c0.12,0,.24,0,0.36,0h21.69l-8.52-30.92A20.61,20.61,0,0,0,288,1083.66Z"
+          transform="translate(-273.09 -1052.81)"/>
+    <path style="fill:url(#d);opacity:0.63;" d="M288,1083.66l-10,30.17c0.12,0,.24,0,0.36,0h21.69l-8.52-30.92A20.61,20.61,0,0,0,288,1083.66Z"
+          transform="translate(-273.09 -1052.81)"/>
+    <path style="fill:url(#f);"
+          d="M309.28,1104.94l-5.1-2.44a1,1,0,0,0-1.06.14l-2.46,2.22,0.52,1.94,2.77-2.43,4.05,1.93V1111h-8.26l0.5,2h8.43c0.5,0,1.34.54,1.34-.5v-6.75A1.16,1.16,0,0,0,309.28,1104.94Z"
+          transform="translate(-273.09 -1052.81)"/>
+    <path style="opacity:0.57;fill:url(#i);"
+          d="M309.28,1104.94l-5.1-2.44a1,1,0,0,0-1.06.14l-2.46,2.22,0.52,1.94,2.77-2.43,4.05,1.93V1111h-8.26l0.5,2h8.43c0.5,0,1.34.54,1.34-.5v-6.75A1.16,1.16,0,0,0,309.28,1104.94Z"
+          transform="translate(-273.09 -1052.81)"/>
+</svg>

@@ -1,0 +1,122 @@
+<form [formGroup]="companyCardForm"
+      [ngClass]="{EmployerCompany__SavedData: !cardData.get('isGroupEditing'), EmployerCompany__EditedData: cardData.get('isGroupEditing') }">
+    <div class="CompanyCard col-md-6 Group">
+        <div class="CompanyCard__Header">
+            {{ 'GROUP' | translate}}
+
+            <i class="Icon--inline Icon__Edit--profile" (click)="enableEdit(true, $event)" [ngClass]="{HiddenElement: cardData.get('isGroupEditing')}">
+                <svg-icon svgClass="Icon__Edit" [svgPath]="icons.iconEdit"></svg-icon>
+            </i>
+            <div class="CompanyCard__Buttons" [ngClass]="{HiddenElement: !cardData.get('isGroupEditing')}">
+                <button class="CompanyCard__Btn Button" (click)="saveUserProfile($event)">{{ 'SAVE' | translate }}</button>
+                <button class="CompanyCard__Btn Button__Secondary" (click)="enableEdit(false, $event)">{{ 'CANCEL' | translate }}</button>
+            </div>
+        </div>
+        <div class="CompanyCard__Content">
+            <div class="CompanyCard__Line">
+                <div class="CompanyCard__NoPadding">
+                    <i class="Icon">
+                        <svg-icon
+                                svgClass="CompanyCard__FillColor Icon__AddressMap"
+                                [svgPath]="icons.iconAddressMap"></svg-icon>
+                    </i>
+                </div>
+                <div class="CompanyCard__RightSide">
+                    <label class="CompanyCard__Label">
+                        {{cardData.get('address')}}<br />
+                        {{cardData.get('city')}}, {{cardData.get('state')}} {{cardData.get('zipCode')}}
+                    </label>
+                    <div class="CompanyCard__SmallText">{{ 'ADDRESS' | translate }}</div>
+                    <div class="CompanyCard__Inputs">
+                        <div class="row CompanyCard__NoIndent">
+                            <div class="col-sm-5 CompanyCard__NoIndent">
+                                <input type="text"
+                                       id="address"
+                                       class="form-control CompanyCard__Input"
+                                       [ngModel]="cardData.get('address')"
+                                       [formControl]="address">
+                            </div>
+                        </div>
+                        <div class="row CompanyCard__NoIndent">
+                            <div class="col-sm-6 CompanyCard__NoIndent">
+                                <input type="text"
+                                       id="city"
+                                       class="form-control CompanyCard__Input"
+                                       [ngModel]="cardData.get('city')"
+                                       [formControl]="city">
+                            </div>
+                            <div class="col-sm-2 CompanyCard__NoIndent">
+                                <input type="text"
+                                       id="state"
+                                       class="form-control CompanyCard__Input"
+                                       [ngModel]="cardData.get('state')"
+                                       [formControl]="state">
+                            </div>
+                            <div class="col-sm-4 CompanyCard__NoIndent">
+                                <input type="text"
+                                       id="zipCode"
+                                       class="form-control CompanyCard__Input"
+                                       [ngModel]="cardData.get('zipCode')"
+                                       [formControl]="zipCode">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="CompanyCard__Line">
+                <div class="CompanyCard__NoPadding">
+                    <i class="Icon">
+                        <svg-icon svgClass="CompanyCard__FillColor Icon__PhoneOutline"
+                                  [svgPath]="icons.iconPhoneOutline"></svg-icon>
+                    </i>
+                </div>
+                <div class="CompanyCard__RightSide">
+                    <div *ngFor="let phone of cardData.get('phone'); trackBy:trackByIndex">
+                        <label class="CompanyCard__Label">{{phone.type}} {{phone.number}}</label>
+                    </div>
+                    <div class="CompanyCard__SmallText">{{ 'PHONE' | translate }}</div>
+                    <div *ngFor="let phone of cardData.get('phone'); trackBy:trackByIndex">
+                        <div class="row CompanyCard__Inputs">
+                            <div class="col-sm-3 CompanyCard__NoIndent">
+                                <input type="text"
+                                       id="phoneType"
+                                       class="form-control CompanyCard__Input"
+                                       [ngModel]="phone.type"
+                                       [formControl]="phoneType">
+                            </div>
+                            <div class="col-sm-5 CompanyCard__NoIndent">
+                                <input type="text"
+                                       id="phoneNumber"
+                                       class="form-control CompanyCard__Input"
+                                       [ngModel]="phone.number"
+                                       [formControl]="phoneNumber">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="CompanyCard__Line CompanyCard__Last">
+                <div class="CompanyCard__NoPadding">
+                    <i class="Icon">
+                        <svg-icon svgClass="CompanyCard__FillColor Icon__Envelope"
+                                  [svgPath]="icons.iconEnvelope"></svg-icon>
+                    </i>
+                </div>
+                <div class="CompanyCard__RightSide">
+                    <label class="CompanyCard__Label">{{cardData.get('email')}}</label>
+                    <div class="CompanyCard__SmallText">{{ 'EMAIL' | translate }}</div>
+                    <div class="row CompanyCard__Inputs">
+                        <input type="text"
+                               id="email"
+                               class="form-control CompanyCard__Input"
+                               [ngModel]="cardData.get('email')"
+                               [formControl]="email">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>

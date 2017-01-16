@@ -1,0 +1,99 @@
+@import 'variables';
+@import 'utility';
+
+.Footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+
+    width: 100%;
+
+    background-color: $gray-darker;
+    border-radius: 0 0 $border-radius-base $border-radius-base;
+    color: $color-white;
+    padding: 3rem;
+
+    @include linear-gradient(to right, $color-purple, $color-blue-gray-dark);
+
+    &__Back {
+        text-align: left;
+    }
+
+    &__Cancel {
+        text-align: right;
+    }
+
+    &__Link {
+        color: $color-white;
+        cursor: pointer;
+        font-weight: 700;
+        text-decoration: none;
+
+        @include font-size(14px);
+    }
+}
+
+.Cancel {
+    position: absolute;
+    top: -5rem;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+
+    width: 100%;
+
+    border-radius: $border-radius-large;
+    color: $color-white;
+    opacity: 0;
+    visibility: hidden;
+
+    transform: scaleY(0);
+    transform-origin: bottom;
+
+    @include linear-gradient(to bottom, $color-blue-gray-dark, $color-purple);
+    @include transition();
+
+    &.Active {
+        z-index: 5;
+
+        opacity: 1;
+        visibility: visible;
+
+        transform: scaleY(1);
+    }
+
+    &__Text {
+        position: absolute;
+        top: 50%;
+
+        width: 100%;
+
+        font-family: $font-primary-300;
+        font-weight: 300;
+        margin-top: -12rem;
+
+        @include font-size(27px);
+    }
+
+    &__Buttons {
+        font-size: 0;
+        padding-top: 4.5rem;
+
+        .Button {
+            margin: 0;
+
+            &:first-child {
+                border-right: 0;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+
+            &:last-child {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+        }
+    }
+}

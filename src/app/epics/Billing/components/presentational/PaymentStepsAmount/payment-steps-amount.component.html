@@ -1,0 +1,72 @@
+<h2 class="Step__Title">
+    Confirm Amount
+    <app-tooltip
+            [ttIcon]="icons.message"
+            ttIconClass="Icon__Message"
+            ttText="You may adjust the balance of your Employee List Bill items to align with payroll deductions."
+            ttSecondary="">
+    </app-tooltip>
+</h2>
+
+<div class="row Confirm" *ngFor="let mapping of paymentMappings; trackBy:trackByIndex; let i = index">
+    <div *ngFor="let statement of mapping.get('selectedStatements'); trackBy:trackByIndex">
+        <div *ngIf="statement.get('checked')">
+            <div class="col-md-2 Confirm__Month">
+                {{ statement.get('monthShort') }}
+            </div>
+
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-4 Confirm__Item" *ngFor="let account of statement.get('selfAccounting'); trackBy:trackByIndex">
+                        <div class="Confirm__Item__Cell">
+                            <div class="Confirm__Item__Caption">{{account.get('type')}}</div>
+                            <div class="Confirm__Item__Amount">${{account.get('total') | currencyFormat : '0,0.00'}}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 Confirm__Item" *ngFor="let bill of statement.get('employeeListBill'); trackBy:trackByIndex">
+                        <div class="Confirm__Item__Cell">
+                            <div class="Confirm__Item__Caption">{{bill.get('type')}}</div>
+                            <div class="Confirm__Item__Amount">${{bill.get('total') | currencyFormat : '0,0.00'}}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Confirm__EditBtn" [ngClass]="{Edit: statement.get('isEditingAmount')}" (click)="editStatement(true, statement)">
+                    <i class="Icon">
+                        <svg-icon svgClass="Icon__Edit" [svgPath]="icons.edit"></svg-icon>
+                    </i>
+                </div>
+
+                <div class="Confirm__EditSection" [ngClass]="{Edit: statement.get('isEditingAmount')}">
+                    <div class="Confirm__EditSection__Content">
+                        <span class="Icon__Collapse" (click)="editStatement(false, statement)">
+                            <i class="Icon">
+                                <svg-icon svgClass="Icon__Collapse" [svgPath]="icons.collapse"></svg-icon>
+                            </i>
+                        </span>
+                        <span class="Confirm__EditAmount" *ngIf="statement.get('isEditingAmount')">
+                            <form [formGroup]="confirmAmountForm" novalidate>
+                                <div class="Confirm__EditAmount__Text">{{ statement.getIn(['employeeListBill', 0, 'type'])}}</div>
+                                <div>
+                                    <input type="text"
+                                           id="editAmount"
+                                           class="form-control Confirm__EditAmount__Input"
+                                           [ngModel]="statement.getIn(['employeeListBill', 0, 'total'])"
+                                           [formControl]="editAmount">
+                                </div>
+                            </form>
+                        </span>
+                        <span class="Confirm__EditAmount__ButtonWrap">
+                            <button class="Button" (click)="editStatement(false, statement)">{{ 'CANCEL' | translate }}</button>
+                            <button class="Button__Secondary" (click)="updatePaymentAmount(statement)">{{ 'SAVE' | translate }}</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 Step__Next">
+    <button class="Button" (click)="nextStep()">{{ 'NEXT' | translate }}</button>
+</div>

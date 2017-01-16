@@ -1,0 +1,31 @@
+{
+    "compilerOptions": {
+        "target"                            : "es5",
+        "module"                            : "commonjs",
+        "moduleResolution"                  : "node",
+        "sourceMap"                         : false,
+        "emitDecoratorMetadata"             : true,
+        "experimentalDecorators"            : true,
+        "allowSyntheticDefaultImports"      : true,
+        "noEmitHelpers"                     : true,
+        "strictNullChecks"                  : false,
+        "types": [
+            "core-js",
+            "node",
+            "jasmine"
+        ]
+    },
+    "exclude": [
+        "node_modules",
+        ".dist"
+    ],
+    "awesomeTypescriptLoaderOptions": {
+        "forkChecker"       : true,
+        "useWebpackText"    : true
+    },
+    "angularCompilerOptions": {
+        "genDir"    : "."
+    },
+    "compileOnSave" : false,
+    "buildOnSave"   : false
+}

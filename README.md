@@ -1,10 +1,8 @@
 # Migraine Tracker
 
-This project serves as the base boilerplate for Angular 2.x web development work at DePalma Studios.  The idea is to provide all of the common
-libraries, tooling, and directory structure that have been identified and documented in our extensive developer [wikis](https://bitbucket.org/DePalma_Studios/depalma-architecture-guidance/wiki/browse/)
-in one place to allow for easy ramp up and bootstrap of new development projects.
+An app to keep tracker of when migraines occur and their intensity.
 
-The boilerplate application is built with [AngularJS 2.x](https://angular.io/) and utilizes a number of 3rd party dependencies including:
+The Migraine Tracker application is built with [AngularJS 2.x](https://angular.io/) and utilizes a number of 3rd party dependencies including:
 
  - [Karma](http://karma-runner.github.io/0.12/index.html) test runner
  - [Jasmine](http://jasmine.github.io/) framework for unit testing
@@ -18,8 +16,7 @@ The boilerplate application is built with [AngularJS 2.x](https://angular.io/) a
  - [TypeDoc](http://typedoc.io/) for generating code documentation based on source code comments
  - [D3.js](http://d3js.org/) for advanced data visualizations and animations
  - [Bootstrap](http://getbootstrap.com/) CSS Framework for responsive, mobile-first web projects
- - [Font Awesome](http://fortawesome.github.io/Font-Awesome/) icon and css toolkit
- - Built in support for layout and styling of the application based on [SASS](http://sass-lang.com/)
+ - Built in support for layout and styling of the application based on [Sass](http://sass-lang.com/)
 
 The directory structure contained in this document is based upon our [Angular Enterprise Component Architecture](https://bitbucket.org/DePalma_Studios/depalma-architecture-guidance/wiki/Angular%201.x%20and%202.0%20Application%20Solution%20Structure)
 design document.

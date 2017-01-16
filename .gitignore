@@ -1,0 +1,59 @@
+# Node Dependencies
+node_modules
+
+# build output dir
+.dist
+
+# Sass
+**/.sass-cache
+**/.sass-cache/*
+.sass-cache/**/*.sassc
+.sass-cache/**/*.scssc
+
+### OSX ###
+.DS_Store
+.AppleDouble
+.LSOverride
+
+#IDE configuration files
+.idea
+.vscode
+*.iml
+
+# Log Files
+logs
+*.log
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# other
+.tmp
+.temp
+
+# typedoc output
+docs
+
+# karma output
+karma_html
+
+# karma output
+specs/unit/test_results
+
+# coverage output
+coverage
+
+#npm debug log
+npm-debug.log
+
+#yarn error log
+yarn-error.log
+
+# Font Awesome versions not being used
+src/app/content/font-awesome-4.5.0/less/*
+# app/content/font-awesome-4.5.0/scss/*
+# app/content/font-awesome-4.5.0/css/*
+
+# Webpack build profile json output
+stats.json
